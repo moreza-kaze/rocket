@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@font-face {
+    font-family: "iran";
+    src: url('../src/assets/iran.woff2');
+}
+@tailwind utilities;
