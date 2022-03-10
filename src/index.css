@@ -2,6 +2,6 @@
 @tailwind components;
 @font-face {
     font-family: "iran";
-    src: url('../src/assets/iran.woff2');
+    src: url('../src/assets/IranianSans.ttf');
 }
 @tailwind utilities;
