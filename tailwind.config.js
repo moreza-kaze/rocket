@@ -20,6 +20,10 @@ module.exports = {
           999: "#568ee4",
         },
       },
+      transitionProperty: {
+        width: "width",
+        spacing: "margin, padding",
+      },
       boxShadow: {
         nav: "-15px 2px 15px 5 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
       },

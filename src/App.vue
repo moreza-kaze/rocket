@@ -2,7 +2,7 @@
   <div dir="rtl" class="font-main flex bg-gray-100 h-screen w-screen">
     <!-- start navbar & sidebar -->
     <div id="bar">
-      <bar />
+      <SideBar />
     </div>
     <!-- end navbar & sidebar -->
 
@@ -21,10 +21,11 @@
   </div>
 </template>
 <script>
-import Bar from "./components/Bar.vue";
+import SideBar from "./components/SideBar.vue";
+
 export default {
   components: {
-    Bar,
+    SideBar,
   },
   setup() {},
 };

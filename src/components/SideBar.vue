@@ -1,7 +1,7 @@
 <template>
   <!-- start sidebar w-64 -->
   <div
-    class="hidden h-screen bg-white md:flex flex-col md:w-24 lg:w-56 shadow-xl md:hover:bg-red-700 hover:w-56"
+    class="hidden h-screen bg-white md:flex flex-col md:w-24 lg:w-56 shadow-xl transition-width duration-500 md:hover:w-56 md:hover:transition-width md:hover:duration-700 tr"
   >
     <div
       class="flex items-center pr-1 pt-3 md:pr-5 lg:pr-1 overflow-x-hidden overflow-y-hidden"
@@ -28,12 +28,12 @@
       <ul class="px-3 py-5 flax justify-center w-full">
         <!----- Dasboard ------>
         <li
-          class="flex items-center bg-maincolor-999 h-14 rounded-xl overflow-x-hidden"
+          class="flex items-center justify-between bg-maincolor-999 h-14 rounded-xl overflow-x-hidden shadow-md"
         >
-          <span class="mx-5 md:mx-6 text-white"
-            ><svg
+          <div class="flex">
+            <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="h-6 w-6"
+              class="inline h-6 w-6 mx-5 md:mx-6 text-white"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -49,11 +49,27 @@
                 stroke-linejoin="round"
                 d="M9 10a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z"
               />
-            </svg> </span
-          ><span class="text-white font-medium"
-            ><router-link to="/dashboard">داشبورد</router-link></span
-          >
-          <span></span>
+            </svg>
+
+            <span class="text-white font-medium"
+              ><router-link to="/dashboard">داشبورد</router-link></span
+            >
+          </div>
+          <span class="ml-3 text-white"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-3 w-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="3"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M19 9l-7 7-7-7"
+              /></svg
+          ></span>
         </li>
         <!----- end Dasboard ------>
         <!--                -->
@@ -183,7 +199,12 @@
         <!--                -->
         <!----- setting ------>
         <li
-          class="flex items-center justify-between bg-maincolor-100 h-14 rounded-xl mt-5 overflow-x-hidden"
+          :class="[
+            { 'bg-maincolor-100': true },
+            { '!bg-maincolor-999': colorUl },
+          ]"
+          @click="colorUl = true"
+          class="flex items-center justify-between h-14 rounded-xl mt-5 overflow-x-hidden"
         >
           <div class="flex">
             <svg
@@ -233,7 +254,14 @@
 </template>
 
 <script>
-export default {};
+import { ref } from "@vue/reactivity";
+export default {
+  setup() {
+    const colorUl = ref(false);
+
+    return { colorUl };
+  },
+};
 </script>
 
 <style></style>
