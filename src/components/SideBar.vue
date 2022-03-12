@@ -1,11 +1,9 @@
 <template>
   <!-- start sidebar w-64 -->
   <div
-    class="hidden h-screen bg-white md:flex flex-col md:w-24 lg:w-56 shadow-xl transition-width duration-500 md:hover:w-56 md:hover:transition-width md:hover:duration-700 tr"
+    class="hidden h-screen bg-white md:flex flex-col md:w-24 lg:w-56 shadow-xl transition-width duration-500 md:hover:w-56 md:hover:transition-width md:hover:duration-700"
   >
-    <div
-      class="flex items-center pr-1 pt-3 md:pr-5 lg:pr-1 overflow-x-hidden overflow-y-hidden"
-    >
+    <div class="flex items-center pr-1 pt-3 md:pr-5 lg:pr-1 overflow-x-hidden">
       <span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -22,18 +20,38 @@
           />
         </svg>
       </span>
-      <span class="mr-10 lg:mr-0 mt-1 text-2xl font-medium">راکت</span>
+      <span class="mr-0 md:mr-5 lg:mr-0 mt-1 text-2xl font-medium">راکت</span>
     </div>
     <div>
       <ul class="px-3 py-5 flax justify-center w-full">
         <!----- Dasboard ------>
         <li
-          class="flex items-center justify-between bg-maincolor-999 h-14 rounded-xl overflow-x-hidden shadow-md"
+          :class="[
+            { 'bg-maincolor-100': !dash_li },
+            { '!bg-maincolor-999': dash_li },
+            { 'h-14': !dash_li },
+            { 'h-24': dash_li },
+            { 'shadow-md': dash_li },
+          ]"
+          @click="
+            {
+              dash_li = !dash_li;
+              users_li = false;
+              setting_li = false;
+              coupon_li = false;
+              sms_li = false;
+            }
+          "
+          class="flex items-start justify-between rounded-xl mt-5 pt-4 overflow-hidden transition-all duration-700"
         >
           <div class="flex">
             <svg
+              :class="[
+                { 'text-maincolor-999': !dash_li },
+                { 'text-white': dash_li },
+              ]"
               xmlns="http://www.w3.org/2000/svg"
-              class="inline h-6 w-6 mx-5 md:mx-6 text-white"
+              class="inline h-6 w-6 mx-5 md:mx-6"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -50,12 +68,33 @@
                 d="M9 10a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z"
               />
             </svg>
-
-            <span class="text-white font-medium"
-              ><router-link to="/dashboard">داشبورد</router-link></span
-            >
+            <div class="flex flex-col">
+              <span
+                class="font-medium cursor-pointer"
+                :class="[
+                  { 'text-maincolor-999': !dash_li },
+                  { 'text-white': dash_li },
+                ]"
+              >
+                داشبورد</span
+              >
+              <span
+                class="font-medium lg:mt-3 mt-2.5"
+                :class="[
+                  { 'text-maincolor-999': !dash_li },
+                  { 'text-white': dash_li },
+                ]"
+                ><router-link to="/dashboard">خانه</router-link></span
+              >
+            </div>
           </div>
-          <span class="ml-3 text-white"
+          <span
+            class="ml-3 mt-1.5 transition-all"
+            :class="[
+              { 'text-maincolor-999': !dash_li },
+              { 'text-white': dash_li },
+              { 'rotate-180': dash_li },
+            ]"
             ><svg
               xmlns="http://www.w3.org/2000/svg"
               class="h-3 w-4"
@@ -75,12 +114,32 @@
         <!--                -->
         <!----- users ------>
         <li
-          class="flex items-center justify-between bg-maincolor-100 h-14 rounded-xl mt-5 overflow-x-hidden"
+          :class="[
+            { 'bg-maincolor-100': !users_li },
+            { '!bg-maincolor-999': users_li },
+            { 'h-14': !users_li },
+            { 'h-32': users_li },
+            { 'shadow-md': users_li },
+          ]"
+          @click="
+            {
+              users_li = !users_li;
+              sms_li = false;
+              setting_li = false;
+              coupon_li = false;
+              dash_li = false;
+            }
+          "
+          class="flex items-start justify-between rounded-xl mt-5 pt-4 overflow-hidden transition-all duration-700"
         >
           <div class="flex">
             <svg
+              :class="[
+                { 'text-maincolor-999': !users_li },
+                { 'text-white': users_li },
+              ]"
               xmlns="http://www.w3.org/2000/svg"
-              class="inline h-6 w-6 mx-5 md:mx-6 text-maincolor-999"
+              class="inline h-6 w-6 mx-5 md:mx-6"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -92,11 +151,41 @@
                 d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
               />
             </svg>
-            <span class="text-maincolor-999 font-medium"
-              ><router-link to="/dashboard">کاربران</router-link></span
-            >
+            <div class="flex flex-col">
+              <span
+                class="font-medium cursor-pointer"
+                :class="[
+                  { 'text-maincolor-999': !users_li },
+                  { 'text-white': users_li },
+                ]"
+              >
+                کاربران</span
+              >
+              <span
+                class="font-medium lg:mt-3 mt-2.5"
+                :class="[
+                  { 'text-maincolor-999': !users_li },
+                  { 'text-white': users_li },
+                ]"
+                ><router-link to="/dashboard">مدیریت</router-link></span
+              >
+              <span
+                class="font-medium lg:mt-3 my-2.5"
+                :class="[
+                  { 'text-maincolor-999': !users_li },
+                  { 'text-white': users_li },
+                ]"
+                ><router-link to="/dashboard">ایجاد</router-link></span
+              >
+            </div>
           </div>
-          <span class="ml-3 text-maincolor-999"
+          <span
+            class="ml-3 mt-1.5 transition-all"
+            :class="[
+              { 'text-maincolor-999': !users_li },
+              { 'text-white': users_li },
+              { 'rotate-180': users_li },
+            ]"
             ><svg
               xmlns="http://www.w3.org/2000/svg"
               class="h-3 w-4"
@@ -116,12 +205,32 @@
         <!--                -->
         <!----- coupons ------>
         <li
-          class="flex items-center justify-between bg-maincolor-100 h-14 rounded-xl mt-5 overflow-x-hidden"
+          :class="[
+            { 'bg-maincolor-100': !coupon_li },
+            { '!bg-maincolor-999': coupon_li },
+            { 'h-14': !coupon_li },
+            { 'h-32': coupon_li },
+            { 'shadow-md': coupon_li },
+          ]"
+          @click="
+            {
+              coupon_li = !coupon_li;
+              users_li = false;
+              setting_li = false;
+              sms_li = false;
+              dash_li = false;
+            }
+          "
+          class="flex items-start justify-between rounded-xl mt-5 pt-4 overflow-hidden transition-all duration-700"
         >
           <div class="flex">
             <svg
+              :class="[
+                { 'text-maincolor-999': !coupon_li },
+                { 'text-white': coupon_li },
+              ]"
               xmlns="http://www.w3.org/2000/svg"
-              class="inline h-6 w-6 mx-5 md:mx-6 text-maincolor-999"
+              class="inline h-6 w-6 mx-5 md:mx-6"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -133,12 +242,40 @@
                 d="M9 14l6-6m-5.5.5h.01m4.99 5h.01M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16l3.5-2 3.5 2 3.5-2 3.5 2zM10 8.5a.5.5 0 11-1 0 .5.5 0 011 0zm5 5a.5.5 0 11-1 0 .5.5 0 011 0z"
               />
             </svg>
-
-            <span class="text-maincolor-999 font-medium"
-              ><router-link to="/dashboard">کوپن</router-link></span
-            >
+            <div class="flex flex-col">
+              <span
+                class="font-medium cursor-pointer"
+                :class="[
+                  { 'text-maincolor-999': !coupon_li },
+                  { 'text-white': coupon_li },
+                ]"
+                >کوپن ها</span
+              >
+              <span
+                class="font-medium lg:mt-3 mt-2.5"
+                :class="[
+                  { 'text-maincolor-999': !coupon_li },
+                  { 'text-white': coupon_li },
+                ]"
+                ><router-link to="/dashboard">مدیریت</router-link></span
+              >
+              <span
+                class="font-medium lg:mt-3 my-2.5"
+                :class="[
+                  { 'text-maincolor-999': !coupon_li },
+                  { 'text-white': coupon_li },
+                ]"
+                ><router-link to="/dashboard">ایجاد</router-link></span
+              >
+            </div>
           </div>
-          <span class="ml-3 text-maincolor-999"
+          <span
+            class="ml-3 mt-1.5 transition-all"
+            :class="[
+              { 'text-maincolor-999': !coupon_li },
+              { 'text-white': coupon_li },
+              { 'rotate-180': coupon_li },
+            ]"
             ><svg
               xmlns="http://www.w3.org/2000/svg"
               class="h-3 w-4"
@@ -158,12 +295,32 @@
         <!--                -->
         <!----- sms ------>
         <li
-          class="flex items-center justify-between bg-maincolor-100 h-14 rounded-xl mt-5 overflow-x-hidden"
+          :class="[
+            { 'bg-maincolor-100': !sms_li },
+            { '!bg-maincolor-999': sms_li },
+            { 'h-14': !sms_li },
+            { 'h-32': sms_li },
+            { 'shadow-md': sms_li },
+          ]"
+          @click="
+            {
+              sms_li = !sms_li;
+              users_li = false;
+              setting_li = false;
+              coupon_li = false;
+              dash_li = false;
+            }
+          "
+          class="flex items-start justify-between rounded-xl mt-5 pt-4 overflow-hidden transition-all duration-700"
         >
           <div class="flex">
             <svg
+              :class="[
+                { 'text-maincolor-999': !sms_li },
+                { 'text-white': sms_li },
+              ]"
               xmlns="http://www.w3.org/2000/svg"
-              class="inline h-6 w-6 mx-5 md:mx-6 text-maincolor-999"
+              class="inline h-6 w-6 mx-5 md:mx-6"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -175,11 +332,40 @@
                 d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
               />
             </svg>
-            <span class="text-maincolor-999 font-medium"
-              ><router-link to="/dashboard">پیامک</router-link></span
-            >
+            <div class="flex flex-col">
+              <span
+                class="font-medium cursor-pointer"
+                :class="[
+                  { 'text-maincolor-999': !sms_li },
+                  { 'text-white': sms_li },
+                ]"
+                >پیامک</span
+              >
+              <span
+                class="font-normal text-base lg:mt-3 mt-2.5"
+                :class="[
+                  { 'text-maincolor-999': !sms_li },
+                  { 'text-white': sms_li },
+                ]"
+                ><router-link to="/dashboard">ارسال‌انبوه</router-link></span
+              >
+              <span
+                class="font-medium lg:mt-3 my-2.5"
+                :class="[
+                  { 'text-maincolor-999': !sms_li },
+                  { 'text-white': sms_li },
+                ]"
+                ><router-link to="/dashboard">متون</router-link></span
+              >
+            </div>
           </div>
-          <span class="ml-3 text-maincolor-999"
+          <span
+            class="ml-3 mt-1.5 transition-all"
+            :class="[
+              { 'text-maincolor-999': !sms_li },
+              { 'text-white': sms_li },
+              { 'rotate-180': sms_li },
+            ]"
             ><svg
               xmlns="http://www.w3.org/2000/svg"
               class="h-3 w-4"
@@ -200,16 +386,31 @@
         <!----- setting ------>
         <li
           :class="[
-            { 'bg-maincolor-100': true },
-            { '!bg-maincolor-999': colorUl },
+            { 'bg-maincolor-100': !setting_li },
+            { '!bg-maincolor-999': setting_li },
+            { 'h-14': !setting_li },
+            { 'h-32': setting_li },
+            { 'shadow-md': setting_li },
           ]"
-          @click="colorUl = true"
-          class="flex items-center justify-between h-14 rounded-xl mt-5 overflow-x-hidden"
+          @click="
+            {
+              setting_li = !setting_li;
+              users_li = false;
+              sms_li = false;
+              coupon_li = false;
+              dash_li = false;
+            }
+          "
+          class="flex items-start justify-between rounded-xl mt-5 pt-4 overflow-hidden transition-all duration-700"
         >
           <div class="flex">
             <svg
+              :class="[
+                { 'text-maincolor-999': !setting_li },
+                { 'text-white': setting_li },
+              ]"
               xmlns="http://www.w3.org/2000/svg"
-              class="inline h-6 w-6 mx-5 md:mx-6 text-maincolor-999"
+              class="inline h-6 w-6 mx-5 md:mx-6"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -218,19 +419,48 @@
               <path
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
               />
               <path
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                d="M9 10a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z"
+                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
               />
             </svg>
-            <span class="text-maincolor-999 font-medium"
-              ><router-link to="/dashboard">تنظیمات</router-link></span
-            >
+            <div class="flex flex-col">
+              <span
+                class="font-medium cursor-pointer"
+                :class="[
+                  { 'text-maincolor-999': !setting_li },
+                  { 'text-white': setting_li },
+                ]"
+                >تنظیمات</span
+              >
+              <span
+                class="font-medium lg:mt-3 mt-2.5"
+                :class="[
+                  { 'text-maincolor-999': !setting_li },
+                  { 'text-white': setting_li },
+                ]"
+                ><router-link to="/dashboard">ثبت نام</router-link></span
+              >
+              <span
+                class="font-medium lg:mt-3 my-2.5"
+                :class="[
+                  { 'text-maincolor-999': !setting_li },
+                  { 'text-white': setting_li },
+                ]"
+                ><router-link to="/dashboard">نرم‌افزار</router-link></span
+              >
+            </div>
           </div>
-          <span class="ml-3 text-maincolor-999"
+          <span
+            class="ml-3 mt-1.5 transition-all"
+            :class="[
+              { 'text-maincolor-999': !setting_li },
+              { 'text-white': setting_li },
+              { 'rotate-180': setting_li },
+            ]"
             ><svg
               xmlns="http://www.w3.org/2000/svg"
               class="h-3 w-4"
@@ -257,9 +487,13 @@
 import { ref } from "@vue/reactivity";
 export default {
   setup() {
-    const colorUl = ref(false);
+    const setting_li = ref(false);
+    const sms_li = ref(false);
+    const coupon_li = ref(false);
+    const users_li = ref(false);
+    const dash_li = ref(false);
 
-    return { colorUl };
+    return { setting_li, sms_li, coupon_li, users_li, dash_li };
   },
 };
 </script>
