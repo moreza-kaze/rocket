@@ -1,7 +1,13 @@
 <template>
   <!-- start sidebar w-64 -->
   <div
-    class="hidden h-screen bg-white overflow-hidden md:flex flex-col md:w-24 lg:w-56 shadow-xl transition-width duration-500 md:hover:w-56 md:hover:transition-width md:hover:duration-700"
+    :class="[
+      { 'md:w-0': menu },
+      { 'lg:w-0': menu },
+      { flex: menu },
+      { hidden: !menu },
+    ]"
+    class="h-screen bg-white overflow-hidden md:flex flex-col w-96 md:w-24 lg:w-56 shadow-xl transition-width duration-500 md:hover:w-56 md:hover:transition-width md:hover:duration-700"
   >
     <div class="flex items-center pr-1 pt-3 md:pr-5 lg:pr-1 overflow-hidden">
       <span>
@@ -486,13 +492,16 @@
 <script>
 import { ref } from "@vue/reactivity";
 export default {
-  setup() {
+  props: {
+    menu: Boolean,
+  },
+  setup(menu) {
     const setting_li = ref(false);
     const sms_li = ref(false);
     const coupon_li = ref(false);
     const users_li = ref(false);
     const dash_li = ref(false);
-
+    console.log(menu);
     return { setting_li, sms_li, coupon_li, users_li, dash_li };
   },
 };
