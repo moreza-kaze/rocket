@@ -1,9 +1,9 @@
 <template>
   <!-- start sidebar w-64 -->
   <div
-    class="hidden h-screen bg-white md:flex flex-col md:w-24 lg:w-56 shadow-xl transition-width duration-500 md:hover:w-56 md:hover:transition-width md:hover:duration-700"
+    class="hidden h-screen bg-white overflow-hidden md:flex flex-col md:w-24 lg:w-56 shadow-xl transition-width duration-500 md:hover:w-56 md:hover:transition-width md:hover:duration-700"
   >
-    <div class="flex items-center pr-1 pt-3 md:pr-5 lg:pr-1 overflow-x-hidden">
+    <div class="flex items-center pr-1 pt-3 md:pr-5 lg:pr-1 overflow-hidden">
       <span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -20,7 +20,7 @@
           />
         </svg>
       </span>
-      <span class="mr-0 md:mr-5 lg:mr-0 mt-1 text-2xl font-medium">راکت</span>
+      <span class="pr-0 md:pr-5 lg:pr-0 pt-0 text-2xl font-medium">راکت</span>
     </div>
     <div>
       <ul class="px-3 py-5 flax justify-center w-full">
