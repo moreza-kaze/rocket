@@ -4,7 +4,7 @@
     class="font-main block relative md:static md:flex bg-gray-100 h-screen w-screen"
   >
     <!-- start navbar & sidebar -->
-    <div id="bar" class="flex">
+    <div id="bar" class="flex md:block">
       <SideBar :menu="menu" />
       <div
         @click="
@@ -24,6 +24,7 @@
     <div id="main" class="flex flex-col w-full">
       <!-- start navbar -->
       <div
+        :class="[{ hidden: menu }]"
         class="h-16 m-0 bg-white w-full shadow-nav flex flex-row items-center justify-between"
       >
         <span
@@ -32,7 +33,7 @@
               menu = !menu;
             }
           "
-          class="pr-3 text-gray-700"
+          class="pr-3 text-gray-700 cursor-pointer"
           ><svg
             xmlns="http://www.w3.org/2000/svg"
             class="h-6 w-6"
@@ -62,7 +63,7 @@
               d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"
             /></svg
         ></span>
-        <span class="pl-3 md:pl-7 text-gray-700">
+        <span class="pl-3 md:pl-7 text-gray-700 cursor-pointer">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="h-7 w-7"

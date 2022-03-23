@@ -2,12 +2,12 @@
   <!-- start sidebar w-64 -->
   <div
     :class="[
-      { 'md:w-0': menu },
-      { 'lg:w-0': menu },
+      { 'md:w-24': !menu },
+      { 'lg:w-56': !menu },
       { flex: menu },
       { hidden: !menu },
     ]"
-    class="h-screen bg-white overflow-hidden md:flex flex-col w-96 md:w-24 lg:w-56 shadow-xl transition-width duration-500 md:hover:w-56 md:hover:transition-width md:hover:duration-700"
+    class="h-screen bg-white overflow-hidden md:flex flex-col w-96 md:w-0 lg:w-0 shadow-xl transition-width duration-500 md:hover:w-56 md:hover:transition-width md:hover:duration-700"
   >
     <div class="flex items-center pr-1 pt-3 md:pr-5 lg:pr-1 overflow-hidden">
       <span>
@@ -48,7 +48,7 @@
               sms_li = false;
             }
           "
-          class="flex items-start justify-between rounded-xl mt-5 pt-4 overflow-hidden transition-all duration-700"
+          class="flex items-start justify-between rounded-xl mt-5 pt-4 overflow-hidden transition-all duration-700 cursor-cell"
         >
           <div class="flex">
             <svg
@@ -76,7 +76,7 @@
             </svg>
             <div class="flex flex-col">
               <span
-                class="font-medium cursor-pointer"
+                class="font-medium cursor-cell"
                 :class="[
                   { 'text-maincolor-999': !dash_li },
                   { 'text-white': dash_li },
@@ -136,7 +136,7 @@
               dash_li = false;
             }
           "
-          class="flex items-start justify-between rounded-xl mt-5 pt-4 overflow-hidden transition-all duration-700"
+          class="flex items-start justify-between rounded-xl mt-5 pt-4 overflow-hidden transition-all duration-700 cursor-cell"
         >
           <div class="flex">
             <svg
@@ -159,7 +159,7 @@
             </svg>
             <div class="flex flex-col">
               <span
-                class="font-medium cursor-pointer"
+                class="font-medium cursor-cell"
                 :class="[
                   { 'text-maincolor-999': !users_li },
                   { 'text-white': users_li },
@@ -227,7 +227,7 @@
               dash_li = false;
             }
           "
-          class="flex items-start justify-between rounded-xl mt-5 pt-4 overflow-hidden transition-all duration-700"
+          class="flex items-start justify-between rounded-xl mt-5 pt-4 overflow-hidden transition-all duration-700 cursor-cell"
         >
           <div class="flex">
             <svg
@@ -250,7 +250,7 @@
             </svg>
             <div class="flex flex-col">
               <span
-                class="font-medium cursor-pointer"
+                class="font-medium cursor-cell"
                 :class="[
                   { 'text-maincolor-999': !coupon_li },
                   { 'text-white': coupon_li },
@@ -317,7 +317,7 @@
               dash_li = false;
             }
           "
-          class="flex items-start justify-between rounded-xl mt-5 pt-4 overflow-hidden transition-all duration-700"
+          class="flex items-start justify-between rounded-xl mt-5 pt-4 overflow-hidden transition-all duration-700 cursor-cell"
         >
           <div class="flex">
             <svg
@@ -340,7 +340,7 @@
             </svg>
             <div class="flex flex-col">
               <span
-                class="font-medium cursor-pointer"
+                class="font-medium cursor-cell"
                 :class="[
                   { 'text-maincolor-999': !sms_li },
                   { 'text-white': sms_li },
@@ -407,7 +407,7 @@
               dash_li = false;
             }
           "
-          class="flex items-start justify-between rounded-xl mt-5 pt-4 overflow-hidden transition-all duration-700"
+          class="flex items-start justify-between rounded-xl mt-5 pt-4 overflow-hidden transition-all duration-700 cursor-cell"
         >
           <div class="flex">
             <svg
@@ -435,7 +435,7 @@
             </svg>
             <div class="flex flex-col">
               <span
-                class="font-medium cursor-pointer"
+                class="font-medium cursor-cell"
                 :class="[
                   { 'text-maincolor-999': !setting_li },
                   { 'text-white': setting_li },
