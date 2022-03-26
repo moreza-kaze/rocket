@@ -1,19 +1,12 @@
 <template>
   <div
     dir="rtl"
-    class="font-main block relative md:static md:flex bg-gray-100 h-screen w-screen"
+    class="font-main block relative md:static md:flex bg-gray-200 h-screen w-screen"
   >
     <!-- start navbar & sidebar -->
     <div id="bar" class="flex md:block">
       <SideBar :menu="menu" />
-      <div
-        @click="
-          {
-            menu = false;
-          }
-        "
-        class="bg-gray-400 md:hidden w-full"
-      ></div>
+      <div @click="menuChange(true)" class="bg-gray-400 md:hidden w-full"></div>
     </div>
 
     <!-- end navbar & sidebar -->
@@ -21,18 +14,17 @@
     <!-------------------------->
 
     <!-- start main component  -->
-    <div id="main" class="flex flex-col w-full">
+    <div
+      id="main"
+      :class="[{ hidden: menu }, { flex: !menu }]"
+      class="flex md:flex flex-col w-full"
+    >
       <!-- start navbar -->
       <div
-        :class="[{ hidden: menu }]"
         class="h-16 m-0 bg-white w-full shadow-nav flex flex-row items-center justify-between"
       >
         <span
-          @click="
-            {
-              menu = !menu;
-            }
-          "
+          @click="menuChange(menu)"
           class="pr-3 text-gray-700 cursor-pointer"
           ><svg
             xmlns="http://www.w3.org/2000/svg"
@@ -87,17 +79,26 @@
   </div>
 </template>
 <script>
-import { ref } from "@vue/reactivity";
 import SideBar from "./components/SideBar.vue";
+import { useStore } from "vuex";
+
+import { computed } from "@vue/runtime-core";
 
 export default {
   components: {
     SideBar,
   },
   setup() {
-    let menu = ref(false);
+    const store = useStore();
+    let menu = computed(() => store.getters["getMenu"]);
+    function menuChange(x) {
+      store.dispatch("actionMenu", !x);
+      console.log(menu);
+    }
+
     return {
       menu,
+      menuChange,
     };
   },
 };

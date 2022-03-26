@@ -2,12 +2,10 @@
   <!-- start sidebar w-64 -->
   <div
     :class="[
-      { 'md:w-24': !menu },
-      { 'lg:w-56': !menu },
-      { flex: menu },
-      { hidden: !menu },
+      { 'md:w-24 lg:w-56 hidden': !menu },
+      { 'md:w-0 lg:w-0 flex': menu },
     ]"
-    class="h-screen bg-white overflow-hidden md:flex flex-col w-96 md:w-0 lg:w-0 shadow-xl transition-width duration-500 md:hover:w-56 md:hover:transition-width md:hover:duration-700"
+    class="h-screen bg-white overflow-hidden md:flex flex-col w-96 shadow-xl transition-width duration-500 md:hover:w-56 md:hover:transition-width md:hover:duration-700"
   >
     <div class="flex items-center pr-1 pt-3 md:pr-5 lg:pr-1 overflow-hidden">
       <span>
@@ -85,6 +83,7 @@
                 داشبورد</span
               >
               <span
+                @click="menuChange()"
                 class="font-medium lg:mt-3 mt-2.5"
                 :class="[
                   { 'text-maincolor-999': !dash_li },
@@ -168,6 +167,7 @@
                 کاربران</span
               >
               <span
+                @click="menuChange()"
                 class="font-medium lg:mt-3 mt-2.5"
                 :class="[
                   { 'text-maincolor-999': !users_li },
@@ -176,6 +176,7 @@
                 ><router-link to="/dashboard">مدیریت</router-link></span
               >
               <span
+                @click="menuChange()"
                 class="font-medium lg:mt-3 my-2.5"
                 :class="[
                   { 'text-maincolor-999': !users_li },
@@ -258,6 +259,7 @@
                 >کوپن ها</span
               >
               <span
+                @click="menuChange()"
                 class="font-medium lg:mt-3 mt-2.5"
                 :class="[
                   { 'text-maincolor-999': !coupon_li },
@@ -266,6 +268,7 @@
                 ><router-link to="/dashboard">مدیریت</router-link></span
               >
               <span
+                @click="menuChange()"
                 class="font-medium lg:mt-3 my-2.5"
                 :class="[
                   { 'text-maincolor-999': !coupon_li },
@@ -348,6 +351,7 @@
                 >پیامک</span
               >
               <span
+                @click="menuChange()"
                 class="font-normal text-base lg:mt-3 mt-2.5"
                 :class="[
                   { 'text-maincolor-999': !sms_li },
@@ -356,6 +360,7 @@
                 ><router-link to="/dashboard">ارسال‌انبوه</router-link></span
               >
               <span
+                @click="menuChange()"
                 class="font-medium lg:mt-3 my-2.5"
                 :class="[
                   { 'text-maincolor-999': !sms_li },
@@ -443,6 +448,7 @@
                 >تنظیمات</span
               >
               <span
+                @click="menuChange()"
                 class="font-medium lg:mt-3 mt-2.5"
                 :class="[
                   { 'text-maincolor-999': !setting_li },
@@ -451,6 +457,7 @@
                 ><router-link to="/dashboard">ثبت نام</router-link></span
               >
               <span
+                @click="menuChange()"
                 class="font-medium lg:mt-3 my-2.5"
                 :class="[
                   { 'text-maincolor-999': !setting_li },
@@ -491,18 +498,23 @@
 
 <script>
 import { ref } from "@vue/reactivity";
+import { useStore } from "vuex";
 export default {
   props: {
     menu: Boolean,
   },
-  setup(menu) {
+  setup() {
+    const store = useStore();
     const setting_li = ref(false);
     const sms_li = ref(false);
     const coupon_li = ref(false);
     const users_li = ref(false);
     const dash_li = ref(false);
-    console.log(menu);
-    return { setting_li, sms_li, coupon_li, users_li, dash_li };
+    function menuChange() {
+      store.dispatch("actionMenu", false);
+    }
+
+    return { setting_li, sms_li, coupon_li, users_li, dash_li, menuChange };
   },
 };
 </script>
