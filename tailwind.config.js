@@ -25,7 +25,7 @@ module.exports = {
         spacing: "margin, padding",
       },
       boxShadow: {
-        nav: "-15px 2px 15px 5 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
+        nav: "-5px 1px 13px -12px rgba(0,0,0,1)",
       },
     },
   },

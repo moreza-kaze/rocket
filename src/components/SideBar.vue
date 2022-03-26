@@ -173,7 +173,7 @@
                   { 'text-maincolor-999': !users_li },
                   { 'text-white': users_li },
                 ]"
-                ><router-link to="/dashboard">مدیریت</router-link></span
+                ><router-link to="/users">مدیریت</router-link></span
               >
               <span
                 @click="menuChange()"
@@ -182,7 +182,7 @@
                   { 'text-maincolor-999': !users_li },
                   { 'text-white': users_li },
                 ]"
-                ><router-link to="/dashboard">ایجاد</router-link></span
+                ><router-link to="/create">ایجاد</router-link></span
               >
             </div>
           </div>

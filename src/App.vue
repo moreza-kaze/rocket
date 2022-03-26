@@ -4,7 +4,7 @@
     class="font-main block relative md:static md:flex bg-gray-200 h-screen w-screen"
   >
     <!-- start navbar & sidebar -->
-    <div id="bar" class="flex md:block">
+    <div class="flex md:block">
       <SideBar :menu="menu" />
       <div @click="menuChange(true)" class="bg-gray-400 md:hidden w-full"></div>
     </div>
@@ -15,7 +15,6 @@
 
     <!-- start main component  -->
     <div
-      id="main"
       :class="[{ hidden: menu }, { flex: !menu }]"
       class="flex md:flex flex-col w-full"
     >
