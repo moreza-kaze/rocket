@@ -1,6 +1,6 @@
 <template>
-  <div class="m-5 h-20 sm:h-14">
-    <div class="w-full flex items-center justify-between">
+  <div class="m-4 h-full">
+    <div class="w-full flex items-center justify-between h-20 sm:h-14">
       <div class="flex items-center justify-center text-xl">
         <span class="mt-1"
           ><svg
@@ -61,11 +61,145 @@
         ></span>
       </div>
     </div>
-    <div>
-      <table>
-        <thead></thead>
-        <tbody></tbody>
-      </table>
+    <div class="flex justify-center items-center mt-5">
+      <div name="table" class="flex flex-col w-full h-full">
+        <div name="tmain1" class="flex flex-row sm:flex-col">
+          <div
+            name="thead"
+            class="sm:flex flex-col w-1/2 hidden sm:w-full sm:my-2 bg-maincolor-800 py-2 rounded-xl"
+          >
+            <div
+              name="tr"
+              class="w-full flex flex-col sm:flex-row items-center justify-around"
+            >
+              <div
+                name="th"
+                class="bg-gray-50 py-1 mx-1 mr-2 rounded-xl w-1/12 text-center"
+              >
+                ردیف
+              </div>
+              <div
+                name="th"
+                class="bg-gray-50 py-1 mx-1 rounded-xl w-2/12 text-center"
+              >
+                نام‌و‌نام‌خانوادگی
+              </div>
+              <div
+                name="th"
+                class="bg-gray-50 py-1 mx-1 rounded-xl w-2/12 text-center"
+              >
+                تلفن‌همراه
+              </div>
+              <div
+                name="th"
+                class="bg-gray-50 py-1 mx-1 rounded-xl w-2/12 text-center"
+              >
+                نام‌کاربری
+              </div>
+              <div
+                name="th"
+                class="bg-gray-50 py-1 mx-1 rounded-xl w-2/12 text-center"
+              >
+                رمز‌عبور
+              </div>
+              <div
+                name="th"
+                class="bg-gray-50 py-1 rounded-xl w-2/12 text-center"
+              >
+                وضعیت
+              </div>
+              <div
+                name="th"
+                class="bg-gray-50 py-1 mx-1 rounded-xl w-2/12 text-center"
+              >
+                تخفیف
+              </div>
+              <div
+                name="th"
+                class="bg-gray-50 py-1 mx-1 ml-2 rounded-xl w-3/12 text-center"
+                text-center
+              >
+                اعمال
+              </div>
+            </div>
+          </div>
+        </div>
+        <div name="tmain2" class="flex flex-row sm:flex-col justify-around">
+          <div
+            name="thead"
+            class="sm:hidden flex flex-col w-5/12 sm:w-full sm:my-2 bg-maincolor-800 py-2 rounded-xl"
+          >
+            <div
+              name="tr"
+              class="w-full flex flex-col sm:flex-row items-center justify-around"
+            >
+              <div
+                name="th"
+                class="bg-gray-100 py-1 px-4 rounded-lg w-11/12 mb-2"
+              >
+                ردیف
+              </div>
+              <div
+                name="th"
+                class="bg-gray-100 py-1 px-4 rounded-lg w-11/12 mb-2"
+              >
+                نام و نام خانوادگی
+              </div>
+              <div
+                name="th"
+                class="bg-gray-100 py-1 px-4 rounded-lg w-11/12 mb-2"
+              >
+                تلفن همراه
+              </div>
+              <div
+                name="th"
+                class="bg-gray-100 py-1 px-4 rounded-lg w-11/12 mb-2"
+              >
+                نام کاربری
+              </div>
+              <div
+                name="th"
+                class="bg-gray-100 py-1 px-4 rounded-lg w-11/12 mb-2"
+              >
+                رمز عبور
+              </div>
+              <div
+                name="th"
+                class="bg-gray-100 py-1 px-4 rounded-lg w-11/12 mb-2"
+              >
+                وضعیت
+              </div>
+              <div
+                name="th"
+                class="bg-gray-100 py-1 px-4 rounded-lg w-11/12 mb-2"
+              >
+                تخفیف
+              </div>
+              <div name="th" class="bg-gray-100 py-1 px-4 rounded-lg w-11/12">
+                اعمال
+              </div>
+            </div>
+          </div>
+          <div
+            name="tbody"
+            class="flex flex-col w-5/12 sm:w-full sm:my-2 bg-gray-400 py-2 rounded-xl"
+          >
+            <div
+              name="tr"
+              class="w-full flex flex-col sm:flex-row items-center justify-around"
+            >
+              <div name="th">1</div>
+              <div name="th">1</div>
+              <div name="th">1</div>
+              <div name="th">1</div>
+              <div name="th">1</div>
+              <div name="th">1</div>
+              <div name="th">1</div>
+              <div name="th">1</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -74,4 +208,10 @@
 export default {};
 </script>
 
-<style></style>
+<style scoped>
+@media (min-width: 640px) {
+  norepeat:not(:first-child) {
+    display: none;
+  }
+}
+</style>
