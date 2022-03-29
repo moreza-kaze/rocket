@@ -19,6 +19,11 @@ module.exports = {
           900: "#568ee4e6",
           999: "#568ee4",
         },
+        whitetransparent: {
+          500: "#ffffff80",
+          600: "#ffffff99",
+          700: "#ffffffb3",
+        },
       },
       transitionProperty: {
         width: "width",
