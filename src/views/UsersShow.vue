@@ -74,49 +74,49 @@
             >
               <div
                 name="th"
-                class="bg-gray-50 py-1 mx-1 mr-2 rounded-xl w-1/12 text-center"
+                class="bg-whitetransparent-500 py-1 mx-1 mr-2 rounded-md w-1/12 text-center overflow-x-hidden"
               >
                 ردیف
               </div>
               <div
                 name="th"
-                class="bg-gray-50 py-1 mx-1 rounded-xl w-2/12 text-center"
+                class="bg-whitetransparent-500 py-1 mx-1 rounded-md w-2/12 text-center overflow-x-hidden"
               >
                 نام‌و‌نام‌خانوادگی
               </div>
               <div
                 name="th"
-                class="bg-gray-50 py-1 mx-1 rounded-xl w-2/12 text-center"
+                class="bg-whitetransparent-500 py-1 mx-1 rounded-md w-2/12 text-center overflow-x-hidden"
               >
                 تلفن‌همراه
               </div>
               <div
                 name="th"
-                class="bg-gray-50 py-1 mx-1 rounded-xl w-2/12 text-center"
+                class="bg-whitetransparent-500 py-1 mx-1 rounded-md w-2/12 text-center overflow-x-hidden"
               >
                 نام‌کاربری
               </div>
               <div
                 name="th"
-                class="bg-gray-50 py-1 mx-1 rounded-xl w-2/12 text-center"
+                class="bg-whitetransparent-500 py-1 mx-1 rounded-md w-2/12 text-center overflow-x-hidden"
               >
                 رمز‌عبور
               </div>
               <div
                 name="th"
-                class="bg-gray-50 py-1 rounded-xl w-2/12 text-center"
+                class="bg-whitetransparent-500 py-1 mx-1 rounded-md w-2/12 text-center overflow-x-hidden"
               >
                 وضعیت
               </div>
               <div
                 name="th"
-                class="bg-gray-50 py-1 mx-1 rounded-xl w-2/12 text-center"
+                class="bg-whitetransparent-500 py-1 mx-1 rounded-md w-2/12 text-center overflow-x-hidden"
               >
                 تخفیف
               </div>
               <div
                 name="th"
-                class="bg-gray-50 py-1 mx-1 ml-2 rounded-xl w-3/12 text-center"
+                class="bg-whitetransparent-500 py-1 mx-1 ml-2 rounded-md w-3/12 text-center overflow-x-hidden"
                 text-center
               >
                 اعمال
@@ -135,67 +135,110 @@
             >
               <div
                 name="th"
-                class="bg-gray-100 py-1 px-4 rounded-lg w-11/12 mb-2"
+                class="bg-whitetransparent-500 py-1 px-4 rounded-lg w-11/12 mb-2 overflow-x-hidden"
               >
                 ردیف
               </div>
               <div
                 name="th"
-                class="bg-gray-100 py-1 px-4 rounded-lg w-11/12 mb-2"
+                class="bg-whitetransparent-500 py-1 px-4 rounded-lg w-11/12 mb-2 overflow-x-hidden"
               >
-                نام و نام خانوادگی
+                نام‌و‌نام‌خانوادگی
               </div>
               <div
                 name="th"
-                class="bg-gray-100 py-1 px-4 rounded-lg w-11/12 mb-2"
+                class="bg-whitetransparent-500 py-1 px-4 rounded-lg w-11/12 mb-2 overflow-x-hidden"
               >
-                تلفن همراه
+                تلفن‌همراه
               </div>
               <div
                 name="th"
-                class="bg-gray-100 py-1 px-4 rounded-lg w-11/12 mb-2"
+                class="bg-whitetransparent-500 py-1 px-4 rounded-lg w-11/12 mb-2 overflow-x-hidden"
               >
-                نام کاربری
+                نام‌کاربری
               </div>
               <div
                 name="th"
-                class="bg-gray-100 py-1 px-4 rounded-lg w-11/12 mb-2"
+                class="bg-whitetransparent-500 py-1 px-4 rounded-lg w-11/12 mb-2 overflow-x-hidden"
               >
-                رمز عبور
+                رمز‌عبور
               </div>
               <div
                 name="th"
-                class="bg-gray-100 py-1 px-4 rounded-lg w-11/12 mb-2"
+                class="bg-whitetransparent-500 py-1 px-4 rounded-lg w-11/12 mb-2 overflow-x-hidden"
               >
                 وضعیت
               </div>
               <div
                 name="th"
-                class="bg-gray-100 py-1 px-4 rounded-lg w-11/12 mb-2"
+                class="bg-whitetransparent-500 py-1 px-4 rounded-lg w-11/12 mb-2 overflow-x-hidden"
               >
                 تخفیف
               </div>
-              <div name="th" class="bg-gray-100 py-1 px-4 rounded-lg w-11/12">
+              <div
+                name="th"
+                class="bg-whitetransparent-500 py-1 px-4 rounded-lg w-11/12 overflow-x-hidden"
+              >
                 اعمال
               </div>
             </div>
           </div>
           <div
             name="tbody"
-            class="flex flex-col w-5/12 sm:w-full sm:my-2 bg-gray-400 py-2 rounded-xl"
+            class="flex flex-col w-6/12 sm:w-full sm:my-2 bg-whitetransparent-600 py-2 rounded-xl"
           >
             <div
               name="tr"
               class="w-full flex flex-col sm:flex-row items-center justify-around"
             >
-              <div name="th">1</div>
-              <div name="th">1</div>
-              <div name="th">1</div>
-              <div name="th">1</div>
-              <div name="th">1</div>
-              <div name="th">1</div>
-              <div name="th">1</div>
-              <div name="th">1</div>
+              <div
+                name="th"
+                class="py-1 mx-1 mb-2 mr-2 sm:mb-0 rounded-md w-11/12 sm:w-1/12 text-center overflow-x-hidden bg-maincolor-900 text-white"
+              >
+                1
+              </div>
+              <div
+                name="th"
+                class="py-1 mx-1 mb-2 sm:mb-0 rounded-md w-11/12 sm:w-2/12 text-center overflow-x-hidden bg-maincolor-900 text-white"
+              >
+                1
+              </div>
+              <div
+                name="th"
+                class="py-1 mx-1 mb-2 sm:mb-0 rounded-md w-11/12 sm:w-2/12 text-center overflow-x-hidden bg-maincolor-900 text-white"
+              >
+                1
+              </div>
+              <div
+                name="th"
+                class="py-1 mx-1 mb-2 sm:mb-0 rounded-md w-11/12 sm:w-2/12 text-center overflow-x-hidden bg-maincolor-900 text-white"
+              >
+                1
+              </div>
+              <div
+                name="th"
+                class="py-1 mx-1 mb-2 sm:mb-0 rounded-md w-11/12 sm:w-2/12 text-center overflow-x-hidden bg-maincolor-900 text-white"
+              >
+                1
+              </div>
+              <div
+                name="th"
+                class="py-1 mx-1 mb-2 sm:mb-0 rounded-md w-11/12 sm:w-2/12 text-center overflow-x-hidden bg-maincolor-900 text-white"
+              >
+                1
+              </div>
+              <div
+                name="th"
+                class="py-1 mx-1 mb-2 sm:mb-0 rounded-md w-11/12 sm:w-2/12 text-center overflow-x-hidden bg-maincolor-900 text-white"
+              >
+                1
+              </div>
+              <div
+                name="th"
+                class="py-1 mx-1 mb-0 ml-2 sm:mb-0 rounded-md w-11/12 sm:w-3/12 text-center overflow-x-hidden bg-maincolor-900 text-white"
+              >
+                1
+              </div>
             </div>
           </div>
         </div>
@@ -208,10 +251,4 @@
 export default {};
 </script>
 
-<style scoped>
-@media (min-width: 640px) {
-  norepeat:not(:first-child) {
-    display: none;
-  }
-}
-</style>
+<style scoped></style>
