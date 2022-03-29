@@ -1,7 +1,7 @@
 <template>
   <div
     dir="rtl"
-    class="font-main block relative md:static md:flex bg-gray-200 h-screen w-screen"
+    class="font-main block relative md:static md:flex bg-gray-200 h-full sm:h-screen w-screen"
   >
     <!-- start navbar & sidebar -->
     <div class="flex md:block">
