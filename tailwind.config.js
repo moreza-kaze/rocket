@@ -24,6 +24,7 @@ module.exports = {
           600: "#ffffff99",
           700: "#ffffffb3",
         },
+        lightblue: "#c9d6ff80",
       },
       transitionProperty: {
         width: "width",
