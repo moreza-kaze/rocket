@@ -7,7 +7,9 @@
     ]"
     class="h-screen bg-white overflow-hidden md:flex flex-col w-96 shadow-xl transition-width duration-500 md:hover:w-56 md:hover:transition-width md:hover:duration-700"
   >
-    <div class="flex items-center pr-1 pt-3 md:pr-5 lg:pr-1 overflow-hidden">
+    <div
+      class="flex items-center pr-1 pt-3 md:pr-5 lg:pr-1 overflow-hidden h-20"
+    >
       <span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -27,7 +29,7 @@
       <span class="pr-0 md:pr-5 lg:pr-0 pt-0 text-2xl font-medium">راکت</span>
     </div>
     <div>
-      <ul class="px-3 py-5 flax justify-center w-full">
+      <ul class="px-3 py-5 pt-0 flax justify-center w-full">
         <!----- Dasboard ------>
         <li
           :class="[
@@ -182,7 +184,7 @@
                   { 'text-maincolor-999': !users_li },
                   { 'text-white': users_li },
                 ]"
-                ><router-link to="/create">ایجاد</router-link></span
+                ><router-link to="/users/create">ایجاد</router-link></span
               >
             </div>
           </div>
