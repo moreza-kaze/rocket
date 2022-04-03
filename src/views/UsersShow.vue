@@ -267,6 +267,7 @@
           </div>
           <!-- table body end-->
         </div>
+        <!-- orginal table end -->
       </div>
     </div>
   </div>
