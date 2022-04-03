@@ -2,23 +2,23 @@
   <div class="m-4 h-full">
     <div class="w-full flex items-center justify-between h-20 sm:h-14">
       <div class="flex items-center justify-center text-xl">
-        <span class="mt-1"
+        <span class="mt-2"
           ><svg
             xmlns="http://www.w3.org/2000/svg"
             class="h-7 w-7"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
-            stroke-width="2"
+            stroke-width="1.5"
           >
             <path
               stroke-linecap="round"
               stroke-linejoin="round"
-              d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"
+              d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"
             /></svg
         ></span>
         <span class="mr-3 font-medium text-lg md:text-2xl"
-          ><span class="hidden md:inline">مدیریت</span> کاربران</span
+          ><span class="hidden md:inline">مدیریت</span> کوپن</span
         >
       </div>
       <div class="flex flew-row justify-center items-center">
@@ -72,7 +72,7 @@
           <!-- table head on sm(640PX)  -->
           <div
             name="thead"
-            class="sm:flex flex-col w-1/2 hidden sm:w-full sm:my-2 bg-maincolor-800 py-2 rounded-xl"
+            class="sm:flex flex-col w-1/2 hidden sm:w-full sm:my-2 bg-coupongreen-999 py-2 rounded-xl"
           >
             <!-- table row -->
             <div
@@ -90,44 +90,32 @@
                 name="th"
                 class="bg-whitetransparent-500 py-1 mx-1 rounded-md w-2/12 text-center overflow-x-hidden"
               >
-                نام‌و‌نام‌خانوادگی
+                کد تخفیف
               </div>
               <div
                 name="th"
                 class="bg-whitetransparent-500 py-1 mx-1 rounded-md w-2/12 text-center overflow-x-hidden"
               >
-                تلفن‌همراه
+                تعداد اختصاص یافته
               </div>
               <div
                 name="th"
                 class="bg-whitetransparent-500 py-1 mx-1 rounded-md w-2/12 text-center overflow-x-hidden"
               >
-                نام‌کاربری
+                قابل استفاده
               </div>
               <div
                 name="th"
                 class="bg-whitetransparent-500 py-1 mx-1 rounded-md w-2/12 text-center overflow-x-hidden"
               >
-                رمز‌عبور
-              </div>
-              <div
-                name="th"
-                class="bg-whitetransparent-500 py-1 mx-1 rounded-md w-2/12 text-center overflow-x-hidden"
-              >
-                وضعیت
-              </div>
-              <div
-                name="th"
-                class="bg-whitetransparent-500 py-1 mx-1 rounded-md w-2/12 text-center overflow-x-hidden"
-              >
-                تخفیف
+                مقدار تخفیف
               </div>
               <div
                 name="th"
                 class="bg-whitetransparent-500 py-1 mx-1 ml-2 rounded-md w-3/12 text-center overflow-x-hidden"
                 text-center
               >
-                اعمال
+                عملیات
               </div>
               <!-- table col end  -->
             </div>
@@ -140,7 +128,7 @@
           <!-- table head -->
           <div
             name="thead"
-            class="sm:hidden flex flex-col w-5/12 sm:w-full sm:my-2 bg-maincolor-800 py-2 rounded-xl"
+            class="sm:hidden flex flex-col w-5/12 sm:w-full sm:my-2 bg-coupongreen-999 py-2 rounded-xl"
           >
             <!-- table row -->
             <div
@@ -158,43 +146,31 @@
                 name="th"
                 class="bg-whitetransparent-500 py-1 px-4 rounded-lg w-11/12 mb-2 overflow-x-hidden"
               >
-                نام‌و‌نام‌خانوادگی
+                کد تخفیف
               </div>
               <div
                 name="th"
                 class="bg-whitetransparent-500 py-1 px-4 rounded-lg w-11/12 mb-2 overflow-x-hidden"
               >
-                تلفن‌همراه
+                تعداد اختصاص یافته
               </div>
               <div
                 name="th"
                 class="bg-whitetransparent-500 py-1 px-4 rounded-lg w-11/12 mb-2 overflow-x-hidden"
               >
-                نام‌کاربری
+                قابل استفاده
               </div>
               <div
                 name="th"
                 class="bg-whitetransparent-500 py-1 px-4 rounded-lg w-11/12 mb-2 overflow-x-hidden"
               >
-                رمز‌عبور
-              </div>
-              <div
-                name="th"
-                class="bg-whitetransparent-500 py-1 px-4 rounded-lg w-11/12 mb-2 overflow-x-hidden"
-              >
-                وضعیت
-              </div>
-              <div
-                name="th"
-                class="bg-whitetransparent-500 py-1 px-4 rounded-lg w-11/12 mb-2 overflow-x-hidden"
-              >
-                تخفیف
+                مقدار تخفیف
               </div>
               <div
                 name="th"
                 class="bg-whitetransparent-500 py-1 px-4 rounded-lg w-11/12 overflow-x-hidden"
               >
-                اعمال
+                عملیات
               </div>
               <!-- table col  -->
             </div>
@@ -215,49 +191,37 @@
               <!-- table col -->
               <div
                 name="th"
-                class="py-1 mx-1 mb-2 mr-2 sm:mb-0 rounded-md w-11/12 sm:w-1/12 text-center overflow-x-hidden bg-maincolor-900 text-white"
+                class="py-1 mx-1 mb-2 mr-2 sm:mb-0 rounded-md w-11/12 sm:w-1/12 text-center overflow-x-hidden bg-coupongreen-999 text-white"
               >
                 1
               </div>
               <div
                 name="th"
-                class="py-1 mx-1 mb-2 sm:mb-0 rounded-md w-11/12 sm:w-2/12 text-center overflow-x-hidden bg-maincolor-900 text-white"
+                class="py-1 mx-1 mb-2 sm:mb-0 rounded-md w-11/12 sm:w-2/12 text-center overflow-x-hidden bg-coupongreen-999 text-white"
               >
                 1
               </div>
               <div
                 name="th"
-                class="py-1 mx-1 mb-2 sm:mb-0 rounded-md w-11/12 sm:w-2/12 text-center overflow-x-hidden bg-maincolor-900 text-white"
+                class="py-1 mx-1 mb-2 sm:mb-0 rounded-md w-11/12 sm:w-2/12 text-center overflow-x-hidden bg-coupongreen-999 text-white"
               >
                 1
               </div>
               <div
                 name="th"
-                class="py-1 mx-1 mb-2 sm:mb-0 rounded-md w-11/12 sm:w-2/12 text-center overflow-x-hidden bg-maincolor-900 text-white"
+                class="py-1 mx-1 mb-2 sm:mb-0 rounded-md w-11/12 sm:w-2/12 text-center overflow-x-hidden bg-coupongreen-999 text-white"
               >
                 1
               </div>
               <div
                 name="th"
-                class="py-1 mx-1 mb-2 sm:mb-0 rounded-md w-11/12 sm:w-2/12 text-center overflow-x-hidden bg-maincolor-900 text-white"
+                class="py-1 mx-1 mb-2 sm:mb-0 rounded-md w-11/12 sm:w-2/12 text-center overflow-x-hidden bg-coupongreen-999 text-white"
               >
                 1
               </div>
               <div
                 name="th"
-                class="py-1 mx-1 mb-2 sm:mb-0 rounded-md w-11/12 sm:w-2/12 text-center overflow-x-hidden bg-maincolor-900 text-white"
-              >
-                1
-              </div>
-              <div
-                name="th"
-                class="py-1 mx-1 mb-2 sm:mb-0 rounded-md w-11/12 sm:w-2/12 text-center overflow-x-hidden bg-maincolor-900 text-white"
-              >
-                1
-              </div>
-              <div
-                name="th"
-                class="py-1 mx-1 mb-0 ml-2 sm:mb-0 rounded-md w-11/12 sm:w-3/12 text-center overflow-x-hidden bg-maincolor-900 text-white"
+                class="py-1 mx-1 mb-0 sm:ml-2 sm:mb-0 rounded-md w-11/12 sm:w-3/12 text-center overflow-x-hidden bg-coupongreen-999 text-white"
               >
                 1
               </div>
@@ -277,4 +241,4 @@
 export default {};
 </script>
 
-<style scoped></style>
+<style></style>

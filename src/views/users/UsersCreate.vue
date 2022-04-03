@@ -84,7 +84,9 @@
               >username</span
             >
             <span class="text-maincolor-999 text-sm md:text-lg">پایه</span>
-            <button class="bg-green-600 h-10 text-white rounded-xl w-9/12">
+            <button
+              class="bg-gradient-to-r from-green-500 to-emerald-400 hover:from-emerald-600 hover:to-green-600 h-10 text-white rounded-xl w-9/12"
+            >
               ثبت نام
             </button>
           </div>

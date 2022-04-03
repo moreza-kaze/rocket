@@ -15,12 +15,12 @@ const routes = [
       {
         path: "",
         name: "usershow",
-        component: () => import("../views/UsersShow.vue"),
+        component: () => import("../views/users/UsersShow.vue"),
       },
       {
         path: "create",
         name: "userscreate",
-        component: () => import("../views/UsersCreate.vue"),
+        component: () => import("../views/users/UsersCreate.vue"),
       },
     ],
   },
@@ -32,12 +32,12 @@ const routes = [
       {
         path: "",
         name: "couponshow",
-        component: () => import("../views/UsersShow.vue"),
+        component: () => import("../views/coupon/CouponShow.vue"),
       },
       {
         path: "create",
         name: "couponcreate",
-        component: () => import("../views/UsersCreate.vue"),
+        component: () => import("../views/coupon/CouponCreate.vue"),
       },
     ],
   },

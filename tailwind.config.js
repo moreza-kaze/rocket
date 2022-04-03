@@ -25,6 +25,11 @@ module.exports = {
           700: "#ffffffb3",
         },
         lightblue: "#c9d6ff80",
+        coupongreen: {
+          999: "#24be64",
+          300: "#24be644d",
+          700: "#24be64b3",
+        },
       },
       transitionProperty: {
         width: "width",

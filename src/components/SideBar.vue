@@ -267,7 +267,7 @@
                   { 'text-maincolor-999': !coupon_li },
                   { 'text-white': coupon_li },
                 ]"
-                ><router-link to="/dashboard">مدیریت</router-link></span
+                ><router-link to="/coupon">مدیریت</router-link></span
               >
               <span
                 @click="menuChange()"
@@ -276,7 +276,7 @@
                   { 'text-maincolor-999': !coupon_li },
                   { 'text-white': coupon_li },
                 ]"
-                ><router-link to="/dashboard">ایجاد</router-link></span
+                ><router-link to="/coupon/create">ایجاد</router-link></span
               >
             </div>
           </div>
