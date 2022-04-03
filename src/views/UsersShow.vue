@@ -17,7 +17,9 @@
               d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"
             /></svg
         ></span>
-        <span class="mr-3 font-medium text-2xl">مدیریت کاربران</span>
+        <span class="mr-3 font-medium text-lg md:text-2xl"
+          ><span class="hidden md:inline">مدیریت</span> کاربران</span
+        >
       </div>
       <div class="flex flew-row justify-center items-center">
         <span
@@ -61,17 +63,23 @@
         ></span>
       </div>
     </div>
+    <!-- start user table  -->
     <div class="flex justify-center items-center mt-5">
+      <!-- make table with div -->
       <div name="table" class="flex flex-col w-full h-full">
+        <!-- main of table -->
         <div name="tmain1" class="flex flex-row sm:flex-col">
+          <!-- table head on sm(640PX)  -->
           <div
             name="thead"
             class="sm:flex flex-col w-1/2 hidden sm:w-full sm:my-2 bg-maincolor-800 py-2 rounded-xl"
           >
+            <!-- table row -->
             <div
               name="tr"
               class="w-full flex flex-col sm:flex-row items-center justify-around"
             >
+              <!-- table col  -->
               <div
                 name="th"
                 class="bg-whitetransparent-500 py-1 mx-1 mr-2 rounded-md w-1/12 text-center overflow-x-hidden"
@@ -121,18 +129,25 @@
               >
                 اعمال
               </div>
+              <!-- table col end  -->
             </div>
+            <!-- table row end -->
           </div>
+          <!-- table head on sm(640PX) ens  -->
         </div>
+        <!-- orginal table -->
         <div name="tmain2" class="flex flex-row sm:flex-col justify-around">
+          <!-- table head -->
           <div
             name="thead"
             class="sm:hidden flex flex-col w-5/12 sm:w-full sm:my-2 bg-maincolor-800 py-2 rounded-xl"
           >
+            <!-- table row -->
             <div
               name="tr"
               class="w-full flex flex-col sm:flex-row items-center justify-around"
             >
+              <!-- table col  -->
               <div
                 name="th"
                 class="bg-whitetransparent-500 py-1 px-4 rounded-lg w-11/12 mb-2 overflow-x-hidden"
@@ -181,16 +196,23 @@
               >
                 اعمال
               </div>
+              <!-- table col  -->
             </div>
+            <!-- table row  -->
           </div>
+          <!-- table head end -->
+          <!--------------------->
+          <!-- table body -->
           <div
             name="tbody"
             class="flex flex-col w-6/12 sm:w-full sm:my-2 bg-whitetransparent-600 py-2 rounded-xl"
           >
+            <!-- table row -->
             <div
               name="tr"
               class="w-full flex flex-col sm:flex-row items-center justify-around"
             >
+              <!-- table col -->
               <div
                 name="th"
                 class="py-1 mx-1 mb-2 mr-2 sm:mb-0 rounded-md w-11/12 sm:w-1/12 text-center overflow-x-hidden bg-maincolor-900 text-white"
@@ -239,8 +261,11 @@
               >
                 1
               </div>
+              <!-- table col end -->
             </div>
+            <!-- table row end -->
           </div>
+          <!-- table body end-->
         </div>
       </div>
     </div>

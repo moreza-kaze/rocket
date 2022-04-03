@@ -19,7 +19,24 @@ const routes = [
       },
       {
         path: "create",
-        name: "create",
+        name: "userscreate",
+        component: () => import("../views/UsersCreate.vue"),
+      },
+    ],
+  },
+  {
+    path: "/coupon",
+    name: "coupon",
+    component: () => import("../views/UsersView.vue"),
+    children: [
+      {
+        path: "",
+        name: "couponshow",
+        component: () => import("../views/UsersShow.vue"),
+      },
+      {
+        path: "create",
+        name: "couponcreate",
         component: () => import("../views/UsersCreate.vue"),
       },
     ],
