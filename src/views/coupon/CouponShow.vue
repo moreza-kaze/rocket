@@ -138,37 +138,37 @@
               <!-- table col  -->
               <div
                 name="th"
-                class="bg-whitetransparent-500 py-1 px-4 rounded-lg w-11/12 mb-2 overflow-x-hidden"
+                class="bg-whitetransparent-500 py-1 px-3 rounded-lg w-11/12 mb-2 overflow-x-hidden"
               >
                 ردیف
               </div>
               <div
                 name="th"
-                class="bg-whitetransparent-500 py-1 px-4 rounded-lg w-11/12 mb-2 overflow-x-hidden"
+                class="bg-whitetransparent-500 py-1 px-3 rounded-lg w-11/12 mb-2 overflow-x-hidden"
               >
                 کد تخفیف
               </div>
               <div
                 name="th"
-                class="bg-whitetransparent-500 py-1 px-4 rounded-lg w-11/12 mb-2 overflow-x-hidden"
+                class="bg-whitetransparent-500 py-1 px-3 rounded-lg w-11/12 mb-2 overflow-x-hidden"
               >
-                تعداد اختصاص یافته
+                تعداد‌اختصاص‌یافته
               </div>
               <div
                 name="th"
-                class="bg-whitetransparent-500 py-1 px-4 rounded-lg w-11/12 mb-2 overflow-x-hidden"
+                class="bg-whitetransparent-500 py-1 px-3 rounded-lg w-11/12 mb-2 overflow-x-hidden"
               >
                 قابل استفاده
               </div>
               <div
                 name="th"
-                class="bg-whitetransparent-500 py-1 px-4 rounded-lg w-11/12 mb-2 overflow-x-hidden"
+                class="bg-whitetransparent-500 py-1 px-3 rounded-lg w-11/12 mb-2 overflow-x-hidden"
               >
                 مقدار تخفیف
               </div>
               <div
                 name="th"
-                class="bg-whitetransparent-500 py-1 px-4 rounded-lg w-11/12 overflow-x-hidden"
+                class="bg-whitetransparent-500 py-1 px-3 rounded-lg w-11/12 overflow-x-hidden"
               >
                 عملیات
               </div>
