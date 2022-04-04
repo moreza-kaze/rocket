@@ -27,7 +27,7 @@ const routes = [
   {
     path: "/coupon",
     name: "coupon",
-    component: () => import("../views/UsersView.vue"),
+    component: () => import("../views/CouponView.vue"),
     children: [
       {
         path: "",
@@ -38,6 +38,23 @@ const routes = [
         path: "create",
         name: "couponcreate",
         component: () => import("../views/coupon/CouponCreate.vue"),
+      },
+    ],
+  },
+  {
+    path: "/setting",
+    name: "setting",
+    component: () => import("../views/SettingView.vue"),
+    children: [
+      {
+        path: "payment",
+        name: "signinsetting",
+        component: () => import("../views/setting/PaymentSetting.vue"),
+      },
+      {
+        path: "sms",
+        name: "appsetting",
+        component: () => import("../views/setting/SMSSetting.vue"),
       },
     ],
   },

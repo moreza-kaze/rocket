@@ -86,9 +86,9 @@
               >
               <span
                 @click="menuChange()"
-                class="font-medium lg:mt-3 mt-2.5"
+                class="font-medium text-sm lg:mt-3 mt-2.5"
                 :class="[
-                  { 'text-maincolor-999': !dash_li },
+                  { 'text-maincolor-100': !dash_li },
                   { 'text-white': dash_li },
                 ]"
                 ><router-link to="/dashboard">خانه</router-link></span
@@ -170,18 +170,18 @@
               >
               <span
                 @click="menuChange()"
-                class="font-medium lg:mt-3 mt-2.5"
+                class="font-medium text-sm lg:mt-3 mt-2.5"
                 :class="[
-                  { 'text-maincolor-999': !users_li },
+                  { 'text-maincolor-100': !users_li },
                   { 'text-white': users_li },
                 ]"
                 ><router-link to="/users">مدیریت</router-link></span
               >
               <span
                 @click="menuChange()"
-                class="font-medium lg:mt-3 my-2.5"
+                class="font-medium text-sm lg:mt-3 my-2.5"
                 :class="[
-                  { 'text-maincolor-999': !users_li },
+                  { 'text-maincolor-100': !users_li },
                   { 'text-white': users_li },
                 ]"
                 ><router-link to="/users/create">ایجاد</router-link></span
@@ -262,16 +262,16 @@
               >
               <span
                 @click="menuChange()"
-                class="font-medium lg:mt-3 mt-2.5"
+                class="font-medium text-sm lg:mt-3 mt-2.5"
                 :class="[
-                  { 'text-maincolor-999': !coupon_li },
+                  { 'text-maincolor-100': !coupon_li },
                   { 'text-white': coupon_li },
                 ]"
                 ><router-link to="/coupon">مدیریت</router-link></span
               >
               <span
                 @click="menuChange()"
-                class="font-medium lg:mt-3 my-2.5"
+                class="font-medium text-sm lg:mt-3 my-2.5"
                 :class="[
                   { 'text-maincolor-999': !coupon_li },
                   { 'text-white': coupon_li },
@@ -354,18 +354,18 @@
               >
               <span
                 @click="menuChange()"
-                class="font-normal text-base lg:mt-3 mt-2.5"
+                class="font-normal text-sm lg:mt-3 mt-2.5"
                 :class="[
-                  { 'text-maincolor-999': !sms_li },
+                  { 'text-maincolor-100': !sms_li },
                   { 'text-white': sms_li },
                 ]"
                 ><router-link to="/dashboard">ارسال‌انبوه</router-link></span
               >
               <span
                 @click="menuChange()"
-                class="font-medium lg:mt-3 my-2.5"
+                class="font-medium text-sm lg:mt-3 my-2.5"
                 :class="[
-                  { 'text-maincolor-999': !sms_li },
+                  { 'text-maincolor-100': !sms_li },
                   { 'text-white': sms_li },
                 ]"
                 ><router-link to="/dashboard">متون</router-link></span
@@ -451,21 +451,21 @@
               >
               <span
                 @click="menuChange()"
-                class="font-medium lg:mt-3 mt-2.5"
+                class="font-medium text-sm lg:mt-3 mt-2.5"
                 :class="[
-                  { 'text-maincolor-999': !setting_li },
+                  { 'text-maincolor-100': !setting_li },
                   { 'text-white': setting_li },
                 ]"
-                ><router-link to="/dashboard">ثبت نام</router-link></span
+                ><router-link to="/setting/sms">پیامک</router-link></span
               >
               <span
                 @click="menuChange()"
-                class="font-medium lg:mt-3 my-2.5"
+                class="font-medium text-sm lg:mt-3 my-2.5"
                 :class="[
-                  { 'text-maincolor-999': !setting_li },
+                  { 'text-maincolor-100': !setting_li },
                   { 'text-white': setting_li },
                 ]"
-                ><router-link to="/dashboard">نرم‌افزار</router-link></span
+                ><router-link to="/setting/payment">درگاه</router-link></span
               >
             </div>
           </div>
