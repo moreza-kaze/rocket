@@ -41,6 +41,7 @@
           ]"
           @click="
             {
+              prod_li = false;
               dash_li = !dash_li;
               users_li = false;
               setting_li = false;
@@ -130,6 +131,7 @@
           ]"
           @click="
             {
+              prod_li = false;
               users_li = !users_li;
               sms_li = false;
               setting_li = false;
@@ -223,6 +225,7 @@
           ]"
           @click="
             {
+              prod_li = false;
               coupon_li = !coupon_li;
               users_li = false;
               setting_li = false;
@@ -304,6 +307,99 @@
         </li>
         <!----- end coupons ------>
         <!--                -->
+        <!----- product ------>
+        <li
+          :class="[
+            { 'bg-maincolor-100': !prod_li },
+            { '!bg-maincolor-999': prod_li },
+            { 'h-14': !prod_li },
+            { 'h-32': prod_li },
+            { 'shadow-md': prod_li },
+          ]"
+          @click="
+            {
+              prod_li = !prod_li;
+              setting_li = false;
+              users_li = false;
+              sms_li = false;
+              coupon_li = false;
+              dash_li = false;
+            }
+          "
+          class="flex items-start justify-between rounded-xl mt-5 pt-4 overflow-hidden transition-all duration-700 cursor-cell"
+        >
+          <div class="flex">
+            <svg
+              :class="[
+                { 'text-maincolor-999': !prod_li },
+                { 'text-white': prod_li },
+              ]"
+              xmlns="http://www.w3.org/2000/svg"
+              class="inline h-6 w-6 mx-5 md:mx-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+              />
+            </svg>
+            <div class="flex flex-col">
+              <span
+                class="font-medium cursor-cell"
+                :class="[
+                  { 'text-maincolor-999': !prod_li },
+                  { 'text-white': prod_li },
+                ]"
+                >محصولات</span
+              >
+              <span
+                @click="menuChange()"
+                class="font-medium text-sm lg:mt-3 mt-2.5"
+                :class="[
+                  { 'text-maincolor-100': !prod_li },
+                  { 'text-white': prod_li },
+                ]"
+                ><router-link to="/setting/sms">مدیریت</router-link></span
+              >
+              <span
+                @click="menuChange()"
+                class="font-medium text-sm lg:mt-3 my-2.5"
+                :class="[
+                  { 'text-maincolor-100': !prod_li },
+                  { 'text-white': prod_li },
+                ]"
+                ><router-link to="/setting/payment">ایجاد</router-link></span
+              >
+            </div>
+          </div>
+          <span
+            class="ml-3 mt-1.5 transition-all"
+            :class="[
+              { 'text-maincolor-999': !prod_li },
+              { 'text-white': prod_li },
+              { 'rotate-180': prod_li },
+            ]"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-3 w-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="3"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M19 9l-7 7-7-7"
+              /></svg
+          ></span>
+        </li>
+        <!----- end product ------>
+        <!--            -->
         <!----- sms ------>
         <li
           :class="[
@@ -315,6 +411,7 @@
           ]"
           @click="
             {
+              prod_li = false;
               sms_li = !sms_li;
               users_li = false;
               setting_li = false;
@@ -407,6 +504,7 @@
           ]"
           @click="
             {
+              prod_li = false;
               setting_li = !setting_li;
               users_li = false;
               sms_li = false;
@@ -512,11 +610,20 @@ export default {
     const coupon_li = ref(false);
     const users_li = ref(false);
     const dash_li = ref(false);
+    const prod_li = ref(false);
     function menuChange() {
       store.dispatch("actionMenu", false);
     }
 
-    return { setting_li, sms_li, coupon_li, users_li, dash_li, menuChange };
+    return {
+      setting_li,
+      sms_li,
+      coupon_li,
+      users_li,
+      dash_li,
+      prod_li,
+      menuChange,
+    };
   },
 };
 </script>
