@@ -37,7 +37,7 @@
             { '!bg-maincolor-999': dash_li },
             { 'h-14': !dash_li },
             { 'h-24': dash_li },
-            { 'shadow-md': dash_li },
+            { 'shadow-slate-500': dash_li },
           ]"
           @click="
             {
@@ -49,7 +49,7 @@
               sms_li = false;
             }
           "
-          class="flex items-start justify-between rounded-xl mt-5 pt-4 overflow-hidden transition-all duration-700 cursor-cell"
+          class="flex items-start shadow-lg justify-between rounded-xl mt-5 pt-4 overflow-hidden transition-all duration-700 cursor-cell"
         >
           <div class="flex">
             <svg
@@ -127,7 +127,7 @@
             { '!bg-maincolor-999': users_li },
             { 'h-14': !users_li },
             { 'h-32': users_li },
-            { 'shadow-md': users_li },
+            { 'shadow-slate-500': users_li },
           ]"
           @click="
             {
@@ -139,7 +139,7 @@
               dash_li = false;
             }
           "
-          class="flex items-start justify-between rounded-xl mt-5 pt-4 overflow-hidden transition-all duration-700 cursor-cell"
+          class="flex items-start shadow-lg justify-between rounded-xl mt-5 pt-4 overflow-hidden transition-all duration-700 cursor-cell"
         >
           <div class="flex">
             <svg
@@ -221,7 +221,7 @@
             { '!bg-maincolor-999': coupon_li },
             { 'h-14': !coupon_li },
             { 'h-32': coupon_li },
-            { 'shadow-md': coupon_li },
+            { 'shadow-slate-500': coupon_li },
           ]"
           @click="
             {
@@ -233,7 +233,7 @@
               dash_li = false;
             }
           "
-          class="flex items-start justify-between rounded-xl mt-5 pt-4 overflow-hidden transition-all duration-700 cursor-cell"
+          class="flex items-start justify-between shadow-lg rounded-xl mt-5 pt-4 overflow-hidden transition-all duration-700 cursor-cell"
         >
           <div class="flex">
             <svg
@@ -314,7 +314,7 @@
             { '!bg-maincolor-999': prod_li },
             { 'h-14': !prod_li },
             { 'h-32': prod_li },
-            { 'shadow-md': prod_li },
+            { 'shadow-slate-500': prod_li },
           ]"
           @click="
             {
@@ -326,7 +326,7 @@
               dash_li = false;
             }
           "
-          class="flex items-start justify-between rounded-xl mt-5 pt-4 overflow-hidden transition-all duration-700 cursor-cell"
+          class="flex items-start shadow-lg justify-between rounded-xl mt-5 pt-4 overflow-hidden transition-all duration-700 cursor-cell"
         >
           <div class="flex">
             <svg
@@ -407,7 +407,7 @@
             { '!bg-maincolor-999': sms_li },
             { 'h-14': !sms_li },
             { 'h-32': sms_li },
-            { 'shadow-md': sms_li },
+            { 'shadow-slate-500': sms_li },
           ]"
           @click="
             {
@@ -419,7 +419,7 @@
               dash_li = false;
             }
           "
-          class="flex items-start justify-between rounded-xl mt-5 pt-4 overflow-hidden transition-all duration-700 cursor-cell"
+          class="flex items-start shadow-lg justify-between rounded-xl mt-5 pt-4 overflow-hidden transition-all duration-700 cursor-cell"
         >
           <div class="flex">
             <svg
@@ -456,7 +456,7 @@
                   { 'text-maincolor-100': !sms_li },
                   { 'text-white': sms_li },
                 ]"
-                ><router-link to="/dashboard">ارسال‌انبوه</router-link></span
+                ><router-link to="/sms/sendbulk">ارسال‌انبوه</router-link></span
               >
               <span
                 @click="menuChange()"
@@ -465,7 +465,7 @@
                   { 'text-maincolor-100': !sms_li },
                   { 'text-white': sms_li },
                 ]"
-                ><router-link to="/dashboard">متون</router-link></span
+                ><router-link to="/sms/settexts">متون</router-link></span
               >
             </div>
           </div>
@@ -500,7 +500,7 @@
             { '!bg-maincolor-999': setting_li },
             { 'h-14': !setting_li },
             { 'h-32': setting_li },
-            { 'shadow-md': setting_li },
+            { 'shadow-slate-500': setting_li },
           ]"
           @click="
             {
@@ -512,7 +512,7 @@
               dash_li = false;
             }
           "
-          class="flex items-start justify-between rounded-xl mt-5 pt-4 overflow-hidden transition-all duration-700 cursor-cell"
+          class="flex items-start shadow-lg justify-between rounded-xl mt-5 pt-4 overflow-hidden transition-all duration-700 cursor-cell"
         >
           <div class="flex">
             <svg
