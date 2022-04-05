@@ -48,13 +48,30 @@ const routes = [
     children: [
       {
         path: "payment",
-        name: "signinsetting",
+        name: "paymentsetting",
         component: () => import("../views/setting/PaymentSetting.vue"),
       },
       {
         path: "sms",
         name: "appsetting",
         component: () => import("../views/setting/SMSSetting.vue"),
+      },
+    ],
+  },
+  {
+    path: "/sms",
+    name: "sms",
+    component: () => import("../views/SmsView.vue"),
+    children: [
+      {
+        path: "sendbulk",
+        name: "sendbulk",
+        component: () => import("../views/sms/SendBulk.vue"),
+      },
+      {
+        path: "settexts",
+        name: "settexts",
+        component: () => import("../views/sms/SetTexts.vue"),
       },
     ],
   },
