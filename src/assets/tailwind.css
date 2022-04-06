@@ -2,4 +2,9 @@
 
 @tailwind components;
 
+@font-face {
+    font-family: "iran";
+    src: url('./iran_light.68f68e336b3f4cc86ba1.woff');
+}
+
 @tailwind utilities;
