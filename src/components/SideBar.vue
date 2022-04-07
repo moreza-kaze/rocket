@@ -26,7 +26,7 @@
           />
         </svg>
       </span>
-      <span class="pr-0 md:pr-5 lg:pr-0 pt-0 text-2xl font-medium">راکت</span>
+      <span class="pr-1 md:pr-5 lg:pr-1 pt-0 text-3xl font-bold">راکت</span>
     </div>
     <div>
       <ul class="px-3 py-5 pt-0 flax justify-center w-full">
@@ -77,7 +77,7 @@
             </svg>
             <div class="flex flex-col">
               <span
-                class="font-medium cursor-cell"
+                class="font-bold text-lg cursor-cell"
                 :class="[
                   { 'text-maincolor-999': !dash_li },
                   { 'text-white': dash_li },
@@ -162,7 +162,7 @@
             </svg>
             <div class="flex flex-col">
               <span
-                class="font-medium cursor-cell"
+                class="font-bold text-lg cursor-cell"
                 :class="[
                   { 'text-maincolor-999': !users_li },
                   { 'text-white': users_li },
@@ -233,7 +233,7 @@
               dash_li = false;
             }
           "
-          class="flex items-start justify-between shadow-lg rounded-xl mt-5 pt-4 overflow-hidden transition-all duration-700 cursor-cell"
+          class="flex items-start shadow-lg justify-between rounded-xl mt-5 pt-4 overflow-hidden transition-all duration-700 cursor-cell"
         >
           <div class="flex">
             <svg
@@ -254,14 +254,15 @@
                 d="M9 14l6-6m-5.5.5h.01m4.99 5h.01M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16l3.5-2 3.5 2 3.5-2 3.5 2zM10 8.5a.5.5 0 11-1 0 .5.5 0 011 0zm5 5a.5.5 0 11-1 0 .5.5 0 011 0z"
               />
             </svg>
+
             <div class="flex flex-col">
               <span
-                class="font-medium cursor-cell"
+                class="font-bold text-lg cursor-cell"
                 :class="[
                   { 'text-maincolor-999': !coupon_li },
                   { 'text-white': coupon_li },
                 ]"
-                >کوپن ها</span
+                >کوپن‌</span
               >
               <span
                 @click="menuChange()"
@@ -349,7 +350,7 @@
             </svg>
             <div class="flex flex-col">
               <span
-                class="font-medium cursor-cell"
+                class="font-bold text-lg cursor-cell"
                 :class="[
                   { 'text-maincolor-999': !prod_li },
                   { 'text-white': prod_li },
@@ -369,7 +370,7 @@
                 @click="menuChange()"
                 class="font-medium text-sm lg:mt-3 my-2.5"
                 :class="[
-                  { 'text-maincolor-100': !prod_li },
+                  { 'text-maincolor-999': !prod_li },
                   { 'text-white': prod_li },
                 ]"
                 ><router-link to="/setting/payment">ایجاد</router-link></span
@@ -442,7 +443,7 @@
             </svg>
             <div class="flex flex-col">
               <span
-                class="font-medium cursor-cell"
+                class="font-bold text-lg cursor-cell"
                 :class="[
                   { 'text-maincolor-999': !sms_li },
                   { 'text-white': sms_li },
@@ -540,7 +541,7 @@
             </svg>
             <div class="flex flex-col">
               <span
-                class="font-medium cursor-cell"
+                class="font-bold text-lg cursor-cell"
                 :class="[
                   { 'text-maincolor-999': !setting_li },
                   { 'text-white': setting_li },
