@@ -6,7 +6,7 @@ export default createStore({
     users: [
       {
         id: 16,
-        fullName: "Prof. Lucious Langworth",
+        fullName: "Prof. Lucious ",
         mobile_number: "+1-323-529-1054",
         username: "sidney61",
         password: '"qCf)&b',
@@ -17,7 +17,7 @@ export default createStore({
       },
       {
         id: 12,
-        fullName: "Dr. Ivory Gulgowski II",
+        fullName: "Dr. Ivory  II",
         mobile_number: "1-562-647-3688",
         username: "wehner.jocelyn",
         password: "nqn`MG'')",

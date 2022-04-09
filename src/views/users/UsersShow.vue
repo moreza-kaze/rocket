@@ -64,7 +64,7 @@
       </div>
     </div>
     <!-- start user table  -->
-    <div class="flex justify-center items-center mt-5">
+    <div class="flex justify-center items-center mt-1">
       <!-- make table with div -->
       <div name="table" class="flex flex-col w-full h-full">
         <!-- main of table -->
@@ -72,7 +72,7 @@
           <!-- table head on sm(640PX)  -->
           <div
             name="thead"
-            class="sm:flex flex-col w-1/2 hidden sm:w-full sm:my-2 bg-maincolor-800 py-2 rounded-xl"
+            class="sm:flex flex-col w-1/2 hidden sm:w-full sm:my-1 sm:mb-5 bg-maincolor-800 py-2 rounded-xl"
           >
             <!-- table row -->
             <div
@@ -112,7 +112,7 @@
               </div>
               <div
                 name="th"
-                class="bg-whitetransparent-500 py-1 mx-1 rounded-md w-2/12 text-center overflow-x-hidden"
+                class="bg-whitetransparent-500 py-1 mx-1 rounded-md w-1/12 text-center overflow-x-hidden"
               >
                 وضعیت
               </div>
@@ -140,12 +140,12 @@
           name="tmain2"
           v-for="(user, index) in users"
           :key="index"
-          class="flex flex-row sm:flex-col justify-around"
+          class="flex flex-row sm:flex-col justify-around my-2 sm:my-0"
         >
           <!-- table head -->
           <div
             name="thead"
-            class="sm:hidden flex flex-col w-5/12 sm:w-full sm:my-2 bg-maincolor-800 py-2 rounded-xl"
+            class="sm:hidden flex flex-col w-5/12 sm:w-full sm:mb-2.5 bg-maincolor-800 py-2 rounded-xl"
           >
             <!-- table row -->
             <div
@@ -210,7 +210,7 @@
           <!-- table body -->
           <div
             name="tbody"
-            class="flex flex-col w-6/12 sm:w-full sm:my-2 bg-whitetransparent-600 py-2 rounded-xl"
+            class="flex flex-col w-6/12 sm:w-full sm:my-0.5 bg-whitetransparent-600 py-1.5 rounded-xl border-2 border-solid border-maincolor-400"
           >
             <!-- table row -->
             <div
@@ -250,7 +250,7 @@
               </div>
               <div
                 name="th"
-                class="py-1 mx-1 mb-2 sm:mb-0 rounded-md w-11/12 sm:w-2/12 text-center overflow-x-hidden bg-maincolor-900 text-white"
+                class="py-1 mx-1 mb-2 sm:mb-0 rounded-md w-11/12 sm:w-1/12 text-center overflow-x-hidden bg-maincolor-900 text-white"
               >
                 {{ user.invoice_id }}
               </div>
@@ -279,79 +279,15 @@
 </template>
 
 <script>
-import { ref } from "@vue/reactivity";
+import { computed } from "@vue/runtime-core";
+import { useStore } from "vuex";
+
 export default {
   setup() {
-    const users = ref();
-    users.value = [
-      {
-        id: 16,
-        fullName: "Prof. Lucious",
-        mobile_number: "+1-323-529-1054",
-        username: "sidney61",
-        password: '"qCf)&b',
-        invoice_id: 16,
-        payment_result: "Nemo.",
-        coupon_id: 23,
-        status: "Natus qui.",
-      },
-      {
-        id: 12,
-        fullName: "Dr. Ivory II",
-        mobile_number: "1-562-647-3688",
-        username: "wehner.jocelyn",
-        password: "nqn`MG'')",
-        invoice_id: 6,
-        payment_result: "Veniam.",
-        coupon_id: 21,
-        status: "Dolorum.",
-      },
-      {
-        id: 5,
-        fullName: "Vincenzo Johns",
-        mobile_number: "+1.463.760.9935",
-        username: "kenya.buckridge",
-        password: "sk?YO/",
-        invoice_id: 11,
-        payment_result: "Labore.",
-        coupon_id: 35,
-        status: "Dicta.",
-      },
-      {
-        id: 56,
-        fullName: "Idella Fritsch",
-        mobile_number: "1-657-387-3204",
-        username: "chyna36",
-        password: "_,zsyRh'+x",
-        invoice_id: 27,
-        payment_result: "Ipsam.",
-        coupon_id: 16,
-        status: "Vel et.",
-      },
-      {
-        id: 34,
-        fullName: "Fredrick Schumm",
-        mobile_number: "+1 (484) 258-9273",
-        username: "parisian.marisa",
-        password: "C%<x'39,`,W*R",
-        invoice_id: 43,
-        payment_result: "Tenetur.",
-        coupon_id: 2,
-        status: "Ducimus.",
-      },
-      {
-        id: 29,
-        fullName: "Caden Schowalter",
-        mobile_number: "+1.385.601.6459",
-        username: "salvatore72",
-        password: "M9WfxrJ8'N7WzetIN=*",
-        invoice_id: 50,
-        payment_result: "Quaerat.",
-        coupon_id: 13,
-        status: "Nostrum.",
-      },
-    ];
+    const users = computed(() => store.getters["getUser"]);
+    const store = useStore();
     console.log(users);
+
     return { users };
   },
 };

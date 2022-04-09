@@ -30,6 +30,7 @@ module.exports = {
           300: "#24be644d",
           700: "#24be64b3",
         },
+        tableth: "#6799e7",
       },
       transitionProperty: {
         width: "width",
