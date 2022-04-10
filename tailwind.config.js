@@ -5,6 +5,16 @@ module.exports = {
       main: "iran",
     },
     extend: {
+      borderRadius: {
+        50: "50%",
+      },
+      spacing: {
+        v90: "80vh",
+      },
+      width: {
+        32: "32%",
+        p97: "97%",
+      },
       colors: {
         maincolor: {
           50: "#568ee40d",
@@ -31,6 +41,14 @@ module.exports = {
           700: "#24be64b3",
         },
         tableth: "#6799e7",
+        dashboard: {
+          y1: "#fceabb",
+          y2: "#f8b50080",
+          b1: "#93edc7",
+          b2: "#1cd8d280",
+          p1: "#8e54e980",
+          p2: "#4776e699",
+        },
       },
       transitionProperty: {
         width: "width",

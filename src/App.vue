@@ -92,7 +92,6 @@ export default {
     let menu = computed(() => store.getters["getMenu"]);
     function menuChange(x) {
       store.dispatch("actionMenu", !x);
-      console.log(menu);
     }
 
     return {
