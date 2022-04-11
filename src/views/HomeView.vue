@@ -128,18 +128,80 @@
       <div
         class="h-1/2 w-full md:h-full md:w-1/2 flex flex-col p-5 md:px-10 justify-around"
       >
-        <div class="bg-maincolor-999 w-full h-1/4 rounded-2xl p-3">fds</div>
-        <div class="bg-maincolor-200 w-full h-1/4 rounded-2xl mt-4 md:mt-0 p-3">
-          dfsa
+        <div
+          class="bg-maincolor-999 w-full h-1/6 rounded-2xl p-3 flex flex-row items-center justify-around"
+        >
+          <span class="font-bold text-4xl">در این ماه</span>
         </div>
         <div
-          class="bg-maincolor-200 w-full h-1/4 rounded-2xl mt-4 md:mt-0 p-3"
+          class="bg-maincolor-200 w-full h-1/6 rounded-2xl mt-4 md:mt-0 p-3 flex flex-row items-center justify-around"
+        >
+          <span class="md:font-semibold md:text-2xl text-maincolor-900"
+            >پنل های با تخفیف</span
+          >
+          <span class="text-maincolor-999"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M15 19l-7-7 7-7"
+              /></svg
+          ></span>
+          <span class="md:font-semibold md:text-2xl text-maincolor-900"
+            >150 پنل</span
+          >
+        </div>
+        <div
+          class="bg-maincolor-200 w-full h-1/6 rounded-2xl mt-4 md:mt-0 p-3 flex flex-row items-center justify-around"
           s
         >
-          sdfs
+          <span class="md:font-semibold md:text-2xl text-maincolor-900"
+            >پنل های بدون تخفیف</span
+          >
+          <span class="text-maincolor-999"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M15 19l-7-7 7-7"
+              /></svg
+          ></span>
+          <span class="md:font-semibold md:text-2xl text-maincolor-900"
+            >150 پنل</span
+          >
         </div>
       </div>
-      <div></div>
+      <div
+        class="h-96 w-full md:h-full md:w-1/2 flex flex-col md:pr-28 xl3:pt-16 xl3:pr-56"
+      >
+        <div class="relative">
+          <div
+            class="absolute rounded-50 bg-gradient-to-br from-dashboard-g1 to-dashboard-g2 mt-20 mr-20 w-56 h-56 flex justify-center items-center"
+          >
+            <span class="text-gray-50 text-3xl font-semibold mt-3">100000</span>
+            <span class="text-gray-50 block">تومان </span>
+          </div>
+          <div
+            class="absolute rounded-50 z-10 bg-gradient-to-tr from-dashboard-o1 to-dashboard-o2 w-40 h-40 mt-8 mr-8 flex justify-center items-center"
+          >
+            <span class="text-gray-50 text-xl font-semibold">مبلغ کل فروش</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>

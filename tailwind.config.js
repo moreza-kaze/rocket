@@ -5,6 +5,9 @@ module.exports = {
       main: "iran",
     },
     extend: {
+      screens: {
+        xl3: "1700px",
+      },
       borderRadius: {
         50: "50%",
       },
@@ -48,6 +51,10 @@ module.exports = {
           b2: "#1cd8d280",
           p1: "#8e54e980",
           p2: "#4776e699",
+          o1: "#f7b733",
+          o2: "#fc4a1a",
+          g1: "#f4d03f",
+          g2: "#16a085",
         },
       },
       transitionProperty: {
