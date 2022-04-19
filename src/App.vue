@@ -1,7 +1,7 @@
 <template>
   <div
     dir="rtl"
-    class="font-main block relative md:static md:flex bg-lightblue h-full md:h-screen w-screen"
+    class="font-main block relative md:static md:flex bg-lightblue h-full w-screen overflow-hidden"
   >
     <!-- start navbar & sidebar -->
     <div class="flex md:block">
@@ -72,7 +72,9 @@
         </span>
       </div>
       <!-- end navbar -->
-      <router-view />
+      <div class="h-calmain w-full">
+        <router-view />
+      </div>
     </div>
     <!-- end main component  -->
   </div>

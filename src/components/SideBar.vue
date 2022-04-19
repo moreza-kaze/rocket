@@ -77,7 +77,7 @@
             </svg>
             <div class="flex flex-col">
               <span
-                class="font-bold text-lg cursor-cell"
+                class="font-bold text-base cursor-cell"
                 :class="[
                   { 'text-maincolor-999': !dash_li },
                   { 'text-white': dash_li },
@@ -162,7 +162,7 @@
             </svg>
             <div class="flex flex-col">
               <span
-                class="font-bold text-lg cursor-cell"
+                class="font-semibold text-base cursor-cell"
                 :class="[
                   { 'text-maincolor-999': !users_li },
                   { 'text-white': users_li },
@@ -257,7 +257,7 @@
 
             <div class="flex flex-col">
               <span
-                class="font-bold text-lg cursor-cell"
+                class="font-bold text-base cursor-cell"
                 :class="[
                   { 'text-maincolor-999': !coupon_li },
                   { 'text-white': coupon_li },
@@ -350,7 +350,7 @@
             </svg>
             <div class="flex flex-col">
               <span
-                class="font-bold text-lg cursor-cell"
+                class="font-bold text-base cursor-cell"
                 :class="[
                   { 'text-maincolor-999': !prod_li },
                   { 'text-white': prod_li },
@@ -443,7 +443,7 @@
             </svg>
             <div class="flex flex-col">
               <span
-                class="font-bold text-lg cursor-cell"
+                class="font-bold text-base cursor-cell"
                 :class="[
                   { 'text-maincolor-999': !sms_li },
                   { 'text-white': sms_li },
@@ -541,7 +541,7 @@
             </svg>
             <div class="flex flex-col">
               <span
-                class="font-bold text-lg cursor-cell"
+                class="font-bold text-base cursor-cell"
                 :class="[
                   { 'text-maincolor-999': !setting_li },
                   { 'text-white': setting_li },

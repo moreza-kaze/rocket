@@ -284,8 +284,9 @@ import { useStore } from "vuex";
 
 export default {
   setup() {
-    const users = computed(() => store.getters["getUser"]);
     const store = useStore();
+    const users = computed(() => store.getters["getUser"]);
+    store.dispatch("getUser");
     console.log(users);
 
     return { users };

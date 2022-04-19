@@ -1,7 +1,9 @@
 <template>
   <div class="h-full w-full flex flex-col p-4 items-center">
     <div class="w-full flex items-center justify-between h-20 sm:h-14">
-      <div class="flex items-center justify-center text-xl text-gray-700">
+      <div
+        class="flex items-center justify-center text-xl text-gray-700 overflow-hidden"
+      >
         <span class="mt-1"
           ><svg
             xmlns="http://www.w3.org/2000/svg"
@@ -51,8 +53,8 @@
               /></svg
           ></span>
         </div>
-        <div class="flex flex-col items-center h-1/3 p-5">
-          <span class="font-bold lg:text-xl xl:font-semibold xl:text-3xl"
+        <div class="flex flex-col items-center h-1/3 p-3 md:p-5">
+          <span class="font-bold lg:text-lg xl:font-semibold xl:text-2xl"
             >600 پیامک</span
           >
           <span class="md:mt-3 md:text-sm lg:text-lg">اعتبار پیامکی</span>
@@ -85,11 +87,11 @@
               /></svg
           ></span>
         </div>
-        <div class="flex flex-col items-center h-1/3 p-5">
-          <span class="font-bold lg:text-xl xl:font-semibold xl:text-3xl"
-            >600 پیامک</span
+        <div class="flex flex-col items-center h-1/3 p-3 md:p-5">
+          <span class="font-bold lg:text-lg xl:font-semibold xl:text-2xl"
+            >{{ (546541).toLocaleString("en") }} نفر</span
           >
-          <span class="md:mt-3 md:text-sm lg:text-lg">اعتبار پیامکی</span>
+          <span class="md:mt-3 md:text-sm lg:text-lg">کاربر ثبت شده</span>
         </div>
       </div>
       <div
@@ -114,29 +116,35 @@
               /></svg
           ></span>
         </div>
-        <div class="flex flex-col items-center h-1/3 p-5">
-          <span class="font-bold lg:text-xl xl:font-semibold xl:text-3xl"
-            >600 پیامک</span
+        <div class="flex flex-col items-center h-1/3 p-3 md:p-5">
+          <span class="font-bold lg:text-lg xl:font-semibold xl:text-2xl"
+            >{{ (1287963454588).toLocaleString("en") }} تومان</span
           >
-          <span class="md:mt-3 md:text-sm lg:text-lg">اعتبار پیامکی</span>
+          <span
+            class="md:mt-3 md:text-sm lg:text-lg justify-items-start justify-self-start"
+            >پرداخت شده</span
+          >
         </div>
       </div>
     </div>
     <div
-      class="h-3/6 w-p97 mt-5 bg-whitetransparent-500 rounded-2xl flex flex-col md:flex-row"
+      class="h-full md:h-3/6 w-p97 mt-5 bg-whitetransparent-500 rounded-2xl flex flex-col md:flex-row"
     >
       <div
-        class="h-1/2 w-full md:h-full md:w-1/2 flex flex-col p-5 md:px-10 justify-around"
+        class="h-full w-full md:h-full md:w-1/2 flex flex-col p-5 md:px-10 justify-evenly"
       >
         <div
           class="bg-maincolor-999 w-full h-1/6 rounded-2xl p-3 flex flex-row items-center justify-around"
         >
-          <span class="font-bold text-4xl">در این ماه</span>
+          <span class="font-bold md:text-lg lg:text-2xl xl:text-4xl"
+            >در این ماه</span
+          >
         </div>
         <div
           class="bg-maincolor-200 w-full h-1/6 rounded-2xl mt-4 md:mt-0 p-3 flex flex-row items-center justify-around"
         >
-          <span class="md:font-semibold md:text-2xl text-maincolor-900"
+          <span
+            class="md:font-semibold md:text-lg lg:text-2xl text-maincolor-900"
             >پنل های با تخفیف</span
           >
           <span class="text-maincolor-999"
@@ -154,7 +162,8 @@
                 d="M15 19l-7-7 7-7"
               /></svg
           ></span>
-          <span class="md:font-semibold md:text-2xl text-maincolor-900"
+          <span
+            class="md:font-semibold md:text-lg lg:text-2xl text-maincolor-900"
             >150 پنل</span
           >
         </div>
@@ -162,7 +171,8 @@
           class="bg-maincolor-200 w-full h-1/6 rounded-2xl mt-4 md:mt-0 p-3 flex flex-row items-center justify-around"
           s
         >
-          <span class="md:font-semibold md:text-2xl text-maincolor-900"
+          <span
+            class="md:font-semibold md:text-lg lg:text-2xl text-maincolor-900"
             >پنل های بدون تخفیف</span
           >
           <span class="text-maincolor-999"
@@ -180,25 +190,47 @@
                 d="M15 19l-7-7 7-7"
               /></svg
           ></span>
-          <span class="md:font-semibold md:text-2xl text-maincolor-900"
+          <span
+            class="md:font-semibold md:text-lg lg:text-2xl text-maincolor-900"
             >150 پنل</span
           >
         </div>
       </div>
       <div
-        class="h-96 w-full md:h-full md:w-1/2 flex flex-col md:pr-28 xl3:pt-16 xl3:pr-56"
+        class="h-3/6 w-full md:h-full md:w-1/2 flex flex-col p-5 md:p-10 lg:p-14"
       >
-        <div class="relative">
+        <div
+          class="w-full h-48 md:h-full shadow-2xl bg-gradient-to-r from-dashboard-g4 to-dashboard-g3 border-2 border-gray-300 rounded-3xl flex flex-col justify-around"
+        >
           <div
-            class="absolute rounded-50 bg-gradient-to-br from-dashboard-g1 to-dashboard-g2 mt-20 mr-20 w-56 h-56 flex justify-center items-center"
+            class="flex flex-row justify-evenly items-end text-xl font-semibold h-1/4"
           >
-            <span class="text-gray-50 text-3xl font-semibold mt-3">100000</span>
-            <span class="text-gray-50 block">تومان </span>
+            <span>xxxx</span>
+            <span>xxxx</span>
+            <span>xxxx</span>
+            <span>xxxx</span>
+          </div>
+          <div class="text-yellow-800 pr-5 h-1/4">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-8 h-8 md:h-16 md:w-16"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="1"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"
+              />
+            </svg>
           </div>
           <div
-            class="absolute rounded-50 z-10 bg-gradient-to-tr from-dashboard-o1 to-dashboard-o2 w-40 h-40 mt-8 mr-8 flex justify-center items-center"
+            class="flex flex-row justify-evenly h-1/4 text-sm md:text-lg font-semibold text-white"
           >
-            <span class="text-gray-50 text-xl font-semibold">مبلغ کل فروش</span>
+            <span> پرداخت ماه</span>
+            <span>{{ (1522000).toLocaleString("en") }} تومان</span>
           </div>
         </div>
       </div>
@@ -207,7 +239,7 @@
 </template>
 
 <script>
-// @ is an alias to /src
+// @ is an alias to /srcd
 
 export default {
   name: "HomeView",

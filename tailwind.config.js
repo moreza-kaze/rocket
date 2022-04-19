@@ -13,6 +13,7 @@ module.exports = {
       },
       spacing: {
         v90: "80vh",
+        calmain: "calc(100vh - 4.0625rem)",
       },
       width: {
         32: "32%",
@@ -55,6 +56,8 @@ module.exports = {
           o2: "#fc4a1a",
           g1: "#f4d03f",
           g2: "#16a085",
+          g3: "#DA445399",
+          g4: "#89216Bcc",
         },
       },
       transitionProperty: {
