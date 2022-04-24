@@ -55,7 +55,7 @@
         </div>
         <div class="flex flex-col items-center h-1/3 p-3 md:p-5">
           <span class="font-bold lg:text-lg xl:font-semibold xl:text-2xl"
-            >600 پیامک</span
+            >{{ dashboard.adminCredit?.toLocaleString("en") }} پیامک</span
           >
           <span class="md:mt-3 md:text-sm lg:text-lg">اعتبار پیامکی</span>
         </div>
@@ -89,7 +89,7 @@
         </div>
         <div class="flex flex-col items-center h-1/3 p-3 md:p-5">
           <span class="font-bold lg:text-lg xl:font-semibold xl:text-2xl"
-            >{{ (546541).toLocaleString("en") }} نفر</span
+            >{{ dashboard.customerCount }} نفر</span
           >
           <span class="md:mt-3 md:text-sm lg:text-lg">کاربر ثبت شده</span>
         </div>
@@ -118,7 +118,10 @@
         </div>
         <div class="flex flex-col items-center h-1/3 p-3 md:p-5">
           <span class="font-bold lg:text-lg xl:font-semibold xl:text-2xl"
-            >{{ (1287963454588).toLocaleString("en") }} تومان</span
+            >{{
+              dashboard.invoiceFullPayment?.toLocaleString("en")
+            }}
+            تومان</span
           >
           <span
             class="md:mt-3 md:text-sm lg:text-lg justify-items-start justify-self-start"
@@ -128,79 +131,23 @@
       </div>
     </div>
     <div
-      class="h-full md:h-3/6 w-p97 mt-5 bg-whitetransparent-500 rounded-2xl flex flex-col md:flex-row"
+      class="h-96 md:h-3/6 w-p97 mt-5 bg-whitetransparent-500 rounded-2xl flex flex-col md:flex-row"
     >
       <div
-        class="h-full w-full md:h-full md:w-1/2 flex flex-col p-5 md:px-10 justify-evenly"
+        class="h-full w-full md:h-full md:w-1/2 flex flex-col p-5 md:px-10 justify-center items-center"
       >
-        <div
-          class="bg-maincolor-999 w-full h-1/6 rounded-2xl p-3 flex flex-row items-center justify-around"
-        >
-          <span class="font-bold md:text-lg lg:text-2xl xl:text-4xl"
-            >در این ماه</span
-          >
-        </div>
-        <div
-          class="bg-maincolor-200 w-full h-1/6 rounded-2xl mt-4 md:mt-0 p-3 flex flex-row items-center justify-around"
-        >
-          <span
-            class="md:font-semibold md:text-lg lg:text-2xl text-maincolor-900"
-            >پنل های با تخفیف</span
-          >
-          <span class="text-maincolor-999"
-            ><svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M15 19l-7-7 7-7"
-              /></svg
-          ></span>
-          <span
-            class="md:font-semibold md:text-lg lg:text-2xl text-maincolor-900"
-            >150 پنل</span
-          >
-        </div>
-        <div
-          class="bg-maincolor-200 w-full h-1/6 rounded-2xl mt-4 md:mt-0 p-3 flex flex-row items-center justify-around"
-          s
-        >
-          <span
-            class="md:font-semibold md:text-lg lg:text-2xl text-maincolor-900"
-            >پنل های بدون تخفیف</span
-          >
-          <span class="text-maincolor-999"
-            ><svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M15 19l-7-7 7-7"
-              /></svg
-          ></span>
-          <span
-            class="md:font-semibold md:text-lg lg:text-2xl text-maincolor-900"
-            >150 پنل</span
-          >
+        <div class="h-72 w-72 md:h-48 md:w-48 xl:h-72 xl:w-72">
+          <chartpanel
+            :NoDiscountInvoiceNumbers="dashboard.NoDiscountInvoiceNumbers"
+            :withDiscountInvoiceNumbers="dashboard.withDiscountInvoiceNumbers"
+          />
         </div>
       </div>
       <div
-        class="h-3/6 w-full md:h-full md:w-1/2 flex flex-col p-5 md:p-10 lg:p-14"
+        class="h-3/6 w-full md:h-full md:w-1/2 hidden md:flex flex-col justify-center items-center p-5 lg:p-0"
       >
         <div
-          class="w-full h-48 md:h-full shadow-2xl bg-gradient-to-r from-dashboard-g4 to-dashboard-g3 border-2 border-gray-300 rounded-3xl flex flex-col justify-around"
+          class="w-full h-48 md:h-full xl:h-4/6 xl:w-4/6 shadow-2xl bg-gradient-to-r from-dashboard-g4 to-dashboard-g3 border-2 border-gray-300 rounded-3xl flex flex-col justify-around"
         >
           <div
             class="flex flex-row justify-evenly items-end text-xl font-semibold h-1/4"
@@ -230,7 +177,12 @@
             class="flex flex-row justify-evenly h-1/4 text-sm md:text-lg font-semibold text-white"
           >
             <span> پرداخت ماه</span>
-            <span>{{ (1522000).toLocaleString("en") }} تومان</span>
+            <span
+              >{{
+                dashboard.fullPaymentCurrentMonth?.toLocaleString("en")
+              }}
+              تومان</span
+            >
           </div>
         </div>
       </div>
@@ -239,9 +191,20 @@
 </template>
 
 <script>
+import { computed } from "@vue/runtime-core";
+import { useStore } from "vuex";
 // @ is an alias to /srcd
-
+import chartpanel from "../components/ChartPanel.vue";
 export default {
   name: "HomeView",
+  components: { chartpanel },
+  setup() {
+    const store = useStore();
+    store.dispatch("getDataDashboard");
+    const dashboard = computed(() => store.getters["getDashboard"]);
+    return {
+      dashboard,
+    };
+  },
 };
 </script>
