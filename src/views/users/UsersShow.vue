@@ -1,5 +1,5 @@
 <template>
-  <div class="m-4 h-full">
+  <div class="m-4 sm:m-0 sm:px-6 sm:mt-4 min-h-full flex flex-col">
     <div class="w-full flex items-center justify-between h-20 sm:h-14">
       <div class="flex items-center justify-center text-xl">
         <span class="mt-1"
@@ -27,7 +27,7 @@
             @submit.prevent=""
             class="relative ml-1 md:ml-2 flex items-center"
           >
-            <input type="text" class="h-9 w-56 rounded-2xl" /><button
+            <input type="text" class="h-9 w-56 rounded-2xl px-2" /><button
               class="absolute left-0 top-0 mt-1 ml-1"
             >
               <svg
@@ -64,15 +64,15 @@
       </div>
     </div>
     <!-- start user table  -->
-    <div class="flex justify-center items-center mt-1">
+    <div class="flex justify-center items-center mt-1 p-1">
       <!-- make table with div -->
       <div name="table" class="flex flex-col w-full h-full">
         <!-- main of table -->
-        <div name="tmain1" class="flex flex-row sm:flex-col">
+        <div name="tmain1" class="flex flex-row sm:flex-col shadow-xl">
           <!-- table head on sm(640PX)  -->
           <div
             name="thead"
-            class="sm:flex flex-col w-1/2 hidden sm:w-full sm:my-1 sm:mb-5 bg-maincolor-800 py-2 rounded-xl"
+            class="sm:flex flex-col w-1/2 hidden sm:w-full rounded-lg font-semibold sm:rounded-none sm:rounded-t-lg bg-maincolor-200 py-2 border-solid border-gray-300"
           >
             <!-- table row -->
             <div
@@ -82,49 +82,49 @@
               <!-- table col  -->
               <div
                 name="th"
-                class="bg-whitetransparent-500 py-1 mx-1 mr-2 rounded-md w-1/12 text-center overflow-x-hidden"
+                class="sm:bg-transparent py-1 mx-1 mr-2 rounded-md w-1/12 text-center overflow-x-hidden"
               >
                 ردیف
               </div>
               <div
                 name="th"
-                class="bg-whitetransparent-500 py-1 mx-1 rounded-md w-2/12 text-center overflow-x-hidden"
+                class="sm:bg-transparent py-1 mx-1 rounded-md w-2/12 text-center overflow-x-hidden"
               >
                 نام‌و‌نام‌خانوادگی
               </div>
               <div
                 name="th"
-                class="bg-whitetransparent-500 py-1 mx-1 rounded-md w-2/12 text-center overflow-x-hidden"
+                class="sm:bg-transparent py-1 mx-1 rounded-md w-2/12 text-center overflow-x-hidden"
               >
                 تلفن‌همراه
               </div>
               <div
                 name="th"
-                class="bg-whitetransparent-500 py-1 mx-1 rounded-md w-2/12 text-center overflow-x-hidden"
+                class="sm:bg-transparent py-1 mx-1 rounded-md w-2/12 text-center overflow-x-hidden"
               >
                 نام‌کاربری
               </div>
               <div
                 name="th"
-                class="bg-whitetransparent-500 py-1 mx-1 rounded-md w-2/12 text-center overflow-x-hidden"
+                class="sm:bg-transparent py-1 mx-1 rounded-md w-2/12 text-center overflow-x-hidden"
               >
                 رمز‌عبور
               </div>
               <div
                 name="th"
-                class="bg-whitetransparent-500 py-1 mx-1 rounded-md w-1/12 text-center overflow-x-hidden"
+                class="sm:bg-transparent py-1 mx-1 rounded-md w-1/12 text-center overflow-x-hidden"
               >
                 وضعیت
               </div>
               <div
                 name="th"
-                class="bg-whitetransparent-500 py-1 mx-1 rounded-md w-2/12 text-center overflow-x-hidden"
+                class="sm:bg-transparent py-1 mx-1 rounded-md w-1/12 text-center overflow-x-hidden"
               >
                 تخفیف
               </div>
               <div
                 name="th"
-                class="bg-whitetransparent-500 py-1 mx-1 ml-2 rounded-md w-3/12 text-center overflow-x-hidden"
+                class="sm:bg-transparent py-1 mx-1 ml-2 rounded-md w-3/12 text-center overflow-x-hidden"
                 text-center
               >
                 اعمال
@@ -145,7 +145,7 @@
           <!-- table head -->
           <div
             name="thead"
-            class="sm:hidden flex flex-col w-5/12 sm:w-full sm:mb-2.5 bg-maincolor-800 py-2 rounded-xl"
+            class="sm:hidden flex flex-col w-5/12 sm:w-full sm:mb-2.5 bg-maincolor-200 py-2 rounded-xl"
           >
             <!-- table row -->
             <div
@@ -155,49 +155,49 @@
               <!-- table col  -->
               <div
                 name="th"
-                class="bg-whitetransparent-500 py-1 px-4 rounded-lg w-11/12 mb-2 overflow-x-hidden"
+                class="py-1 px-4 rounded-lg w-11/12 mb-2 overflow-x-hidden"
               >
                 ردیف
               </div>
               <div
                 name="th"
-                class="bg-whitetransparent-500 py-1 px-4 rounded-lg w-11/12 mb-2 overflow-x-hidden"
+                class="py-1 px-4 rounded-lg w-11/12 mb-2 overflow-x-hidden"
               >
                 نام‌و‌نام‌خانوادگی
               </div>
               <div
                 name="th"
-                class="bg-whitetransparent-500 py-1 px-4 rounded-lg w-11/12 mb-2 overflow-x-hidden"
+                class="py-1 px-4 rounded-lg w-11/12 mb-2 overflow-x-hidden"
               >
                 تلفن‌همراه
               </div>
               <div
                 name="th"
-                class="bg-whitetransparent-500 py-1 px-4 rounded-lg w-11/12 mb-2 overflow-x-hidden"
+                class="py-1 px-4 rounded-lg w-11/12 mb-2 overflow-x-hidden"
               >
                 نام‌کاربری
               </div>
               <div
                 name="th"
-                class="bg-whitetransparent-500 py-1 px-4 rounded-lg w-11/12 mb-2 overflow-x-hidden"
+                class="py-1 px-4 rounded-lg w-11/12 mb-2 overflow-x-hidden"
               >
                 رمز‌عبور
               </div>
               <div
                 name="th"
-                class="bg-whitetransparent-500 py-1 px-4 rounded-lg w-11/12 mb-2 overflow-x-hidden"
+                class="py-1 px-4 rounded-lg w-11/12 mb-2 overflow-x-hidden"
               >
                 وضعیت
               </div>
               <div
                 name="th"
-                class="bg-whitetransparent-500 py-1 px-4 rounded-lg w-11/12 mb-2 overflow-x-hidden"
+                class="py-1 px-4 rounded-lg w-11/12 mb-2 overflow-x-hidden"
               >
                 تخفیف
               </div>
               <div
                 name="th"
-                class="bg-whitetransparent-500 py-1 px-4 rounded-lg w-11/12 overflow-x-hidden"
+                class="py-1 px-4 rounded-lg w-11/12 overflow-x-hidden"
               >
                 اعمال
               </div>
@@ -210,7 +210,7 @@
           <!-- table body -->
           <div
             name="tbody"
-            class="flex flex-col w-6/12 sm:w-full sm:my-0.5 bg-whitetransparent-600 py-1.5 rounded-xl border-2 border-solid border-maincolor-400"
+            class="flex flex-col w-6/12 sm:w-full bg-white py-1.5 rounded-xl sm:rounded-none border-0 sm:border-t-2 border-solid border-gray-300"
           >
             <!-- table row -->
             <div
@@ -220,49 +220,50 @@
               <!-- table col -->
               <div
                 name="th"
-                class="py-1 mx-1 mb-2 mr-2 sm:mb-0 rounded-md w-11/12 sm:w-1/12 text-center overflow-x-hidden bg-maincolor-900 text-white"
+                class="py-1 mx-1 mb-2 mr-1 sm:mb-0 w-11/12 sm:w-1/12 text-center overflow-x-hidden sm:bg-transparent text-gray-600"
               >
                 {{ user.id }}
               </div>
               <div
                 name="th"
-                class="py-1 mx-1 mb-2 sm:mb-0 rounded-md w-11/12 sm:w-2/12 text-center overflow-x-hidden bg-maincolor-900 text-white"
+                class="py-1 mx-1 mb-2 sm:mb-0 border-t-2 sm:border-0 border-solid border-gray-300 w-11/12 sm:w-2/12 text-center overflow-x-hidden sm:bg-transparent text-gray-600"
               >
                 {{ user.fullName }}
               </div>
               <div
                 name="th"
-                class="py-1 mx-1 mb-2 sm:mb-0 rounded-md w-11/12 sm:w-2/12 text-center overflow-x-hidden bg-maincolor-900 text-white"
+                class="py-1 mx-1 mb-2 sm:mb-0 border-t-2 sm:border-0 border-solid border-gray-300 w-11/12 sm:w-2/12 text-center overflow-x-hidden sm:bg-transparent text-gray-600"
               >
                 {{ user.mobile_number }}
               </div>
               <div
                 name="th"
-                class="py-1 mx-1 mb-2 sm:mb-0 rounded-md w-11/12 sm:w-2/12 text-center overflow-x-hidden bg-maincolor-900 text-white"
+                class="py-1 mx-1 mb-2 sm:mb-0 border-t-2 sm:border-0 border-solid border-gray-300 w-11/12 sm:w-2/12 text-center overflow-x-hidden sm:bg-transparent text-gray-600"
               >
                 {{ user.username }}
               </div>
               <div
                 name="th"
-                class="py-1 mx-1 mb-2 sm:mb-0 rounded-md w-11/12 sm:w-2/12 text-center overflow-x-hidden bg-maincolor-900 text-white"
+                class="py-1 mx-1 mb-2 sm:mb-0 border-t-2 sm:border-0 border-solid border-gray-300 w-11/12 sm:w-2/12 text-center overflow-x-hidden sm:bg-transparent text-gray-600"
               >
                 {{ user.password }}
               </div>
               <div
                 name="th"
-                class="py-1 mx-1 mb-2 sm:mb-0 rounded-md w-11/12 sm:w-1/12 text-center overflow-x-hidden bg-maincolor-900 text-white"
+                class="py-1 mx-1 mb-2 sm:mb-0 border-t-2 sm:border-0 border-solid border-gray-300 w-11/12 sm:w-1/12 text-center overflow-x-hidden sm:bg-transparent text-gray-600"
               >
                 {{ user.invoice_id }}
               </div>
+
               <div
                 name="th"
-                class="py-1 mx-1 mb-2 sm:mb-0 rounded-md w-11/12 sm:w-2/12 text-center overflow-x-hidden bg-maincolor-900 text-white"
+                class="py-1 mx-1 mb-2 sm:mb-0 w-11/12 sm:w-1/12 sm:border-0 text-center overflow-x-hidden sm:bg-transparent text-gray-600 border-t-2 border-solid border-gray-300"
               >
                 {{ user.payment_result }}
               </div>
               <div
                 name="th"
-                class="py-1 mx-1 mb-0 sm:ml-2 sm:mb-0 rounded-md w-11/12 sm:w-3/12 text-center overflow-x-hidden bg-maincolor-900 text-white"
+                class="py-1 mx-1 mb-0 sm:ml-2 sm:mb-0 border-t-2 sm:border-0 border-solid border-gray-300 w-11/12 sm:w-3/12 text-center overflow-x-hidden sm:bg-transparent text-gray-600"
               >
                 1
               </div>
@@ -272,6 +273,13 @@
           </div>
           <!-- table body end-->
         </div>
+        <div
+          class="w-full h-12 bg-transparent sm:bg-white rounded-b-md flex flex-row justify-center items-center border-0 sm:border-y-2 border-solid border-gray-300"
+        >
+          <span @click="plus()">+</span>
+          <span class="w-6 h-6">{{ page }}</span>
+          <span @click="previous()">-</span>
+        </div>
         <!-- orginal table end -->
       </div>
     </div>
@@ -279,17 +287,32 @@
 </template>
 
 <script>
-import { computed } from "@vue/runtime-core";
+import { computed, ref, watchEffect } from "@vue/runtime-core";
 import { useStore } from "vuex";
 
 export default {
   setup() {
+    const page = ref(1);
     const store = useStore();
-    const users = computed(() => store.getters["getUser"]);
-    store.dispatch("getUser");
-    console.log(users);
+    watchEffect(() => {
+      if (page.value > store.state.usersLastPage) {
+        previous();
+      }
+      if (page.value < 1) {
+        plus();
+      }
+      store.dispatch("getUser", page.value);
+    });
 
-    return { users };
+    const users = computed(() => store.getters["getUser"]);
+
+    function plus() {
+      page.value++;
+    }
+    function previous() {
+      page.value--;
+    }
+    return { users, page, plus, previous };
   },
 };
 </script>
