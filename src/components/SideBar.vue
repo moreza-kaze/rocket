@@ -5,7 +5,7 @@
       { 'md:w-24 lg:w-56 hidden': !menu },
       { 'md:w-0 lg:w-0 flex': menu },
     ]"
-    class="h-screen bg-white overflow-hidden md:flex flex-col w-96 shadow-xl transition-width duration-500 md:hover:w-56 md:hover:transition-width md:hover:duration-700"
+    class="min-h-screen h-full bg-white overflow-hidden md:flex flex-col w-96 shadow-xl transition-width duration-500 md:hover:w-56 md:hover:transition-width md:hover:duration-700"
   >
     <div
       class="flex items-center pr-1 pt-3 md:pr-5 lg:pr-1 overflow-hidden h-20"

@@ -1,7 +1,7 @@
 <template>
   <div
     dir="rtl"
-    class="font-main block relative md:static md:flex bg-lightblue h-full w-screen overflow-hidden"
+    class="font-main block relative md:static md:flex bg-lightblue min-h-screen h-full w-full overflow-hidden"
   >
     <!-- start navbar & sidebar -->
     <div class="flex md:block">
@@ -72,7 +72,7 @@
         </span>
       </div>
       <!-- end navbar -->
-      <div class="h-calmain w-full">
+      <div class="h-full w-full">
         <router-view />
       </div>
     </div>
@@ -104,4 +104,26 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 20px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #436fb1a1;
+}
+</style>
