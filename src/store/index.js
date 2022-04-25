@@ -5,6 +5,7 @@ export default createStore({
   state: {
     menu: false,
     dashboard: {},
+    usersLastPage: 1,
     users: [],
     smsGateway: [],
   },
@@ -26,10 +27,13 @@ export default createStore({
     // open closed menu
     mutationMenu(state, val) {
       state.menu = val;
-      console.log(state.menu);
     },
     // user data //
+    getUserLastPage(state, val) {
+      state.usersLastPage = val;
+    },
     getUser(state, val) {
+      state.users = [];
       state.users = val;
     },
     // dashboard data //
@@ -46,10 +50,13 @@ export default createStore({
       commit("mutationMenu", val);
     },
     // get users //
-    async getUser({ commit }) {
-      const response = await axios.get(`${apiurl}/api/admin/customers`);
-      commit("getUser", response.data.data);
-      console.log(commit, response.data.data);
+    async getUser({ commit }, val) {
+      const response = await axios.get(
+        `${apiurl}/api/admin/customers?page=${val}`
+      );
+      // console.log(response.data.data.output.data);
+      commit("getUser", response.data.data.output.data);
+      commit("getUserLastPage", response.data.data.output.last_page);
     },
     // get dashboard data //
     async getDataDashboard({ commit }) {

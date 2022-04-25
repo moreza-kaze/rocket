@@ -1,5 +1,5 @@
 <template>
-  <div class="m-4 h-full">
+  <div class="m-4 sm:m-0 sm:px-6 sm:mt-4 min-h-full flex flex-col">
     <div class="w-full flex items-center justify-between h-20 sm:h-14">
       <div class="flex items-center justify-center text-xl">
         <span class="mt-2"
@@ -64,15 +64,15 @@
       </div>
     </div>
     <!-- start user table  -->
-    <div class="flex justify-center items-center mt-5">
+    <div class="flex justify-center items-center mt-1 p-1">
       <!-- make table with div -->
       <div name="table" class="flex flex-col w-full h-full">
         <!-- main of table -->
-        <div name="tmain1" class="flex flex-row sm:flex-col">
+        <div name="tmain1" class="flex flex-row sm:flex-col shadow-xl">
           <!-- table head on sm(640PX)  -->
           <div
             name="thead"
-            class="sm:flex flex-col w-1/2 hidden sm:w-full sm:my-2 bg-coupongreen-999 py-2 rounded-xl"
+            class="sm:flex flex-col w-1/2 hidden sm:w-full rounded-lg font-semibold sm:rounded-none sm:rounded-t-lg bg-green-500 opacity-60 py-2 border-solid border-gray-300"
           >
             <!-- table row -->
             <div
@@ -82,37 +82,37 @@
               <!-- table col  -->
               <div
                 name="th"
-                class="bg-whitetransparent-500 py-1 mx-1 mr-2 rounded-md w-1/12 text-center overflow-x-hidden"
+                class="sm:bg-transparent py-1 mx-1 mr-2 rounded-md w-1/12 text-center overflow-x-hidden"
               >
                 ردیف
               </div>
               <div
                 name="th"
-                class="bg-whitetransparent-500 py-1 mx-1 rounded-md w-2/12 text-center overflow-x-hidden"
+                class="sm:bg-transparent py-1 mx-1 rounded-md w-2/12 text-center overflow-x-hidden"
               >
                 کد تخفیف
               </div>
               <div
                 name="th"
-                class="bg-whitetransparent-500 py-1 mx-1 rounded-md w-2/12 text-center overflow-x-hidden"
+                class="sm:bg-transparent py-1 mx-1 rounded-md w-2/12 text-center overflow-x-hidden"
               >
                 تعداد اختصاص یافته
               </div>
               <div
                 name="th"
-                class="bg-whitetransparent-500 py-1 mx-1 rounded-md w-2/12 text-center overflow-x-hidden"
+                class="sm:bg-transparent py-1 mx-1 rounded-md w-2/12 text-center overflow-x-hidden"
               >
                 قابل استفاده
               </div>
               <div
                 name="th"
-                class="bg-whitetransparent-500 py-1 mx-1 rounded-md w-2/12 text-center overflow-x-hidden"
+                class="sm:bg-transparent py-1 mx-1 rounded-md w-2/12 text-center overflow-x-hidden"
               >
                 مقدار تخفیف
               </div>
               <div
                 name="th"
-                class="bg-whitetransparent-500 py-1 mx-1 ml-2 rounded-md w-3/12 text-center overflow-x-hidden"
+                class="sm:bg-transparent py-1 mx-1 ml-2 rounded-md w-3/12 text-center overflow-x-hidden"
                 text-center
               >
                 عملیات
@@ -123,12 +123,16 @@
           </div>
           <!-- table head on sm(640PX) ens  -->
         </div>
-        <!-- orginal table -->
-        <div name="tmain2" class="flex flex-row sm:flex-col justify-around">
+        <!-- orginal table    v-for="(user, index) in users"
+          :key="index"  -->
+        <div
+          name="tmain2"
+          class="flex flex-row sm:flex-col justify-around my-2 sm:my-0"
+        >
           <!-- table head -->
           <div
             name="thead"
-            class="sm:hidden flex flex-col w-5/12 sm:w-full sm:my-2 bg-coupongreen-999 py-2 rounded-xl"
+            class="sm:hidden flex flex-col w-5/12 sm:w-full sm:mb-2.5 bg-green-300 py-2 rounded-xl"
           >
             <!-- table row -->
             <div
@@ -138,37 +142,37 @@
               <!-- table col  -->
               <div
                 name="th"
-                class="bg-whitetransparent-500 py-1 px-3 rounded-lg w-11/12 mb-2 overflow-x-hidden"
+                class="py-1 px-4 rounded-lg w-11/12 mb-2 overflow-x-hidden"
               >
                 ردیف
               </div>
               <div
                 name="th"
-                class="bg-whitetransparent-500 py-1 px-3 rounded-lg w-11/12 mb-2 overflow-x-hidden"
+                class="py-1 px-4 rounded-lg w-11/12 mb-2 overflow-x-hidden"
               >
                 کد تخفیف
               </div>
               <div
                 name="th"
-                class="bg-whitetransparent-500 py-1 px-3 rounded-lg w-11/12 mb-2 overflow-x-hidden"
+                class="py-1 px-4 rounded-lg w-11/12 mb-2 overflow-x-hidden"
               >
-                تعداد‌اختصاص‌یافته
+                تعداد اختصاص یافته
               </div>
               <div
                 name="th"
-                class="bg-whitetransparent-500 py-1 px-3 rounded-lg w-11/12 mb-2 overflow-x-hidden"
+                class="py-1 px-4 rounded-lg w-11/12 mb-2 overflow-x-hidden"
               >
                 قابل استفاده
               </div>
               <div
                 name="th"
-                class="bg-whitetransparent-500 py-1 px-3 rounded-lg w-11/12 mb-2 overflow-x-hidden"
+                class="py-1 px-4 rounded-lg w-11/12 mb-2 overflow-x-hidden"
               >
                 مقدار تخفیف
               </div>
               <div
                 name="th"
-                class="bg-whitetransparent-500 py-1 px-3 rounded-lg w-11/12 overflow-x-hidden"
+                class="py-1 px-4 rounded-lg w-11/12 overflow-x-hidden"
               >
                 عملیات
               </div>
@@ -181,7 +185,7 @@
           <!-- table body -->
           <div
             name="tbody"
-            class="flex flex-col w-6/12 sm:w-full sm:my-2 bg-whitetransparent-600 py-2 rounded-xl"
+            class="flex flex-col w-6/12 sm:w-full bg-white py-1.5 rounded-xl sm:rounded-none border-0 sm:border-t-2 border-solid border-gray-300"
           >
             <!-- table row -->
             <div
@@ -191,37 +195,37 @@
               <!-- table col -->
               <div
                 name="th"
-                class="py-1 mx-1 mb-2 mr-2 sm:mb-0 rounded-md w-11/12 sm:w-1/12 text-center overflow-x-hidden bg-coupongreen-999 text-white"
+                class="py-1 mx-1 mb-2 mr-1 sm:mb-0 w-11/12 sm:w-1/12 text-center overflow-x-hidden sm:bg-transparent text-gray-600"
               >
                 1
               </div>
               <div
                 name="th"
-                class="py-1 mx-1 mb-2 sm:mb-0 rounded-md w-11/12 sm:w-2/12 text-center overflow-x-hidden bg-coupongreen-999 text-white"
+                class="py-1 mx-1 mb-2 sm:mb-0 border-t-2 sm:border-0 border-solid border-gray-300 w-11/12 sm:w-2/12 text-center overflow-x-hidden sm:bg-transparent text-gray-600"
               >
                 1
               </div>
               <div
                 name="th"
-                class="py-1 mx-1 mb-2 sm:mb-0 rounded-md w-11/12 sm:w-2/12 text-center overflow-x-hidden bg-coupongreen-999 text-white"
+                class="py-1 mx-1 mb-2 sm:mb-0 border-t-2 sm:border-0 border-solid border-gray-300 w-11/12 sm:w-2/12 text-center overflow-x-hidden sm:bg-transparent text-gray-600"
               >
                 1
               </div>
               <div
                 name="th"
-                class="py-1 mx-1 mb-2 sm:mb-0 rounded-md w-11/12 sm:w-2/12 text-center overflow-x-hidden bg-coupongreen-999 text-white"
+                class="py-1 mx-1 mb-2 sm:mb-0 border-t-2 sm:border-0 border-solid border-gray-300 w-11/12 sm:w-2/12 text-center overflow-x-hidden sm:bg-transparent text-gray-600"
               >
                 1
               </div>
               <div
                 name="th"
-                class="py-1 mx-1 mb-2 sm:mb-0 rounded-md w-11/12 sm:w-2/12 text-center overflow-x-hidden bg-coupongreen-999 text-white"
+                class="py-1 mx-1 mb-2 sm:mb-0 border-t-2 sm:border-0 border-solid border-gray-300 w-11/12 sm:w-2/12 text-center overflow-x-hidden sm:bg-transparent text-gray-600"
               >
                 1
               </div>
               <div
                 name="th"
-                class="py-1 mx-1 mb-0 sm:ml-2 sm:mb-0 rounded-md w-11/12 sm:w-3/12 text-center overflow-x-hidden bg-coupongreen-999 text-white"
+                class="py-1 mx-1 mb-0 sm:ml-2 sm:mb-0 border-t-2 sm:border-0 border-solid border-gray-300 w-11/12 sm:w-3/12 text-center overflow-x-hidden sm:bg-transparent text-gray-600"
               >
                 1
               </div>
@@ -230,6 +234,13 @@
             <!-- table row end -->
           </div>
           <!-- table body end-->
+        </div>
+        <div
+          class="w-full h-12 bg-transparent sm:bg-white rounded-b-md flex flex-row justify-center items-center border-0 sm:border-y-2 border-solid border-gray-300"
+        >
+          <!-- <span @click="plus()">+</span>
+          <span class="w-6 h-6">{{ page }}</span>
+          <span @click="previous()">-</span> -->
         </div>
         <!-- orginal table end -->
       </div>
