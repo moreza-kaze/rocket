@@ -25,34 +25,49 @@
     >
       <div class="w-full h-full bg-whitetransparent-500 rounded-2xl">
         <form
+          @submit.prevent="createcouponfunc()"
           class="w-full h-full flex flex-col md:flex-row justify-around items-center mt-0 p-10"
         >
           <div
             class="h-full w-full md:w-5/6 flex flex-col justify-around items-center md:items-start"
           >
             <input
+              v-model="createcoupon.coupon_name"
               class="bg-coupongreen-300 w-11/12 h-10 md:h-11 2xl:3/12 pr-3 md:pr-5 placeholder:text-gray-400 border border-white rounded-xl mt-3 md:mt-0 p-2 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
-              placeholder="کد تخفیف"
+              placeholder="کد تخفیف (لاتین)"
               type="text"
             />
+            <select
+              required
+              v-model="createcoupon.active"
+              class="appearance-none bg-coupongreen-300 h-10 md:h-11 2xl:h-3/12 w-11/12 pr-3 md:pr-5 placeholder:text-gray-400 border border-white rounded-xl mt-3 md:mt-0 p-2 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+            >
+              <option disabled selected value="">فعال یا غیر فعال</option>
+              <option value="1">فعال</option>
+              <option value="0">غیر فعال</option>
+            </select>
+            <select
+              v-model="createcoupon.discount_type"
+              required
+              class="appearance-none bg-coupongreen-300 h-10 md:h-11 2xl:h-3/12 w-11/12 pr-3 md:pr-5 placeholder:text-gray-400 border border-white rounded-xl mt-3 md:mt-0 p-2 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+            >
+              <option disabled selected value="">
+                واحد ارزیابی (تومان یا درصد)
+              </option>
+              <option value="percent">درصد</option>
+              <option value="toman">تومان</option>
+            </select>
             <input
+              v-model="createcoupon.discount_value"
               class="bg-coupongreen-300 w-11/12 h-10 md:h-11 2xl:3/12 pr-3 md:pr-5 placeholder:text-gray-400 border border-white rounded-xl mt-3 md:mt-0 p-2 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
               placeholder="مقدار تخفیف"
               type="text"
             />
+
             <input
-              class="appearance-none bg-coupongreen-300 h-10 md:h-11 2xl:h-3/12 w-11/12 pr-3 md:pr-5 placeholder:text-gray-400 border border-white rounded-xl mt-3 md:mt-0 p-2 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
-              placeholder="واحد ارزیابی"
-              type="text"
-            />
-            <input
+              v-model="createcoupon.total_amount"
               class="bg-coupongreen-300 w-11/12 h-10 md:h-11 2xl:h-3/12 pr-3 md:pr-5 placeholder:text-gray-400 border border-white rounded-xl mt-3 md:mt-0 p-2 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
               placeholder="تعداد اخصاص یافته"
-              type="text"
-            />
-            <input
-              class="bg-coupongreen-300 w-11/12 h-10 md:h-11 2xl:h-3/12 pr-3 md:pr-5 placeholder:text-gray-400 border border-white rounded-xl p-2 mt-3 md:mt-0 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
-              placeholder="قابل استفاده"
               type="text"
             />
           </div>
@@ -74,10 +89,17 @@
                   d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"
                 /></svg
             ></span>
-            <span class="text-coupongreen-700 text-xl md:text-4xl">sina20</span>
-            <span class="text-coupongreen-700 text-lg md:text-2xl">20%</span>
+            <span class="text-coupongreen-700 text-xl md:text-4xl">{{
+              createcoupon.coupon_name
+            }}</span>
+            <span class="text-coupongreen-700 text-lg md:text-2xl">{{
+              createcoupon.active == "1" ? "فعال" : "غیر فعال"
+            }}</span>
             <span class="text-coupongreen-700 text-base md:text-xl"
-              >65.467</span
+              >{{ createcoupon.discount_value
+              }}{{
+                createcoupon.discount_type == "toman" ? "Toman" : "%"
+              }}</span
             >
 
             <button
@@ -93,7 +115,63 @@
 </template>
 
 <script>
-export default {};
+import { reactive } from "@vue/reactivity";
+import { useStore } from "vuex";
+export default {
+  setup() {
+    const store = useStore();
+    const createcoupon = reactive({
+      coupon_name: "",
+      active: "",
+      total_amount: "",
+      discount_type: "",
+      discount_value: "",
+    });
+    const createcouponfunc = () => {
+      if (createcoupon.discount_type == "percent") {
+        if (
+          createcoupon.coupon_name.length > 3 &&
+          0 < Number(createcoupon.total_amount) &&
+          createcoupon.active != "" &&
+          0 < Number(createcoupon.discount_value) &&
+          Number(createcoupon.discount_value) < 101
+        ) {
+          store.dispatch("createcoupon", createcoupon);
+        } else {
+          console.log("error");
+        }
+      }
+      if (createcoupon.discount_type == "toman") {
+        if (
+          createcoupon.coupon_name.length > 3 &&
+          Number(createcoupon.total_amount) > 0 &&
+          createcoupon.active != "0" &&
+          Number(createcoupon.discount_value) > 0
+        ) {
+          store.dispatch("createcoupon", createcoupon);
+        } else {
+          console.log("error");
+        }
+      }
+    };
+
+    return {
+      createcoupon,
+      store,
+      createcouponfunc,
+    };
+  },
+};
 </script>
 
-<style></style>
+<style>
+select:required:invalid {
+  color: #a7adb0;
+}
+option[value=""][disabled] {
+  display: none;
+}
+option {
+  color: #000;
+}
+</style>

@@ -72,7 +72,7 @@
           <!-- table head on sm(640PX)  -->
           <div
             name="thead"
-            class="sm:flex flex-col w-1/2 hidden sm:w-full rounded-lg font-semibold sm:rounded-none sm:rounded-t-lg bg-green-500 opacity-60 py-2 border-solid border-gray-300"
+            class="sm:flex flex-col w-1/2 hidden sm:w-full rounded-lg font-semibold sm:rounded-none sm:rounded-t-lg bg-coupongreen-100 py-2 border-solid border-gray-300"
           >
             <!-- table row -->
             <div
@@ -123,16 +123,17 @@
           </div>
           <!-- table head on sm(640PX) ens  -->
         </div>
-        <!-- orginal table    v-for="(user, index) in users"
-          :key="index"  -->
+        <!-- orginal table      -->
         <div
+          v-for="(coupon, index) in coupons"
+          :key="index"
           name="tmain2"
           class="flex flex-row sm:flex-col justify-around my-2 sm:my-0"
         >
           <!-- table head -->
           <div
             name="thead"
-            class="sm:hidden flex flex-col w-5/12 sm:w-full sm:mb-2.5 bg-green-300 py-2 rounded-xl"
+            class="sm:hidden flex flex-col w-5/12 sm:w-full sm:mb-2.5 bg-coupongreen-100 py-2 rounded-xl"
           >
             <!-- table row -->
             <div
@@ -197,31 +198,31 @@
                 name="th"
                 class="py-1 mx-1 mb-2 mr-1 sm:mb-0 w-11/12 sm:w-1/12 text-center overflow-x-hidden sm:bg-transparent text-gray-600"
               >
-                1
+                {{ coupon.id }}
               </div>
               <div
                 name="th"
                 class="py-1 mx-1 mb-2 sm:mb-0 border-t-2 sm:border-0 border-solid border-gray-300 w-11/12 sm:w-2/12 text-center overflow-x-hidden sm:bg-transparent text-gray-600"
               >
-                1
+                {{ coupon.coupon_name }}
               </div>
               <div
                 name="th"
                 class="py-1 mx-1 mb-2 sm:mb-0 border-t-2 sm:border-0 border-solid border-gray-300 w-11/12 sm:w-2/12 text-center overflow-x-hidden sm:bg-transparent text-gray-600"
               >
-                1
+                {{ coupon.active }}
               </div>
               <div
                 name="th"
                 class="py-1 mx-1 mb-2 sm:mb-0 border-t-2 sm:border-0 border-solid border-gray-300 w-11/12 sm:w-2/12 text-center overflow-x-hidden sm:bg-transparent text-gray-600"
               >
-                1
+                {{ coupon.total_amount }}
               </div>
               <div
                 name="th"
                 class="py-1 mx-1 mb-2 sm:mb-0 border-t-2 sm:border-0 border-solid border-gray-300 w-11/12 sm:w-2/12 text-center overflow-x-hidden sm:bg-transparent text-gray-600"
               >
-                1
+                {{ coupon.discount_value }}
               </div>
               <div
                 name="th"
@@ -238,9 +239,9 @@
         <div
           class="w-full h-12 bg-transparent sm:bg-white rounded-b-md flex flex-row justify-center items-center border-0 sm:border-y-2 border-solid border-gray-300"
         >
-          <!-- <span @click="plus()">+</span>
+          <span @click="plus()">+</span>
           <span class="w-6 h-6">{{ page }}</span>
-          <span @click="previous()">-</span> -->
+          <span @click="previous()">-</span>
         </div>
         <!-- orginal table end -->
       </div>
@@ -249,7 +250,34 @@
 </template>
 
 <script>
-export default {};
+import { ref } from "@vue/reactivity";
+import { useStore } from "vuex";
+import { computed, watchEffect } from "@vue/runtime-core";
+export default {
+  setup() {
+    const page = ref(1);
+    const store = useStore();
+    watchEffect(() => {
+      if (page.value > store.state.couponsLastPage) {
+        previous();
+      }
+      if (page.value < 1) {
+        plus();
+      }
+      store.dispatch("getDataCoupon", page.value);
+    });
+
+    const coupons = computed(() => store.getters["getDataCoupon"]);
+
+    function plus() {
+      page.value++;
+    }
+    function previous() {
+      page.value--;
+    }
+    return { coupons, page, plus, previous };
+  },
+};
 </script>
 
 <style></style>

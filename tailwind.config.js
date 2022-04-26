@@ -40,6 +40,7 @@ module.exports = {
         },
         lightblue: "#c9d6ff80",
         coupongreen: {
+          100: "#1ebe6c33",
           999: "#24be64",
           300: "#24be644d",
           700: "#24be64b3",
