@@ -32,12 +32,12 @@
           >
             <input
               class="bg-maincolor-200 w-11/12 h-10 md:h-11 2xl:3/12 pr-3 md:pr-5 placeholder:text-gray-400 border border-white rounded-xl mt-3 md:mt-0 p-2 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
-              placeholder="نام"
+              placeholder="نام‌ و ‌نام‌ خانوادگی"
               type="text"
             />
             <input
               class="bg-maincolor-200 w-11/12 h-10 md:h-11 2xl:3/12 pr-3 md:pr-5 placeholder:text-gray-400 border border-white rounded-xl mt-3 md:mt-0 p-2 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
-              placeholder="نام‌ و ‌نام‌ خانوادگی"
+              placeholder="کد ملی"
               type="text"
             />
             <input
@@ -47,12 +47,12 @@
             />
             <input
               class="bg-maincolor-200 w-11/12 h-10 md:h-11 2xl:h-3/12 pr-3 md:pr-5 placeholder:text-gray-400 border border-white rounded-xl p-2 mt-3 md:mt-0 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
-              placeholder="نام کاربری"
+              placeholder="کد محصول"
               type="text"
             />
             <input
               class="appearance-none bg-maincolor-200 h-10 md:h-11 2xl:h-3/12 w-11/12 pr-3 md:pr-5 placeholder:text-gray-400 border border-white rounded-xl mt-3 md:mt-0 p-2 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
-              placeholder="کد محصول"
+              placeholder="کد تخفیف"
               type="text"
             />
           </div>
@@ -80,10 +80,8 @@
             <span class="text-maincolor-999 text-lg md:text-2xl"
               >09102006815</span
             >
-            <span class="text-maincolor-999 text-base md:text-xl"
-              >username</span
-            >
-            <span class="text-maincolor-999 text-sm md:text-lg">پایه</span>
+            <span class="text-maincolor-999 text-base md:text-xl">پایه</span>
+            <span class="text-maincolor-999 text-sm md:text-lg">کد تخفیف</span>
             <button
               class="bg-gradient-to-r from-green-500 to-emerald-400 hover:from-emerald-600 hover:to-green-600 h-10 text-white rounded-xl w-9/12"
             >

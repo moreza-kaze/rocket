@@ -301,10 +301,10 @@ export default {
       if (page.value < 1) {
         plus();
       }
-      store.dispatch("getUser", page.value);
+      store.dispatch("getDataUser", page.value);
     });
 
-    const users = computed(() => store.getters["getUser"]);
+    const users = computed(() => store.getters["getDataUser"]);
 
     function plus() {
       page.value++;
