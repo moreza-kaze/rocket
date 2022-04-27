@@ -131,7 +131,7 @@
       </div>
     </div>
     <div
-      class="h-96 md:h-3/6 w-p97 mt-5 bg-whitetransparent-500 rounded-2xl flex flex-col md:flex-row"
+      class="h-full md:h-3/6 w-p97 mt-5 bg-whitetransparent-500 rounded-2xl flex flex-col md:flex-row"
     >
       <div
         class="h-full w-full md:h-full md:w-1/2 flex flex-col p-5 md:px-10 justify-center items-center"
@@ -144,7 +144,7 @@
         </div>
       </div>
       <div
-        class="h-3/6 w-full md:h-full md:w-1/2 hidden md:flex flex-col justify-center items-center p-5 lg:p-0"
+        class="h-3/6 w-full md:h-full md:w-1/2 md:flex flex-col justify-center items-center p-5 lg:p-0"
       >
         <div
           class="w-full h-48 md:h-full xl:h-4/6 xl:w-4/6 shadow-2xl bg-gradient-to-r from-dashboard-g4 to-dashboard-g3 border-2 border-gray-300 rounded-3xl flex flex-col justify-around"
