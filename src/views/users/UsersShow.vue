@@ -24,12 +24,14 @@
       <div class="flex flew-row justify-center items-center">
         <span
           ><form
-            @submit.prevent=""
+            @submit.prevent="searchfunc()"
             class="relative ml-1 md:ml-2 flex items-center"
           >
-            <input type="text" class="h-9 w-56 rounded-2xl px-2" /><button
-              class="absolute left-0 top-0 mt-1 ml-1"
-            >
+            <input
+              v-model="searchInput"
+              type="text"
+              class="h-9 w-56 rounded-2xl px-2"
+            /><button class="absolute left-0 top-0 mt-1 ml-1">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 class="h-7 w-7"
@@ -263,9 +265,56 @@
               </div>
               <div
                 name="th"
-                class="py-1 mx-1 mb-0 sm:ml-2 sm:mb-0 border-t-2 sm:border-0 border-solid border-gray-300 w-11/12 sm:w-3/12 text-center overflow-x-hidden sm:bg-transparent text-gray-600"
+                class="py-1 mx-1 mb-0 sm:ml-2 sm:mb-0 border-t-2 sm:border-0 border-solid border-gray-300 w-11/12 sm:w-3/12 text-center overflow-x-hidden sm:bg-transparent text-gray-600 flex flex-row justify-evenly"
               >
-                1
+                <button>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                </button>
+                <button>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                </button>
+                <button>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                </button>
               </div>
               <!-- table col end -->
             </div>
@@ -274,6 +323,7 @@
           <!-- table body end-->
         </div>
         <div
+          :class="{ hidden: !pagination }"
           class="w-full h-12 bg-transparent sm:bg-white rounded-b-md flex flex-row justify-center items-center border-0 sm:border-y-2 border-solid border-gray-300"
         >
           <span @click="plus()">+</span>
@@ -292,6 +342,8 @@ import { useStore } from "vuex";
 
 export default {
   setup() {
+    const pagination = ref(true);
+    const searchInput = ref("");
     const page = ref(1);
     const store = useStore();
     watchEffect(() => {
@@ -302,6 +354,12 @@ export default {
         plus();
       }
       store.dispatch("getDataUser", page.value);
+      if (searchInput.value.length < 7) {
+        pagination.value = true;
+      }
+      if (searchInput.value.length > 7) {
+        pagination.value = false;
+      }
     });
 
     const users = computed(() => store.getters["getDataUser"]);
@@ -312,7 +370,15 @@ export default {
     function previous() {
       page.value--;
     }
-    return { users, page, plus, previous };
+    const searchfunc = () => {
+      if (searchInput.value == "") {
+        store.dispatch("getDataUser", page.value);
+      }
+      if (searchInput.value.length > 0) {
+        store.dispatch("searchUser", searchInput.value);
+      }
+    };
+    return { users, page, plus, previous, searchInput, searchfunc, pagination };
   },
 };
 </script>

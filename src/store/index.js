@@ -1,5 +1,7 @@
 import { createStore } from "vuex";
 import axios from "axios";
+import apicheck from "../store/apicheck.js";
+
 const apiurl = "http://192.168.86.35:8000";
 export default createStore({
   state: {
@@ -51,8 +53,10 @@ export default createStore({
     },
     getDataCoupon(state, val) {
       state.coupons = [];
-      state.coupons = val.data;
-      state.couponsLastPage = val.last_page;
+      state.coupons = val;
+    },
+    getCouponLastPage(state, val) {
+      state.couponsLastPage = val;
     },
   },
   actions: {
@@ -81,10 +85,11 @@ export default createStore({
       const response = await axios.get(
         `${apiurl}/api/admin/coupons?page=${val}`
       );
-      commit("getDataCoupon", response.data.data.output);
+      commit("getDataCoupon", response.data.data.output.data);
+      commit("getCouponLastPage", response.data.data.output.last_page);
     },
+    // create coupon
     async createcoupon({ commit }, val) {
-      console.log(val);
       const response = await axios.post(`${apiurl}/api/admin/coupons`, {
         coupon_name: val.coupon_name,
         active: Number(val.active),
@@ -92,11 +97,37 @@ export default createStore({
         discount_type: val.discount_type,
         discount_value: Number(val.discount_value),
       });
-      if (response.data.status != 4) {
-        console.log(response.data.data.message);
-      } else {
-        console.log(response.data.data.message);
-      }
+      apicheck(response.data);
+      return { commit };
+    },
+    // search users
+    async searchUser({ commit }, val) {
+      const response = await axios.post(
+        `${apiurl}/api/admin/customers/search`,
+        {
+          mobile_number: val,
+        }
+      );
+      console.log(response.data.data);
+      commit("getDataUser", response.data.data.output);
+    },
+    // search coupon
+    async searchCoupon({ commit }, val) {
+      const response = await axios.post(`${apiurl}/api/admin/coupons/search`, {
+        coupon_name: val,
+      });
+      commit("getDataCoupon", response.data.data.output);
+    },
+    // userCreate
+    async userCreate({ commit }, val) {
+      const response = await axios.post(`${apiurl}/api/admin/customers`, {
+        fullName: val.fullName,
+        nationalCode: val.nationalCode,
+        mobile_number: val.mobile_number,
+        coupon_name: val.coupon_name,
+        product_id: val.product_id,
+      });
+      apicheck(response.data);
       return { commit };
     },
     // get sms gateway setting

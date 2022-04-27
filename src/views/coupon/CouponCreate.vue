@@ -117,6 +117,7 @@
 <script>
 import { reactive } from "@vue/reactivity";
 import { useStore } from "vuex";
+import Swal from "sweetalert2";
 export default {
   setup() {
     const store = useStore();
@@ -137,8 +138,17 @@ export default {
           Number(createcoupon.discount_value) < 101
         ) {
           store.dispatch("createcoupon", createcoupon);
+          createcoupon.coupon_name = "";
+          createcoupon.active = "";
+          createcoupon.total_amount = "";
+          createcoupon.discount_type = "";
+          createcoupon.discount_value = "";
         } else {
-          console.log("error");
+          Swal.fire({
+            icon: "error",
+            title: "...خطا",
+            text: "مقادیر وارد شده صحیح نمی باشد",
+          });
         }
       }
       if (createcoupon.discount_type == "toman") {
@@ -149,8 +159,17 @@ export default {
           Number(createcoupon.discount_value) > 0
         ) {
           store.dispatch("createcoupon", createcoupon);
+          createcoupon.coupon_name = "";
+          createcoupon.active = "";
+          createcoupon.total_amount = "";
+          createcoupon.discount_type = "";
+          createcoupon.discount_value = "";
         } else {
-          console.log("error");
+          Swal.fire({
+            icon: "error",
+            title: "...خطا",
+            text: "مقادیر وارد شده صحیح نمی باشد",
+          });
         }
       }
     };

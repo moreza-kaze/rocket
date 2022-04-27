@@ -24,12 +24,14 @@
       <div class="flex flew-row justify-center items-center">
         <span
           ><form
-            @submit.prevent=""
+            @submit.prevent="searchfunc()"
             class="relative ml-1 md:ml-2 flex items-center"
           >
-            <input type="text" class="h-9 w-56 rounded-2xl" /><button
-              class="absolute left-0 top-0 mt-1 ml-1"
-            >
+            <input
+              v-model="searchInput"
+              type="text"
+              class="h-9 w-56 rounded-2xl pr-2"
+            /><button class="absolute left-0 top-0 mt-1 ml-1">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 class="h-7 w-7"
@@ -237,11 +239,12 @@
           <!-- table body end-->
         </div>
         <div
+          :class="{ hidden: !pagination }"
           class="w-full h-12 bg-transparent sm:bg-white rounded-b-md flex flex-row justify-center items-center border-0 sm:border-y-2 border-solid border-gray-300"
         >
-          <span @click="plus()">+</span>
-          <span class="w-6 h-6">{{ page }}</span>
-          <span @click="previous()">-</span>
+          <span class="cursor-pointer" @click="plus()">+</span>
+          <span class="w-6 h-6 text-center">{{ page }}</span>
+          <span class="cursor-pointer" @click="previous()">-</span>
         </div>
         <!-- orginal table end -->
       </div>
@@ -255,6 +258,9 @@ import { useStore } from "vuex";
 import { computed, watchEffect } from "@vue/runtime-core";
 export default {
   setup() {
+    const pagination = ref(true);
+
+    const searchInput = ref("");
     const page = ref(1);
     const store = useStore();
     watchEffect(() => {
@@ -264,10 +270,25 @@ export default {
       if (page.value < 1) {
         plus();
       }
+      if (searchInput.value.length < 1) {
+        pagination.value = true;
+      }
+      if (searchInput.value.length > 1) {
+        pagination.value = false;
+      }
       store.dispatch("getDataCoupon", page.value);
     });
 
     const coupons = computed(() => store.getters["getDataCoupon"]);
+
+    const searchfunc = () => {
+      if (searchInput.value == "") {
+        store.dispatch("getDataCoupon", page.value);
+      }
+      if (searchInput.value.length > 0) {
+        store.dispatch("searchCoupon", searchInput.value);
+      }
+    };
 
     function plus() {
       page.value++;
@@ -275,7 +296,15 @@ export default {
     function previous() {
       page.value--;
     }
-    return { coupons, page, plus, previous };
+    return {
+      coupons,
+      page,
+      plus,
+      previous,
+      searchfunc,
+      pagination,
+      searchInput,
+    };
   },
 };
 </script>
