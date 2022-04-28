@@ -12,6 +12,7 @@ export default createStore({
     users: [],
     smsGateway: [],
     coupons: [],
+    showUserInfo: {},
   },
   getters: {
     getMenu(state) {
@@ -57,6 +58,10 @@ export default createStore({
     },
     getCouponLastPage(state, val) {
       state.couponsLastPage = val;
+    },
+    showUserInfo(state, val) {
+      state.showUserInfo = {};
+      state.showUserInfo = val;
     },
   },
   actions: {
@@ -125,15 +130,62 @@ export default createStore({
         nationalCode: val.nationalCode,
         mobile_number: val.mobile_number,
         coupon_name: val.coupon_name,
-        product_id: val.product_id,
+        product_id: Number(val.product_id),
       });
+      apicheck(response.data);
+      return { commit };
+    },
+    // setCoupon
+    async setCoupon({ commit }, coupon, userid) {
+      const response = await axios.patch(
+        `${apiurl}/api/admin/invoices/${userid}`,
+        {
+          coupon_name: coupon,
+        }
+      );
+      console.log(response.data.status);
+      apicheck(response.data);
+      return { commit };
+    },
+    // deleteCoupon
+    async deleteUser({ commit }, userid) {
+      const response = await axios.delete(
+        `${apiurl}/api/admin/customers/${userid}`
+      );
+      apicheck(response.data);
+      return { commit };
+    },
+    //showUserInfo
+    async showUserInfo({ commit }, userInvoice_id) {
+      const response = await axios.get(
+        `${apiurl}/api/admin/invoices/${userInvoice_id}`
+      );
+      commit("showUserInfo", response.data.data.output);
+    },
+    // actionCoupon
+    async actionCoupon({ commit }, val) {
+      const response = await axios.put(
+        `${apiurl}/api/admin/coupons/${Number(val[0])}`,
+        {
+          active: Number(val[1]),
+        }
+      );
       apicheck(response.data);
       return { commit };
     },
     // get sms gateway setting
     async getsmsGatewaySetting({ commit }) {
       const response = await axios.get(`${apiurl}/api/admin/smsgatewaysetting`);
-      commit("getsmsGatewaySetting", response.data);
+      commit("getsmsGatewaySetting", response.data.data.output[0]);
+    },
+    // saveSmsDataChange
+    async saveSmsDataChange({ commit }, val) {
+      const response = await axios.post(
+        `${apiurl}/api/admin/smsgatewaysetting/insertorupdate`,
+        val
+      );
+      apicheck(response.data);
+      return { commit };
     },
   },
   modules: {},

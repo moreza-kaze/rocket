@@ -73,13 +73,14 @@ const returns = (entry) => {
     Swal.fire({
       icon: "error",
       title: "...خطا",
-      text: entry.error.join(" و "),
+      text: entry.error.join(" و  "),
     });
-  } else {
+  }
+  if (entry.status == undefined) {
     Swal.fire({
       icon: "error",
       title: "...خطا",
-      text: "اتصالی به سرور با اختلال مواجه است",
+      text: "اتصال به سرور با اختلال مواجه است",
     });
   }
 };
