@@ -254,20 +254,20 @@
                 name="th"
                 class="py-1 mx-1 mb-2 sm:mb-0 border-t-2 sm:border-0 border-solid border-gray-300 w-11/12 sm:w-1/12 text-center overflow-x-hidden sm:bg-transparent text-gray-600"
               >
-                {{ user.invoice_id }}
+                {{ user.payment_result }}
               </div>
 
               <div
                 name="th"
                 class="py-1 mx-1 mb-2 sm:mb-0 w-11/12 sm:w-1/12 sm:border-0 text-center overflow-x-hidden sm:bg-transparent text-gray-600 border-t-2 border-solid border-gray-300"
               >
-                {{ user.payment_result }}
+                {{ user.coupon_id ? "دارد" : "ندارد" }}
               </div>
               <div
                 name="th"
                 class="py-1 mx-1 mb-0 sm:ml-2 sm:mb-0 border-t-2 sm:border-0 border-solid border-gray-300 w-11/12 sm:w-3/12 text-center overflow-x-hidden sm:bg-transparent text-gray-600 flex flex-row justify-evenly"
               >
-                <button>
+                <button @click="showUserInfo(user.invoice_id, index)">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     class="h-6 w-6"
@@ -283,7 +283,7 @@
                     />
                   </svg>
                 </button>
-                <button>
+                <button @click="setCoupon()">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     class="h-6 w-6"
@@ -295,11 +295,16 @@
                     <path
                       stroke-linecap="round"
                       stroke-linejoin="round"
-                      d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                      d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"
+                    />
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z"
                     />
                   </svg>
                 </button>
-                <button>
+                <button @click="deleteUser(user.id)">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     class="h-6 w-6"
@@ -334,14 +339,17 @@
       </div>
     </div>
   </div>
+  <div id="my-template"></div>
 </template>
 
 <script>
-import { computed, ref, watchEffect } from "@vue/runtime-core";
+import { computed, ref, watch, watchEffect } from "@vue/runtime-core";
 import { useStore } from "vuex";
+import Swal from "sweetalert2";
 
 export default {
   setup() {
+    const reloadUser = ref(false);
     const pagination = ref(true);
     const searchInput = ref("");
     const page = ref(1);
@@ -360,8 +368,11 @@ export default {
       if (searchInput.value.length > 7) {
         pagination.value = false;
       }
+      if (reloadUser.value == true) {
+        store.dispatch("getDataUser", page.value);
+        reloadUser.value = false;
+      }
     });
-
     const users = computed(() => store.getters["getDataUser"]);
 
     function plus() {
@@ -378,7 +389,96 @@ export default {
         store.dispatch("searchUser", searchInput.value);
       }
     };
-    return { users, page, plus, previous, searchInput, searchfunc, pagination };
+    const setCoupon = () => {
+      Swal.fire({
+        title: "کد تخفیف مورد نظر خود را وارد نمایید",
+        input: "text",
+        customClass: { title: "font-main text-lg", input: "text-center mx-32" },
+        inputAttributes: {
+          autocapitalize: "off",
+        },
+        cancelButtonText: "نه",
+        confirmButtonText: "تخفیف بده",
+        showLoaderOnConfirm: true,
+        preConfirm: (coupon) => {
+          return store.dispatch("setCoupon", coupon, users.value.id);
+        },
+        allowOutsideClick: () => !Swal.isLoading(),
+      });
+    };
+    const deleteUser = (userId) => {
+      Swal.fire({
+        title: "از حذف کاربر اطمینان دارید؟",
+        icon: "question",
+        iconHtml: "!",
+        confirmButtonText: "بله",
+        cancelButtonText: "خیر",
+        showCancelButton: true,
+        showCloseButton: true,
+        confirmButtonColor: "#dc3741",
+        cancelButtonColor: "rgb(83 177 30)",
+        preConfirm: () => {
+          reloadUser.value = true;
+          return store.dispatch("deleteUser", Number(userId));
+        },
+      });
+      reloadUser.value = true;
+    };
+
+    const showUserInfo = (userInvoiceId, index) => {
+      store.dispatch("showUserInfo", userInvoiceId);
+      const showUserInfo = computed(() => store.state.showUserInfo);
+      watch(showUserInfo, async (newShowUserInfo, oldShowUserInfo) => {
+        Swal.fire({
+          title: `${showUserInfo.value.fullName}(${users.value[
+            index
+          ].id?.toLocaleString("fa")})`,
+          html: `<div dir="rtl" class="flex flex-col">
+                <div class="flex flex-row justify-center">
+                  <span>مبلغ پرداختی : </span><span>${showUserInfo.value.amount_final?.toLocaleString(
+                    "fa"
+                  )}</span>
+                </div>
+                <div class="flex flex-row justify-center">
+                  <span>نام پنل : </span><span class="">${
+                    showUserInfo.value.product_name
+                  }</span>
+                </div>
+                <div class="flex flex-row justify-center">
+                  <span>کد فاکتور:</span><span>${showUserInfo.value.invoice_code?.toLocaleString(
+                    "fa"
+                  )}</span>
+                </div>
+                <div class="flex flex-row justify-center">
+                  <span>تاریخ ساخت : </span><span>${
+                    showUserInfo.value.created_at
+                  }</span>
+                </div>
+                <div class="flex flex-row justify-center">
+                  <span>نام:</span><span>${
+                    showUserInfo.value.payment_gateway
+                  }</span>
+                </div>
+              </div>`,
+
+          focusConfirm: false,
+          confirmButtonText: "ممنون",
+        });
+        return { oldShowUserInfo, newShowUserInfo };
+      });
+    };
+    return {
+      users,
+      page,
+      plus,
+      previous,
+      searchInput,
+      searchfunc,
+      pagination,
+      setCoupon,
+      deleteUser,
+      showUserInfo,
+    };
   },
 };
 </script>

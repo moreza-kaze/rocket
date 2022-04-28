@@ -117,7 +117,7 @@
                 class="sm:bg-transparent py-1 mx-1 ml-2 rounded-md w-3/12 text-center overflow-x-hidden"
                 text-center
               >
-                عملیات
+                فعالیت
               </div>
               <!-- table col end  -->
             </div>
@@ -177,7 +177,7 @@
                 name="th"
                 class="py-1 px-4 rounded-lg w-11/12 overflow-x-hidden"
               >
-                عملیات
+                فعالیت
               </div>
               <!-- table col  -->
             </div>
@@ -212,25 +212,38 @@
                 name="th"
                 class="py-1 mx-1 mb-2 sm:mb-0 border-t-2 sm:border-0 border-solid border-gray-300 w-11/12 sm:w-2/12 text-center overflow-x-hidden sm:bg-transparent text-gray-600"
               >
-                {{ coupon.active }}
-              </div>
-              <div
-                name="th"
-                class="py-1 mx-1 mb-2 sm:mb-0 border-t-2 sm:border-0 border-solid border-gray-300 w-11/12 sm:w-2/12 text-center overflow-x-hidden sm:bg-transparent text-gray-600"
-              >
                 {{ coupon.total_amount }}
               </div>
               <div
                 name="th"
                 class="py-1 mx-1 mb-2 sm:mb-0 border-t-2 sm:border-0 border-solid border-gray-300 w-11/12 sm:w-2/12 text-center overflow-x-hidden sm:bg-transparent text-gray-600"
               >
-                {{ coupon.discount_value }}
+                {{ coupon.total_amount - coupon.used_amount }}
               </div>
               <div
                 name="th"
-                class="py-1 mx-1 mb-0 sm:ml-2 sm:mb-0 border-t-2 sm:border-0 border-solid border-gray-300 w-11/12 sm:w-3/12 text-center overflow-x-hidden sm:bg-transparent text-gray-600"
+                class="py-1 mx-1 mb-2 sm:mb-0 border-t-2 sm:border-0 border-solid border-gray-300 w-11/12 sm:w-2/12 text-center overflow-x-hidden sm:bg-transparent text-gray-600"
               >
-                1
+                {{ coupon.discount_value }}
+                {{ coupon.discount_type == "percent" ? "درصد" : "تومان" }}
+              </div>
+              <div
+                name="th"
+                class="h-full py-1 mx-1 mb-0 sm:ml-2 sm:mb-0 border-t-2 sm:border-0 border-solid border-gray-300 w-11/12 sm:w-3/12 text-center overflow-x-hidden sm:bg-transparent text-gray-600"
+              >
+                <button @click="actionCoupon(coupon.id, coupon.active)">
+                  <div
+                    :class="[
+                      {
+                        'bg-green-200': coupon.active == 1,
+                        'bg-red-200': coupon.active == 0,
+                      },
+                    ]"
+                    class="h-2/12 w-ful rounded-3xl px-3"
+                  >
+                    <span>{{ coupon.active ? "فعال" : "غیر فعال" }}</span>
+                  </div>
+                </button>
               </div>
               <!-- table col end -->
             </div>
@@ -259,7 +272,7 @@ import { computed, watchEffect } from "@vue/runtime-core";
 export default {
   setup() {
     const pagination = ref(true);
-
+    const couponUpdate = ref(false);
     const searchInput = ref("");
     const page = ref(1);
     const store = useStore();
@@ -275,6 +288,10 @@ export default {
       }
       if (searchInput.value.length > 1) {
         pagination.value = false;
+      }
+      if (couponUpdate.value == true) {
+        store.dispatch("getDataCoupon", page.value);
+        couponUpdate.value = false;
       }
       store.dispatch("getDataCoupon", page.value);
     });
@@ -296,6 +313,10 @@ export default {
     function previous() {
       page.value--;
     }
+    const actionCoupon = (id, active) => {
+      store.dispatch("actionCoupon", [id, !active]);
+      couponUpdate.value = true;
+    };
     return {
       coupons,
       page,
@@ -304,6 +325,7 @@ export default {
       searchfunc,
       pagination,
       searchInput,
+      actionCoupon,
     };
   },
 };
