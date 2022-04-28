@@ -54,6 +54,7 @@
                 /></svg
             ></span>
             <input
+              v-model="smsGateway.api_url"
               title="آدرس وب سرویس ارسال پیامک"
               placeholder="آدرس وب سرویس ارسال پیامک"
               type="text"
@@ -77,6 +78,7 @@
                 /></svg
             ></span>
             <input
+              v-model="smsGateway.api_url_users"
               title="آدرس وب سرویس نمایندگی"
               placeholder="آدرس وب سرویس نمایندگی"
               type="text"
@@ -101,6 +103,7 @@
                 /></svg
             ></span>
             <input
+              v-model="smsGateway.api_username"
               title="نام کاربری وب سرویس"
               placeholder="نام کاربری وب سرویس"
               type="text"
@@ -125,6 +128,7 @@
                 /></svg
             ></span>
             <input
+              v-model="smsGateway.api_password"
               title="رمز عبور وب سرویس"
               placeholder="رمز عبور وب سرویس"
               type="text"
@@ -149,6 +153,7 @@
                 /></svg
             ></span>
             <input
+              v-model="smsGateway.line_number"
               title="شماره ارسال کننده وب سرویس"
               placeholder="شماره ارسال کننده وب سرویس"
               type="text"
@@ -157,6 +162,7 @@
           </div>
           <div class="flex flex-row w-full items-center justify-center">
             <button
+              @click="saveChange()"
               class="bg-gradient-to-r from-green-500 to-lime-500 text-center w-5/12 h-10 rounded-lg px-5 py-1"
             >
               ثبت تغییرات
@@ -169,7 +175,34 @@
 </template>
 
 <script>
-export default {};
+import { computed, reactive, watchEffect } from "@vue/runtime-core";
+import { useStore } from "vuex";
+export default {
+  setup() {
+    const store = useStore();
+    store.dispatch("getsmsGatewaySetting");
+    const smsGatewaydata = computed(() => store.state.smsGateway);
+    console.log(smsGatewaydata.value);
+    const smsGateway = reactive({
+      api_username: "",
+      api_password: "",
+      line_number: "",
+      api_url: "",
+      api_url_users: "",
+    });
+    watchEffect(() => {
+      smsGateway.api_username = smsGatewaydata.value.api_username;
+      smsGateway.api_password = smsGatewaydata.value.api_password;
+      smsGateway.line_number = smsGatewaydata.value.line_number;
+      smsGateway.api_url = smsGatewaydata.value.api_url;
+      smsGateway.api_url_users = smsGatewaydata.value.api_url_users;
+    });
+    const saveChange = () => {
+      store.dispatch("saveSmsDataChange", smsGateway);
+    };
+    return { smsGateway, saveChange };
+  },
+};
 </script>
 
 <style></style>

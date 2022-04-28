@@ -38,26 +38,18 @@
             ]"
             class="w-full md:w-8/12 rounded-lg overflow-hidden transition-all duration-700 flex flex-col border-2"
           >
-            <div class="flex flex-row mt-5 mx-5 justify-between">
+            <div
+              @click="
+                {
+                  invoice_ui = !invoice_ui;
+                  payment_ui = false;
+                  userpass_ui = false;
+                }
+              "
+              class="flex flex-row mt-5 mx-5 justify-between cursor-pointer"
+            >
+              <span>ارسال پیامک بعد از تکمیل فرم </span>
               <span
-                class="cursor-pointer"
-                @click="
-                  {
-                    invoice_ui = !invoice_ui;
-                    payment_ui = false;
-                    userpass_ui = false;
-                  }
-                "
-                >ارسال پیامک بعد از تکمیل فرم
-              </span>
-              <span
-                @click="
-                  {
-                    invoice_ui = !invoice_ui;
-                    payment_ui = false;
-                    userpass_ui = false;
-                  }
-                "
                 class="transition-all duration-700 cursor-pointer"
                 :class="[{ 'rotate-180': invoice_ui }]"
                 ><svg
@@ -114,18 +106,17 @@
             ]"
             class="w-full md:w-8/12 rounded-lg overflow-hidden transition-all duration-700 flex flex-col border-2 mt-3"
           >
-            <div class="flex flex-row mt-5 mx-5 justify-between">
-              <span
-                class="cursor-pointer"
-                @click="
-                  {
-                    payment_ui = !payment_ui;
-                    invoice_ui = false;
-                    userpass_ui = false;
-                  }
-                "
-                >ارسال پیامک بعد پرداخت
-              </span>
+            <div
+              @click="
+                {
+                  payment_ui = !payment_ui;
+                  invoice_ui = false;
+                  userpass_ui = false;
+                }
+              "
+              class="flex flex-row mt-5 mx-5 justify-between cursor-pointer"
+            >
+              <span>ارسال پیامک بعد پرداخت </span>
               <span
                 @click="
                   {
@@ -190,18 +181,17 @@
             ]"
             class="w-full md:w-8/12 rounded-lg overflow-hidden transition-all duration-700 flex flex-col border-2 mt-3"
           >
-            <div class="flex flex-row mt-5 mx-5 justify-between">
-              <span
-                class="cursor-pointer"
-                @click="
-                  {
-                    userpass_ui = !userpass_ui;
-                    payment_ui = false;
-                    invoice_ui = false;
-                  }
-                "
-                >ارسال پیامک نام کاربری و رمز عبور
-              </span>
+            <div
+              @click="
+                {
+                  userpass_ui = !userpass_ui;
+                  payment_ui = false;
+                  invoice_ui = false;
+                }
+              "
+              class="flex flex-row mt-5 mx-5 justify-between cursor-pointer"
+            >
+              <span>ارسال پیامک نام کاربری و رمز عبور </span>
               <span
                 @click="
                   {
@@ -271,7 +261,6 @@
 
 <script>
 import { ref } from "@vue/reactivity";
-import { onUpdated, watch } from "@vue/runtime-core";
 
 export default {
   setup() {
@@ -281,12 +270,6 @@ export default {
     const invoice_pattern = ref(0);
     const payment_pattern = ref(0);
     const userpass_pattern = ref(0);
-
-    onUpdated(() =>
-      watch(() => {
-        console.log(invoice_pattern);
-      })
-    );
 
     return {
       invoice_ui,
