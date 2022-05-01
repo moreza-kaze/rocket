@@ -11,6 +11,7 @@ export default createStore({
     couponsLastPage: 1,
     users: [],
     smsGateway: [],
+    smsText: [],
     coupons: [],
     showUserInfo: {},
   },
@@ -62,6 +63,9 @@ export default createStore({
     showUserInfo(state, val) {
       state.showUserInfo = {};
       state.showUserInfo = val;
+    },
+    getSmsText(state, val) {
+      state.smsText = val;
     },
   },
   actions: {
@@ -182,6 +186,18 @@ export default createStore({
     async saveSmsDataChange({ commit }, val) {
       const response = await axios.post(
         `${apiurl}/api/admin/smsgatewaysetting/insertorupdate`,
+        val
+      );
+      apicheck(response.data);
+      return { commit };
+    },
+    async getSmsText({ commit }) {
+      const response = await axios.get(`${apiurl}/api/admin/sms/texts`);
+      commit("getSmsText", response.data.data.output[0]);
+    },
+    async changeSmsTexts({ commit }, val) {
+      const response = await axios.post(
+        `${apiurl}/api/admin/sms/texts/insertorupdate`,
         val
       );
       apicheck(response.data);

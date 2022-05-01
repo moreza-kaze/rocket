@@ -182,8 +182,8 @@ export default {
     const store = useStore();
     store.dispatch("getsmsGatewaySetting");
     const smsGatewaydata = computed(() => store.state.smsGateway);
-    console.log(smsGatewaydata.value);
     const smsGateway = reactive({
+      id: 1,
       api_username: "",
       api_password: "",
       line_number: "",
@@ -191,6 +191,7 @@ export default {
       api_url_users: "",
     });
     watchEffect(() => {
+      smsGateway.id = smsGatewaydata.value.id;
       smsGateway.api_username = smsGatewaydata.value.api_username;
       smsGateway.api_password = smsGatewaydata.value.api_password;
       smsGateway.line_number = smsGatewaydata.value.line_number;
