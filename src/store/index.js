@@ -14,6 +14,8 @@ export default createStore({
     smsText: [],
     coupons: [],
     showUserInfo: {},
+    products: [],
+    OneProduct: {},
   },
   getters: {
     getMenu(state) {
@@ -66,6 +68,13 @@ export default createStore({
     },
     getSmsText(state, val) {
       state.smsText = val;
+    },
+    getproduct(state, val) {
+      state.products = val;
+    },
+    getOneProduct(state, val) {
+      state.OneProduct = {};
+      state.OneProduct = val;
     },
   },
   actions: {
@@ -140,14 +149,14 @@ export default createStore({
       return { commit };
     },
     // setCoupon
-    async setCoupon({ commit }, coupon, userid) {
-      const response = await axios.patch(
-        `${apiurl}/api/admin/invoices/${userid}`,
+    async setCoupon({ commit }, val) {
+      const response = await axios.put(
+        `${apiurl}/api/admin/invoices/${val[1]}`,
         {
-          coupon_name: coupon,
+          coupon_name: val[0],
         }
       );
-      console.log(response.data.status);
+      console.log(response.data);
       apicheck(response.data);
       return { commit };
     },
@@ -201,6 +210,52 @@ export default createStore({
         val
       );
       apicheck(response.data);
+      return { commit };
+    },
+    async getproduct({ commit }) {
+      const response = await axios.get(`${apiurl}/api/admin/products`);
+      commit("getproduct", response.data.data.output);
+    },
+    async deleteProduct({ commit }, val) {
+      const response = await axios.delete(
+        `${apiurl}/api/admin/products/${val}`
+      );
+      apicheck(response.data);
+      this.dispatch("getproduct");
+      return { commit };
+    },
+    async createProduct({ commit }, val) {
+      const response = await axios.post(`${apiurl}/api/admin/products`, {
+        product_id: Number(val.product_id),
+        product_name: val.product_name,
+        amount: Number(val.amount),
+        amount_final: Number(val.amount_final),
+        product_sms: Number(val.product_sms),
+        product_gift: Number(val.product_gift),
+        sms_price: val.sms_price,
+      });
+      apicheck(response.data);
+      return { commit };
+    },
+    async getOneProduct({ commit }, val) {
+      const response = await axios.get(`${apiurl}/api/admin/products/${val}`);
+      commit("getOneProduct", response.data.data.output);
+    },
+    async updateProduct({ commit }, val) {
+      const response = await axios.get(
+        `${apiurl}/api/admin/products/${val[0]}`,
+        {
+          product_name: val[1].product_name,
+          amount: Number(val[1].amount),
+          amount_final: Number(val[1].amount_final),
+          product_sms: Number(val[1].product_sms),
+          product_gift: Number(val[1].product_gift),
+          sms_price: val[1].sms_price,
+        }
+      );
+      console.log(response.data);
+      apicheck(response.data);
+      this.dispatch("getOneProduct", val[0]);
       return { commit };
     },
   },

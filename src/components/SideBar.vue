@@ -364,7 +364,7 @@
                   { 'text-maincolor-100': !prod_li },
                   { 'text-white': prod_li },
                 ]"
-                ><router-link to="/setting/sms">مدیریت</router-link></span
+                ><router-link to="/product">مدیریت</router-link></span
               >
               <span
                 @click="menuChange()"
@@ -373,7 +373,7 @@
                   { 'text-maincolor-999': !prod_li },
                   { 'text-white': prod_li },
                 ]"
-                ><router-link to="/setting/payment">ایجاد</router-link></span
+                ><router-link to="/product/create">ایجاد</router-link></span
               >
             </div>
           </div>

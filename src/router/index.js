@@ -75,6 +75,28 @@ const routes = [
       },
     ],
   },
+  {
+    path: "/product",
+    name: "product",
+    component: () => import("../views/ProductView.vue"),
+    children: [
+      {
+        path: "",
+        name: "productshow",
+        component: () => import("../views/product/ProductShow.vue"),
+      },
+      {
+        path: "create",
+        name: "productcreate",
+        component: () => import("../views/product/ProductCreate.vue"),
+      },
+      {
+        path: "edit/:id",
+        name: "productedit",
+        component: () => import("../views/product/ProductEdit.vue"),
+      },
+    ],
+  },
 ];
 
 const router = createRouter({

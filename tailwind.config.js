@@ -60,6 +60,7 @@ module.exports = {
           g3: "#DA445399",
           g4: "#89216Bcc",
         },
+        product: "#8e54e921",
       },
       transitionProperty: {
         width: "width",
