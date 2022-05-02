@@ -283,7 +283,7 @@
                     />
                   </svg>
                 </button>
-                <button @click="setCoupon()">
+                <button @click="setCoupon(user.invoice_id)">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     class="h-6 w-6"
@@ -389,7 +389,7 @@ export default {
         store.dispatch("searchUser", searchInput.value);
       }
     };
-    const setCoupon = () => {
+    const setCoupon = (x) => {
       Swal.fire({
         title: "کد تخفیف مورد نظر خود را وارد نمایید",
         input: "text",
@@ -401,7 +401,7 @@ export default {
         confirmButtonText: "تخفیف بده",
         showLoaderOnConfirm: true,
         preConfirm: (coupon) => {
-          return store.dispatch("setCoupon", coupon, users.value.id);
+          return store.dispatch("setCoupon", [coupon, x]);
         },
         allowOutsideClick: () => !Swal.isLoading(),
       });

@@ -204,25 +204,25 @@
               </div>
               <div
                 name="th"
-                class="py-1 mx-1 mb-2 sm:mb-0 border-t-2 sm:border-0 border-solid border-gray-300 w-11/12 sm:w-2/12 text-center overflow-x-hidden sm:bg-transparent text-gray-600"
+                class="py-1 mx-1 mb-2 sm:mb-0 border-t-2 sm:border-0 border-solid border-gray-300 w-11/12 sm:w-2/12 text-center sm:bg-transparent text-gray-600"
               >
                 {{ coupon.coupon_name }}
               </div>
               <div
                 name="th"
-                class="py-1 mx-1 mb-2 sm:mb-0 border-t-2 sm:border-0 border-solid border-gray-300 w-11/12 sm:w-2/12 text-center overflow-x-hidden sm:bg-transparent text-gray-600"
+                class="py-1 mx-1 mb-2 sm:mb-0 border-t-2 sm:border-0 border-solid border-gray-300 w-11/12 sm:w-2/12 text-center sm:bg-transparent text-gray-600"
               >
                 {{ coupon.total_amount }}
               </div>
               <div
                 name="th"
-                class="py-1 mx-1 mb-2 sm:mb-0 border-t-2 sm:border-0 border-solid border-gray-300 w-11/12 sm:w-2/12 text-center overflow-x-hidden sm:bg-transparent text-gray-600"
+                class="py-1 mx-1 mb-2 sm:mb-0 border-t-2 sm:border-0 border-solid border-gray-300 w-11/12 sm:w-2/12 text-center sm:bg-transparent text-gray-600"
               >
                 {{ coupon.total_amount - coupon.used_amount }}
               </div>
               <div
                 name="th"
-                class="py-1 mx-1 mb-2 sm:mb-0 border-t-2 sm:border-0 border-solid border-gray-300 w-11/12 sm:w-2/12 text-center overflow-x-hidden sm:bg-transparent text-gray-600"
+                class="py-1 mx-1 mb-2 sm:mb-0 border-t-2 sm:border-0 border-solid border-gray-300 w-11/12 sm:w-2/12 text-center sm:bg-transparent text-gray-600"
               >
                 {{ coupon.discount_value }}
                 {{ coupon.discount_type == "percent" ? "درصد" : "تومان" }}
