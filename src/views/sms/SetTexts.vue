@@ -365,7 +365,10 @@ export default {
     });
 
     watchEffect(() => {
-      if (getTextsdata.value.id != undefined) {
+      if (getTextsdata.value == undefined) {
+        store.dispatch("getSmsText");
+        console.log("network error");
+      } else {
         getTexts.id = getTextsdata.value.id;
         getTexts.after_form_submit_shared =
           getTextsdata.value.after_form_submit_shared;

@@ -242,7 +242,7 @@ export default createStore({
       commit("getOneProduct", response.data.data.output);
     },
     async updateProduct({ commit }, val) {
-      const response = await axios.get(
+      const response = await axios.put(
         `${apiurl}/api/admin/products/${val[0]}`,
         {
           product_name: val[1].product_name,

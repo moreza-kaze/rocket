@@ -49,7 +49,7 @@
               sms_li = false;
             }
           "
-          class="flex items-start shadow-lg justify-between rounded-xl mt-5 pt-4 overflow-hidden transition-all duration-700 cursor-cell"
+          class="flex items-start shadow-lg justify-between rounded-xl mt-5 pt-4 overflow-hidden transition-all duration-700 cursor-pointer"
         >
           <div class="flex">
             <svg
@@ -77,7 +77,7 @@
             </svg>
             <div class="flex flex-col">
               <span
-                class="font-bold text-base cursor-cell"
+                class="font-bold text-base cursor-pointer"
                 :class="[
                   { 'text-maincolor-999': !dash_li },
                   { 'text-white': dash_li },
@@ -139,7 +139,7 @@
               dash_li = false;
             }
           "
-          class="flex items-start shadow-lg justify-between rounded-xl mt-5 pt-4 overflow-hidden transition-all duration-700 cursor-cell"
+          class="flex items-start shadow-lg justify-between rounded-xl mt-5 pt-4 overflow-hidden transition-all duration-700 cursor-pointer"
         >
           <div class="flex">
             <svg
@@ -162,7 +162,7 @@
             </svg>
             <div class="flex flex-col">
               <span
-                class="font-semibold text-base cursor-cell"
+                class="font-semibold text-base cursor-pointer"
                 :class="[
                   { 'text-maincolor-999': !users_li },
                   { 'text-white': users_li },
@@ -233,7 +233,7 @@
               dash_li = false;
             }
           "
-          class="flex items-start shadow-lg justify-between rounded-xl mt-5 pt-4 overflow-hidden transition-all duration-700 cursor-cell"
+          class="flex items-start shadow-lg justify-between rounded-xl mt-5 pt-4 overflow-hidden transition-all duration-700 cursor-pointer"
         >
           <div class="flex">
             <svg
@@ -257,7 +257,7 @@
 
             <div class="flex flex-col">
               <span
-                class="font-bold text-base cursor-cell"
+                class="font-bold text-base cursor-pointer"
                 :class="[
                   { 'text-maincolor-999': !coupon_li },
                   { 'text-white': coupon_li },
@@ -327,7 +327,7 @@
               dash_li = false;
             }
           "
-          class="flex items-start shadow-lg justify-between rounded-xl mt-5 pt-4 overflow-hidden transition-all duration-700 cursor-cell"
+          class="flex items-start shadow-lg justify-between rounded-xl mt-5 pt-4 overflow-hidden transition-all duration-700 cursor-pointer"
         >
           <div class="flex">
             <svg
@@ -350,7 +350,7 @@
             </svg>
             <div class="flex flex-col">
               <span
-                class="font-bold text-base cursor-cell"
+                class="font-bold text-base cursor-pointer"
                 :class="[
                   { 'text-maincolor-999': !prod_li },
                   { 'text-white': prod_li },
@@ -420,7 +420,7 @@
               dash_li = false;
             }
           "
-          class="flex items-start shadow-lg justify-between rounded-xl mt-5 pt-4 overflow-hidden transition-all duration-700 cursor-cell"
+          class="flex items-start shadow-lg justify-between rounded-xl mt-5 pt-4 overflow-hidden transition-all duration-700 cursor-pointer"
         >
           <div class="flex">
             <svg
@@ -443,7 +443,7 @@
             </svg>
             <div class="flex flex-col">
               <span
-                class="font-bold text-base cursor-cell"
+                class="font-bold text-base cursor-pointer"
                 :class="[
                   { 'text-maincolor-999': !sms_li },
                   { 'text-white': sms_li },
@@ -513,7 +513,7 @@
               dash_li = false;
             }
           "
-          class="flex items-start shadow-lg justify-between rounded-xl mt-5 pt-4 overflow-hidden transition-all duration-700 cursor-cell"
+          class="flex items-start shadow-lg justify-between rounded-xl mt-5 pt-4 overflow-hidden transition-all duration-700 cursor-pointer"
         >
           <div class="flex">
             <svg
@@ -541,7 +541,7 @@
             </svg>
             <div class="flex flex-col">
               <span
-                class="font-bold text-base cursor-cell"
+                class="font-bold text-base cursor-pointer"
                 :class="[
                   { 'text-maincolor-999': !setting_li },
                   { 'text-white': setting_li },

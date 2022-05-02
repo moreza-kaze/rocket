@@ -198,7 +198,7 @@
               <!-- table col -->
               <div
                 name="th"
-                class="py-1 mx-1 mb-2 mr-1 sm:mb-0 w-11/12 sm:w-1/12 text-center overflow-x-hidden sm:bg-transparent text-gray-600"
+                class="py-1 mx-1 mb-2 mr-1 sm:mb-0 w-11/12 sm:w-1/12 text-center sm:bg-transparent text-gray-600"
               >
                 {{ coupon.id }}
               </div>
@@ -241,7 +241,9 @@
                     ]"
                     class="h-2/12 w-ful rounded-3xl px-3"
                   >
-                    <span>{{ coupon.active ? "فعال" : "غیر فعال" }}</span>
+                    <span>{{
+                      coupon.active ? "فعال بشه" : "غیر فعال بشه"
+                    }}</span>
                   </div>
                 </button>
               </div>
@@ -255,9 +257,37 @@
           :class="{ hidden: !pagination }"
           class="w-full h-12 bg-transparent sm:bg-white rounded-b-md flex flex-row justify-center items-center border-0 sm:border-y-2 border-solid border-gray-300"
         >
-          <span class="cursor-pointer" @click="plus()">+</span>
+          <span class="cursor-pointer" @click="plus()"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="1"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M9 5l7 7-7 7"
+              /></svg
+          ></span>
           <span class="w-6 h-6 text-center">{{ page }}</span>
-          <span class="cursor-pointer" @click="previous()">-</span>
+          <span class="cursor-pointer" @click="previous()"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="1"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M15 19l-7-7 7-7"
+              /></svg
+          ></span>
         </div>
         <!-- orginal table end -->
       </div>

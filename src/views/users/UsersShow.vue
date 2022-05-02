@@ -331,9 +331,37 @@
           :class="{ hidden: !pagination }"
           class="w-full h-12 bg-transparent sm:bg-white rounded-b-md flex flex-row justify-center items-center border-0 sm:border-y-2 border-solid border-gray-300"
         >
-          <span @click="plus()">+</span>
-          <span class="w-6 h-6">{{ page }}</span>
-          <span @click="previous()">-</span>
+          <span class="cursor-pointer" @click="plus()"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="1"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M9 5l7 7-7 7"
+              /></svg
+          ></span>
+          <span class="w-6 h-6 text-center">{{ page }}</span>
+          <span class="cursor-pointer" @click="previous()"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="1"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M15 19l-7-7 7-7"
+              /></svg
+          ></span>
         </div>
         <!-- orginal table end -->
       </div>
@@ -389,6 +417,7 @@ export default {
         store.dispatch("searchUser", searchInput.value);
       }
     };
+
     const setCoupon = (x) => {
       Swal.fire({
         title: "کد تخفیف مورد نظر خود را وارد نمایید",
@@ -445,9 +474,9 @@ export default {
                   }</span>
                 </div>
                 <div class="flex flex-row justify-center">
-                  <span>کد فاکتور:</span><span>${showUserInfo.value.invoice_code?.toLocaleString(
-                    "fa"
-                  )}</span>
+                  <span>کد فاکتور:</span><span>${
+                    showUserInfo.value.invoice_code
+                  }</span>
                 </div>
                 <div class="flex flex-row justify-center">
                   <span>تاریخ ساخت : </span><span>${
@@ -455,7 +484,7 @@ export default {
                   }</span>
                 </div>
                 <div class="flex flex-row justify-center">
-                  <span>نام:</span><span>${
+                  <span>درگاه:</span><span>${
                     showUserInfo.value.payment_gateway
                   }</span>
                 </div>
