@@ -48,7 +48,7 @@
               </svg>
             </button></form
         ></span>
-        <span class="hidden md:inline"
+        <router-link to="/users/create" class="hidden md:inline"
           ><svg
             xmlns="http://www.w3.org/2000/svg"
             class="h-8 w-8"
@@ -62,7 +62,7 @@
               stroke-linejoin="round"
               d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
             /></svg
-        ></span>
+        ></router-link>
       </div>
     </div>
     <!-- start user table  -->
@@ -92,25 +92,25 @@
                 name="th"
                 class="sm:bg-transparent py-1 mx-1 rounded-md w-2/12 text-center overflow-x-hidden"
               >
-                نام‌و‌نام‌خانوادگی
+                نام‌ و ‌نام‌ خانوادگی
               </div>
               <div
                 name="th"
                 class="sm:bg-transparent py-1 mx-1 rounded-md w-2/12 text-center overflow-x-hidden"
               >
-                تلفن‌همراه
+                تلفن ‌همراه
               </div>
               <div
                 name="th"
                 class="sm:bg-transparent py-1 mx-1 rounded-md w-2/12 text-center overflow-x-hidden"
               >
-                نام‌کاربری
+                نام‌ کاربری
               </div>
               <div
                 name="th"
                 class="sm:bg-transparent py-1 mx-1 rounded-md w-2/12 text-center overflow-x-hidden"
               >
-                رمز‌عبور
+                رمز ‌عبور
               </div>
               <div
                 name="th"
@@ -165,25 +165,25 @@
                 name="th"
                 class="py-1 px-4 rounded-lg w-11/12 mb-2 overflow-x-hidden"
               >
-                نام‌و‌نام‌خانوادگی
+                نام‌ و ‌نام‌خانوادگی
               </div>
               <div
                 name="th"
                 class="py-1 px-4 rounded-lg w-11/12 mb-2 overflow-x-hidden"
               >
-                تلفن‌همراه
+                تلفن‌ همراه
               </div>
               <div
                 name="th"
                 class="py-1 px-4 rounded-lg w-11/12 mb-2 overflow-x-hidden"
               >
-                نام‌کاربری
+                نام‌ کاربری
               </div>
               <div
                 name="th"
                 class="py-1 px-4 rounded-lg w-11/12 mb-2 overflow-x-hidden"
               >
-                رمز‌عبور
+                رمز‌ عبور
               </div>
               <div
                 name="th"
@@ -331,7 +331,7 @@
           :class="{ hidden: !pagination }"
           class="w-full h-12 bg-transparent sm:bg-white rounded-b-md flex flex-row justify-center items-center border-0 sm:border-y-2 border-solid border-gray-300"
         >
-          <span class="cursor-pointer" @click="plus()"
+          <span class="cursor-pointer" @click="previous()"
             ><svg
               xmlns="http://www.w3.org/2000/svg"
               class="h-6 w-6"
@@ -347,7 +347,7 @@
               /></svg
           ></span>
           <span class="w-6 h-6 text-center">{{ page }}</span>
-          <span class="cursor-pointer" @click="previous()"
+          <span class="cursor-pointer" @click="plus()"
             ><svg
               xmlns="http://www.w3.org/2000/svg"
               class="h-6 w-6"

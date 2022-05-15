@@ -68,7 +68,14 @@
                   /></svg
               ></span>
             </div>
-            <div class="w-5/6 md:w-4/6 flex flex-col mt-5 mr-5">
+            <div
+              :class="[
+                {
+                  hidden: !invoice_ui,
+                },
+              ]"
+              class="w-5/6 md:w-4/6 flex flex-col mt-5 mr-5"
+            >
               <div class="w-full flex flex-col md:flex-row">
                 <select
                   v-model="getTexts.after_form_submit_shared"
@@ -141,7 +148,14 @@
                   /></svg
               ></span>
             </div>
-            <div class="w-5/6 md:w-4/6 flex flex-col mt-5 mr-5">
+            <div
+              :class="[
+                {
+                  hidden: !paymentfail_ui,
+                },
+              ]"
+              class="w-5/6 md:w-4/6 flex flex-col mt-5 mr-5"
+            >
               <div class="w-full flex flex-col md:flex-row">
                 <select
                   v-model="getTexts.after_gateway_error_shared"
@@ -213,7 +227,14 @@
                   /></svg
               ></span>
             </div>
-            <div class="w-5/6 md:w-4/6 flex flex-col mt-5 mr-5">
+            <div
+              :class="[
+                {
+                  hidden: !payment_ui,
+                },
+              ]"
+              class="w-5/6 md:w-4/6 flex flex-col mt-5 mr-5"
+            >
               <div class="w-full flex flex-col md:flex-row">
                 <select
                   v-model="getTexts.after_gateway_success_shared"
@@ -286,7 +307,14 @@
                   /></svg
               ></span>
             </div>
-            <div class="w-5/6 md:w-4/6 flex flex-col mt-5 mr-5">
+            <div
+              :class="[
+                {
+                  hidden: !userpass_ui,
+                },
+              ]"
+              class="w-5/6 md:w-4/6 flex flex-col mt-5 mr-5"
+            >
               <div class="w-full flex flex-col md:flex-row">
                 <select
                   v-model="getTexts.send_username_pass_shared"

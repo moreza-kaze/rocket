@@ -30,7 +30,7 @@
         class="w-full h-v90 md:h-full bg-whitetransparent-600 rounded-2xl shadow-lg flex flex-col"
       >
         <div
-          class="w-full h-20 bg-amber-700 rounded-t-2xl flex items-center justify-center"
+          class="w-full h-20 bg-orange-400 rounded-t-2xl flex items-center justify-center"
         >
           <p class="font-bold text-2xl text-gray-50">ارسال پیامک اطلاع رسانی</p>
         </div>
@@ -54,7 +54,7 @@
           </div>
           <div class="w-full h-14 flex flex-row-reverse">
             <div
-              class="w-14 sm:w-40 h-full flex flex-row justify-center items-center rounded-50 sm:rounded-lg bg-gradient-to-r from-blue-500 to-emerald-400 text-gray-100"
+              class="w-14 shadow-2xl cursor-pointer sm:w-40 h-full flex flex-row justify-center items-center rounded-50 sm:rounded-lg bg-gradient-to-r from-blue-500 to-emerald-400 text-gray-100"
             >
               <span
                 ><svg

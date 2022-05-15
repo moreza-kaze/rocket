@@ -91,6 +91,9 @@
                 :class="[
                   { 'text-maincolor-100': !dash_li },
                   { 'text-white': dash_li },
+                  {
+                    hidden: !dash_li,
+                  },
                 ]"
                 ><router-link to="/dashboard">خانه</router-link></span
               >
@@ -176,6 +179,9 @@
                 :class="[
                   { 'text-maincolor-100': !users_li },
                   { 'text-white': users_li },
+                  {
+                    hidden: !users_li,
+                  },
                 ]"
                 ><router-link to="/users">مدیریت</router-link></span
               >
@@ -185,6 +191,9 @@
                 :class="[
                   { 'text-maincolor-100': !users_li },
                   { 'text-white': users_li },
+                  {
+                    hidden: !users_li,
+                  },
                 ]"
                 ><router-link to="/users/create">ایجاد</router-link></span
               >
@@ -270,6 +279,9 @@
                 :class="[
                   { 'text-maincolor-100': !coupon_li },
                   { 'text-white': coupon_li },
+                  {
+                    hidden: !coupon_li,
+                  },
                 ]"
                 ><router-link to="/coupon">مدیریت</router-link></span
               >
@@ -279,6 +291,9 @@
                 :class="[
                   { 'text-maincolor-999': !coupon_li },
                   { 'text-white': coupon_li },
+                  {
+                    hidden: !coupon_li,
+                  },
                 ]"
                 ><router-link to="/coupon/create">ایجاد</router-link></span
               >
@@ -363,6 +378,9 @@
                 :class="[
                   { 'text-maincolor-100': !prod_li },
                   { 'text-white': prod_li },
+                  {
+                    hidden: !prod_li,
+                  },
                 ]"
                 ><router-link to="/product">مدیریت</router-link></span
               >
@@ -372,6 +390,9 @@
                 :class="[
                   { 'text-maincolor-999': !prod_li },
                   { 'text-white': prod_li },
+                  {
+                    hidden: !prod_li,
+                  },
                 ]"
                 ><router-link to="/product/create">ایجاد</router-link></span
               >
@@ -456,6 +477,9 @@
                 :class="[
                   { 'text-maincolor-100': !sms_li },
                   { 'text-white': sms_li },
+                  {
+                    hidden: !sms_li,
+                  },
                 ]"
                 ><router-link to="/sms/sendbulk">ارسال‌انبوه</router-link></span
               >
@@ -465,6 +489,9 @@
                 :class="[
                   { 'text-maincolor-100': !sms_li },
                   { 'text-white': sms_li },
+                  {
+                    hidden: !sms_li,
+                  },
                 ]"
                 ><router-link to="/sms/settexts">متون</router-link></span
               >
@@ -554,6 +581,9 @@
                 :class="[
                   { 'text-maincolor-100': !setting_li },
                   { 'text-white': setting_li },
+                  {
+                    hidden: !setting_li,
+                  },
                 ]"
                 ><router-link to="/setting/sms">پیامک</router-link></span
               >
@@ -563,6 +593,9 @@
                 :class="[
                   { 'text-maincolor-100': !setting_li },
                   { 'text-white': setting_li },
+                  {
+                    hidden: !setting_li,
+                  },
                 ]"
                 ><router-link to="/setting/payment">درگاه</router-link></span
               >

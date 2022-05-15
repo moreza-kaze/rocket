@@ -7,6 +7,7 @@ module.exports = {
     extend: {
       screens: {
         xl3: "1700px",
+        hsm: { raw: "(min-height: 800px)" },
       },
       borderRadius: {
         50: "50%",
@@ -61,6 +62,7 @@ module.exports = {
           g4: "#89216Bcc",
         },
         product: "#8e54e921",
+        backm: "#f3fbf4",
       },
       transitionProperty: {
         width: "width",

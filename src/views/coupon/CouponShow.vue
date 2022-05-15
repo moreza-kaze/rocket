@@ -48,7 +48,7 @@
               </svg>
             </button></form
         ></span>
-        <span class="hidden md:inline"
+        <router-link to="/coupon/create" class="hidden md:inline"
           ><svg
             xmlns="http://www.w3.org/2000/svg"
             class="h-8 w-8"
@@ -62,7 +62,7 @@
               stroke-linejoin="round"
               d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
             /></svg
-        ></span>
+        ></router-link>
       </div>
     </div>
     <!-- start user table  -->
@@ -210,9 +210,24 @@
               </div>
               <div
                 name="th"
-                class="py-1 mx-1 mb-2 sm:mb-0 border-t-2 sm:border-0 border-solid border-gray-300 w-11/12 sm:w-2/12 text-center sm:bg-transparent text-gray-600"
+                class="py-1 mx-1 mb-2 sm:mb-0 border-t-2 sm:border-0 border-solid border-gray-300 w-11/12 sm:w-2/12 text-center sm:bg-transparent text-gray-600 flex flex-row justify-center"
               >
-                {{ coupon.total_amount }}
+                <span class="cursor-pointer"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-4 w-4"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="1"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
+                    /></svg
+                ></span>
+                <span class="mr-2">{{ coupon.total_amount }}</span>
               </div>
               <div
                 name="th"
@@ -257,7 +272,7 @@
           :class="{ hidden: !pagination }"
           class="w-full h-12 bg-transparent sm:bg-white rounded-b-md flex flex-row justify-center items-center border-0 sm:border-y-2 border-solid border-gray-300"
         >
-          <span class="cursor-pointer" @click="plus()"
+          <span class="cursor-pointer" @click="previous()"
             ><svg
               xmlns="http://www.w3.org/2000/svg"
               class="h-6 w-6"
@@ -273,7 +288,7 @@
               /></svg
           ></span>
           <span class="w-6 h-6 text-center">{{ page }}</span>
-          <span class="cursor-pointer" @click="previous()"
+          <span class="cursor-pointer" @click="plus()"
             ><svg
               xmlns="http://www.w3.org/2000/svg"
               class="h-6 w-6"

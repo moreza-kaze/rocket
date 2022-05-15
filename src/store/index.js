@@ -146,7 +146,7 @@ export default createStore({
         product_id: Number(val.product_id),
       });
       apicheck(response.data);
-      return { commit };
+      return { commit, response };
     },
     // setCoupon
     async setCoupon({ commit }, val) {
