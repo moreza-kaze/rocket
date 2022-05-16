@@ -23,7 +23,7 @@
     <div
       class="flex w-full justify-center items-center px-3 md:px-16 h-full mb-10"
     >
-      <div class="w-full h-full bg-whitetransparent-500 rounded-2xl">
+      <div class="w-full h-full bg-whitetransparent-700 rounded-2xl shadow">
         <form
           @submit.prevent="createcouponfunc()"
           class="w-full h-full flex flex-col md:flex-row justify-around items-center mt-0 p-10"
@@ -72,41 +72,63 @@
             />
           </div>
           <div
-            class="h-96 md:h-full my-5 w-full md:w-9/12 bg-white rounded-lg flex flex-col justify-around items-center p-4"
+            class="h-96 md:h-full my-5 w-full md:w-9/12 bg-white rounded-lg flex flex-col justify-around items-center p-4 shadow-md"
           >
-            <span class="text-gray-400"
-              ><svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-20 w-20"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                stroke-width="1"
+            <div class="h-1/5">
+              <span class="text-gray-400"
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-20 w-20"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="1"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"
+                  /></svg
+              ></span>
+            </div>
+            <div
+              class="w-11/12 h-1/2 bg-coupongreen-100 flex flex-col items-center px-8 py-5 rounded-lg"
+            >
+              <div
+                class="h-1/3 w-full flex flex-row justify-between items-center border-b-2 border-double border-gray-300"
               >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"
-                /></svg
-            ></span>
-            <span class="text-coupongreen-700 text-xl md:text-4xl">{{
-              createcoupon.coupon_name
-            }}</span>
-            <span class="text-coupongreen-700 text-lg md:text-2xl">{{
-              createcoupon.active == "1" ? "فعال" : "غیر فعال"
-            }}</span>
-            <span class="text-coupongreen-700 text-base md:text-xl"
-              >{{ createcoupon.discount_value
-              }}{{
-                createcoupon.discount_type == "toman" ? "Toman" : "%"
-              }}</span
-            >
-
-            <button
-              class="bg-gradient-to-r from-indigo-500 to-purple-400 hover:from-purple-600 hover:to-indigo-600 transition-colors duration-500 h-10 text-white rounded-xl w-9/12"
-            >
-              ثبت
-            </button>
+                <span>کد تخفیف:</span>
+                <span class="text-coupongreen-700 text-xl md:text-4xl">{{
+                  createcoupon.coupon_name
+                }}</span>
+              </div>
+              <div
+                class="h-1/3 w-full flex flex-row justify-between items-center border-b-2 border-double border-gray-300"
+              >
+                <span>فعال:</span>
+                <span class="text-coupongreen-700 text-lg md:text-2xl">{{
+                  createcoupon.active == "1" ? "فعال" : "غیر فعال"
+                }}</span>
+              </div>
+              <div
+                class="h-1/3 w-full flex flex-row justify-between items-center"
+              >
+                <span>ارزیابی:</span>
+                <span class="text-coupongreen-700 text-base md:text-xl"
+                  >{{ createcoupon.discount_value
+                  }}{{
+                    createcoupon.discount_type == "toman" ? "تومان" : "%"
+                  }}</span
+                >
+              </div>
+            </div>
+            <div class="w-full h-1/5 flex justify-center items-center">
+              <button
+                class="bg-gradient-to-r from-indigo-500 to-purple-400 hover:from-purple-600 hover:to-indigo-600 transition-colors duration-500 h-10 text-white rounded-xl w-9/12"
+              >
+                ثبت
+              </button>
+            </div>
           </div>
         </form>
       </div>
