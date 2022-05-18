@@ -212,7 +212,7 @@
                 name="th"
                 class="py-1 mx-1 mb-2 sm:mb-0 border-t-2 sm:border-0 border-solid border-gray-300 w-11/12 sm:w-2/12 text-center sm:bg-transparent text-gray-600 flex flex-row justify-center"
               >
-                <span class="cursor-pointer"
+                <span @click="editTotalAmount()" class="cursor-pointer"
                   ><svg
                     xmlns="http://www.w3.org/2000/svg"
                     class="h-4 w-4"

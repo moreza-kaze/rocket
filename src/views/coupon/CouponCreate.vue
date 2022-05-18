@@ -137,12 +137,13 @@
 </template>
 
 <script>
-import { reactive } from "@vue/reactivity";
+import { reactive, ref } from "@vue/reactivity";
 import { useStore } from "vuex";
 import Swal from "sweetalert2";
 export default {
   setup() {
     const store = useStore();
+    const erro = ref();
     const createcoupon = reactive({
       coupon_name: "",
       active: "",
@@ -159,12 +160,16 @@ export default {
           0 < Number(createcoupon.discount_value) &&
           Number(createcoupon.discount_value) < 101
         ) {
-          store.dispatch("createcoupon", createcoupon);
-          createcoupon.coupon_name = "";
-          createcoupon.active = "";
-          createcoupon.total_amount = "";
-          createcoupon.discount_type = "";
-          createcoupon.discount_value = "";
+          store.dispatch("createcoupon", createcoupon).then(function (res) {
+            erro.value = res.response.data;
+            if (erro.value.status == 1) {
+              createcoupon.coupon_name = "";
+              createcoupon.active = "";
+              createcoupon.total_amount = "";
+              createcoupon.discount_type = "";
+              createcoupon.discount_value = "";
+            }
+          });
         } else {
           Swal.fire({
             icon: "error",
