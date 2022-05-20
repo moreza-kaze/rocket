@@ -1,99 +1,119 @@
 import { createRouter, createWebHistory } from "vue-router";
-import HomeView from "../views/HomeView.vue";
+import HomeView from "../viewsadmin/HomeView.vue";
 
 const routes = [
   {
-    path: "/dashboard",
-    name: "home",
-    component: HomeView,
-  },
-  {
-    path: "/users",
-    name: "users",
-    component: () => import("../views/UsersView.vue"),
+    path: "/",
+    name: "user",
+    component: () => import("../views/UserView.vue"),
     children: [
       {
         path: "",
-        name: "usershow",
-        component: () => import("../views/users/UsersShow.vue"),
-      },
-      {
-        path: "create",
-        name: "userscreate",
-        component: () => import("../views/users/UsersCreate.vue"),
+        name: "signup",
+        component: () => import("../views/SignupView.vue"),
       },
     ],
   },
   {
-    path: "/coupon",
-    name: "coupon",
-    component: () => import("../views/CouponView.vue"),
+    path: "/admin",
+    name: "admin",
+    component: () => import("../viewsadmin/AdminView.vue"),
+    redirect: "/admin/dashboard",
     children: [
       {
-        path: "",
-        name: "couponshow",
-        component: () => import("../views/coupon/CouponShow.vue"),
+        path: "dashboard",
+        name: "home",
+        component: HomeView,
       },
       {
-        path: "create",
-        name: "couponcreate",
-        component: () => import("../views/coupon/CouponCreate.vue"),
+        path: "users",
+        name: "users",
+        component: () => import("../viewsadmin/UsersView.vue"),
+        children: [
+          {
+            path: "",
+            name: "usershow",
+            component: () => import("../viewsadmin/users/UsersShow.vue"),
+          },
+          {
+            path: "create",
+            name: "userscreate",
+            component: () => import("../viewsadmin/users/UsersCreate.vue"),
+          },
+        ],
       },
-    ],
-  },
-  {
-    path: "/setting",
-    name: "setting",
-    component: () => import("../views/SettingView.vue"),
-    children: [
       {
-        path: "payment",
-        name: "paymentsetting",
-        component: () => import("../views/setting/PaymentSetting.vue"),
+        path: "coupon",
+        name: "coupon",
+        component: () => import("../viewsadmin/CouponView.vue"),
+        children: [
+          {
+            path: "",
+            name: "couponshow",
+            component: () => import("../viewsadmin/coupon/CouponShow.vue"),
+          },
+          {
+            path: "create",
+            name: "couponcreate",
+            component: () => import("../viewsadmin/coupon/CouponCreate.vue"),
+          },
+        ],
+      },
+      {
+        path: "setting",
+        name: "setting",
+        component: () => import("../viewsadmin/SettingView.vue"),
+        children: [
+          {
+            path: "payment",
+            name: "paymentsetting",
+            component: () => import("../viewsadmin/setting/PaymentSetting.vue"),
+          },
+          {
+            path: "sms",
+            name: "appsetting",
+            component: () => import("../viewsadmin/setting/SMSSetting.vue"),
+          },
+        ],
       },
       {
         path: "sms",
-        name: "appsetting",
-        component: () => import("../views/setting/SMSSetting.vue"),
-      },
-    ],
-  },
-  {
-    path: "/sms",
-    name: "sms",
-    component: () => import("../views/SmsView.vue"),
-    children: [
-      {
-        path: "sendbulk",
-        name: "sendbulk",
-        component: () => import("../views/sms/SendBulk.vue"),
-      },
-      {
-        path: "settexts",
-        name: "settexts",
-        component: () => import("../views/sms/SetTexts.vue"),
-      },
-    ],
-  },
-  {
-    path: "/product",
-    name: "product",
-    component: () => import("../views/ProductView.vue"),
-    children: [
-      {
-        path: "",
-        name: "productshow",
-        component: () => import("../views/product/ProductShow.vue"),
+        name: "sms",
+        component: () => import("../viewsadmin/SmsView.vue"),
+        children: [
+          {
+            path: "sendbulk",
+            name: "sendbulk",
+            component: () => import("../viewsadmin/sms/SendBulk.vue"),
+          },
+          {
+            path: "settexts",
+            name: "settexts",
+            component: () => import("../viewsadmin/sms/SetTexts.vue"),
+          },
+        ],
       },
       {
-        path: "create",
-        name: "productcreate",
-        component: () => import("../views/product/ProductCreate.vue"),
-      },
-      {
-        path: "edit/:id",
-        name: "productedit",
-        component: () => import("../views/product/ProductEdit.vue"),
+        path: "product",
+        name: "product",
+        component: () => import("../viewsadmin/ProductView.vue"),
+        children: [
+          {
+            path: "",
+            name: "productshow",
+            component: () => import("../viewsadmin/product/ProductShow.vue"),
+          },
+          {
+            path: "create",
+            name: "productcreate",
+            component: () => import("../viewsadmin/product/ProductCreate.vue"),
+          },
+          {
+            path: "edit/:id",
+            name: "productedit",
+            component: () => import("../viewsadmin/product/ProductEdit.vue"),
+          },
+        ],
       },
     ],
   },

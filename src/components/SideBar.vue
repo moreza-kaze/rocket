@@ -95,7 +95,7 @@
                     hidden: !dash_li,
                   },
                 ]"
-                ><router-link to="/dashboard">خانه</router-link></span
+                ><router-link to="/admin/dashboard">خانه</router-link></span
               >
             </div>
           </div>
@@ -183,7 +183,7 @@
                     hidden: !users_li,
                   },
                 ]"
-                ><router-link to="/users">مدیریت</router-link></span
+                ><router-link to="/admin/users">مدیریت</router-link></span
               >
               <span
                 @click="menuChange()"
@@ -195,7 +195,7 @@
                     hidden: !users_li,
                   },
                 ]"
-                ><router-link to="/users/create">ایجاد</router-link></span
+                ><router-link to="/admin/users/create">ایجاد</router-link></span
               >
             </div>
           </div>
@@ -283,7 +283,7 @@
                     hidden: !coupon_li,
                   },
                 ]"
-                ><router-link to="/coupon">مدیریت</router-link></span
+                ><router-link to="/admin/coupon">مدیریت</router-link></span
               >
               <span
                 @click="menuChange()"
@@ -295,7 +295,9 @@
                     hidden: !coupon_li,
                   },
                 ]"
-                ><router-link to="/coupon/create">ایجاد</router-link></span
+                ><router-link to="/admin/coupon/create"
+                  >ایجاد</router-link
+                ></span
               >
             </div>
           </div>
@@ -382,7 +384,7 @@
                     hidden: !prod_li,
                   },
                 ]"
-                ><router-link to="/product">مدیریت</router-link></span
+                ><router-link to="/admin/product">مدیریت</router-link></span
               >
               <span
                 @click="menuChange()"
@@ -394,7 +396,9 @@
                     hidden: !prod_li,
                   },
                 ]"
-                ><router-link to="/product/create">ایجاد</router-link></span
+                ><router-link to="/admin/product/create"
+                  >ایجاد</router-link
+                ></span
               >
             </div>
           </div>
@@ -481,7 +485,9 @@
                     hidden: !sms_li,
                   },
                 ]"
-                ><router-link to="/sms/sendbulk">ارسال‌انبوه</router-link></span
+                ><router-link to="/admin/sms/sendbulk"
+                  >ارسال‌انبوه</router-link
+                ></span
               >
               <span
                 @click="menuChange()"
@@ -493,7 +499,7 @@
                     hidden: !sms_li,
                   },
                 ]"
-                ><router-link to="/sms/settexts">متون</router-link></span
+                ><router-link to="/admin/sms/settexts">متون</router-link></span
               >
             </div>
           </div>
@@ -585,7 +591,7 @@
                     hidden: !setting_li,
                   },
                 ]"
-                ><router-link to="/setting/sms">پیامک</router-link></span
+                ><router-link to="/admin/setting/sms">پیامک</router-link></span
               >
               <span
                 @click="menuChange()"

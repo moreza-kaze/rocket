@@ -5,6 +5,9 @@ module.exports = {
       main: "iran",
     },
     extend: {
+      height: {
+        128: "32rem",
+      },
       screens: {
         xl3: "1700px",
         hsm: { raw: "(min-height: 800px)" },
