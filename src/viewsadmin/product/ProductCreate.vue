@@ -117,11 +117,12 @@
 </template>
 
 <script>
-import { reactive } from "@vue/reactivity";
+import { reactive, ref } from "@vue/reactivity";
 import { useStore } from "vuex";
 import Swal from "sweetalert2";
 export default {
   setup() {
+    const erro = ref();
     const store = useStore();
     const products = reactive({
       product_id: "",
@@ -141,7 +142,18 @@ export default {
         products.product_id.length > 1 &&
         products.sms_price.length > 1
       ) {
-        store.dispatch("createProduct", products);
+        store.dispatch("createProduct", products).then(function (res) {
+          erro.value = res.response.data;
+          if (erro.value.status == 2) {
+            products.product_id = "";
+            products.product_name = "";
+            products.amount = "";
+            products.amount_final = "";
+            products.product_sms = "";
+            products.product_gift = "";
+            products.sms_price = "";
+          }
+        });
       } else {
         Swal.fire({
           icon: "error",

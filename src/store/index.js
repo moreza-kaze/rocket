@@ -116,7 +116,7 @@ export default createStore({
         discount_value: Number(val.discount_value),
       });
       apicheck(response.data);
-      return { commit };
+      return { commit, response };
     },
     // search users
     async searchUser({ commit }, val) {
@@ -235,7 +235,7 @@ export default createStore({
         sms_price: val.sms_price,
       });
       apicheck(response.data);
-      return { commit };
+      return { commit, response };
     },
     async getOneProduct({ commit }, val) {
       const response = await axios.get(`${apiurl}/api/admin/products/${val}`);

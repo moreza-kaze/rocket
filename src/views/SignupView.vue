@@ -1,10 +1,10 @@
 <template>
   <div class="flex flex-row h-full w-full min-h-screen flex-wrap">
     <div
-      class="w-full lg:w-7/12 h-full min-h-screen bg-blob bg-center flex justify-center items-center px-9 py-20"
+      class="w-full lg:w-7/12 h-full min-h-screen bg-blob bg-center flex justify-center items-center px-16 py-20"
     >
       <div
-        class="w-full h-128 min-h-full flex flex-col backdrop-blur-xl bg-white/40 rounded-lg shadow p-9"
+        class="w-5/6 2xl:w-8/12 h-117 min-h-full flex flex-col backdrop-blur-xl bg-white/40 rounded-lg shadow p-9"
       >
         <h2 class="w-full text-2xl font-semibold">ثبت نام</h2>
         <h5 class="w-full mt-2">در کمتر یک دقیقه عضو شوید</h5>
