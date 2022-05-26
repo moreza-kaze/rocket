@@ -26,7 +26,7 @@
       <div
         class="w-full h-full flex flex-col items-center justify-between bg-whitetransparent-500 shadow-md rounded-md p-5"
       >
-        <div class="w-full h-full flex flex-col items-center">
+        <div class="w-full flex flex-col items-center">
           <!-- invoice -->
           <div
             :class="[
@@ -342,6 +342,66 @@
               ></textarea>
             </div>
           </div>
+          <div
+            class="w-full md:w-7/12 flex flex-wrap border-2 border-gray-300 border-solid mt-3 pb-4 bg-slate-50 rounded-lg opacity-30 hover:opacity-90"
+          >
+            <div
+              @click="varClipboard('{username}')"
+              class="w-4/12 flex flex-row items- justify-center mt-4"
+            >
+              <span>نام کاربری</span>:
+              <span>{username}</span>
+            </div>
+            <div
+              @click="varClipboard('{password}')"
+              class="w-4/12 flex flex-row items-center justify-center mt-4"
+            >
+              <span>رمز عبور</span>:
+              <span>{password}</span>
+            </div>
+            <div
+              @click="varClipboard('{fullName}')"
+              class="w-4/12 flex flex-row items-center justify-center mt-4"
+            >
+              <span>نام کامل کاربر</span>:
+              <span>{fullName}</span>
+            </div>
+            <div
+              @click="varClipboard('{nationalCode}')"
+              class="w-4/12 flex flex-row items-center justify-center mt-4"
+            >
+              <span>کد ملی</span>:
+              <span>{nationalCode}</span>
+            </div>
+            <div
+              @click="varClipboard('{mobile_number}')"
+              class="w-4/12 flex flex-row items-center justify-center mt-4"
+            >
+              <span>تلفن همراه</span>:
+              <span>{mobile_number}</span>
+            </div>
+            <div
+              @click="varClipboard('{amount_final}')"
+              class="w-4/12 flex flex-row items-center justify-center mt-4"
+            >
+              <span>قیمت پایانی</span>:
+              <span>{amount_final}</span>
+            </div>
+            <div
+              @click="varClipboard('{invoice_link}')"
+              class="w-4/12 flex flex-row items-center justify-center mt-4"
+            >
+              <span>لینک فاکتور</span>:
+              <span>{invoice_link}</span>
+            </div>
+            <div
+              @click="varClipboard('{panel_name}')"
+              class="w-4/12 flex flex-row items-center justify-center mt-4"
+            >
+              <span>نام پنل</span>:
+              <span>{panel_name}</span>
+            </div>
+          </div>
           <!-- end userpass -->
         </div>
         <div
@@ -363,6 +423,7 @@
 import { reactive, ref } from "@vue/reactivity";
 import { useStore } from "vuex";
 import { computed, watchEffect } from "@vue/runtime-core";
+import Swal from "sweetalert2";
 
 export default {
   setup() {
@@ -375,7 +436,29 @@ export default {
     store.dispatch("getSmsText");
 
     const getTextsdata = computed(() => store.state.smsText);
-
+    function copyToClipboard(textToCopy) {
+      // navigator clipboard api needs a secure context (https)
+      if (navigator.clipboard && window.isSecureContext) {
+        // navigator clipboard api method'
+        return navigator.clipboard.writeText(textToCopy);
+      } else {
+        // text area method
+        let textArea = document.createElement("textarea");
+        textArea.value = textToCopy;
+        // make the textarea out of viewport
+        textArea.style.position = "fixed";
+        textArea.style.left = "-999999px";
+        textArea.style.top = "-999999px";
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        return new Promise((res, rej) => {
+          // here the magic happens
+          document.execCommand("copy") ? res() : rej();
+          textArea.remove();
+        });
+      }
+    }
     const getTexts = reactive({
       id: 0,
       after_form_submit_shared: 0,
@@ -391,6 +474,25 @@ export default {
       send_username_pass_text: "",
       send_username_pass_bodyid: 0,
     });
+    function varClipboard(value) {
+      copyToClipboard(value);
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener("mouseenter", Swal.stopTimer);
+          toast.addEventListener("mouseleave", Swal.resumeTimer);
+        },
+      });
+
+      Toast.fire({
+        icon: "success",
+        title: `شرتکد کپی شد`,
+      });
+    }
 
     watchEffect(() => {
       if (getTextsdata.value == undefined) {
@@ -437,6 +539,7 @@ export default {
       getTexts,
       getTextsdata,
       saveChange,
+      varClipboard,
     };
   },
 };

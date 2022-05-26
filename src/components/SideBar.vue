@@ -603,7 +603,9 @@
                     hidden: !setting_li,
                   },
                 ]"
-                ><router-link to="/setting/payment">درگاه</router-link></span
+                ><router-link to="/admin/setting/payment"
+                  >درگاه</router-link
+                ></span
               >
             </div>
           </div>

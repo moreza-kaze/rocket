@@ -73,7 +73,7 @@ const returns = (entry) => {
     Swal.fire({
       icon: "error",
       title: "...خطا",
-      text: entry.error.join(" و  "),
+      text: entry.error[0],
     });
   }
   if (entry.status == undefined) {

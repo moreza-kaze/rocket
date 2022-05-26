@@ -9,7 +9,7 @@
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
-            stroke-width="1.5"
+            stroke-width="1.75"
           >
             <path
               stroke-linecap="round"
@@ -17,7 +17,7 @@
               d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"
             /></svg
         ></span>
-        <span class="mr-3 font-medium text-lg md:text-2xl"
+        <span class="mr-3 font-bold text-lg md:text-2xl"
           ><span class="hidden md:inline">مدیریت</span> کوپن</span
         >
       </div>
@@ -48,7 +48,7 @@
               </svg>
             </button></form
         ></span>
-        <router-link to="/coupon/create" class="hidden md:inline"
+        <router-link to="/admin/coupon/create" class="hidden md:inline"
           ><svg
             xmlns="http://www.w3.org/2000/svg"
             class="h-8 w-8"
@@ -212,7 +212,7 @@
                 name="th"
                 class="py-1 mx-1 mb-2 sm:mb-0 border-t-2 sm:border-0 border-solid border-gray-300 w-11/12 sm:w-2/12 text-center sm:bg-transparent text-gray-600 flex flex-row justify-center"
               >
-                <span @click="editTotalAmount()" class="cursor-pointer"
+                <span @click="editTotalAmount(coupon.id)" class="cursor-pointer"
                   ><svg
                     xmlns="http://www.w3.org/2000/svg"
                     class="h-4 w-4"
@@ -314,6 +314,7 @@
 import { ref } from "@vue/reactivity";
 import { useStore } from "vuex";
 import { computed, watchEffect } from "@vue/runtime-core";
+import Swal from "sweetalert2";
 export default {
   setup() {
     const pagination = ref(true);
@@ -362,6 +363,30 @@ export default {
       store.dispatch("actionCoupon", [id, !active]);
       couponUpdate.value = true;
     };
+    const editTotalAmount = (id) => {
+      Swal.fire({
+        title: "مقدار جدیدی برای کوپن خود انتخاب کنید",
+        input: "text",
+        customClass: { title: "font-main text-lg", input: "text-center mx-32" },
+        inputAttributes: {
+          autocapitalize: "off",
+        },
+        cancelButtonText: "نه",
+        confirmButtonText: "اضافه کن",
+        showLoaderOnConfirm: true,
+        preConfirm: (newAmount) => {
+          return store
+            .dispatch("couponRecharge", [id, newAmount])
+            .then(function (res) {
+              console.log(res);
+              if (res.response.data.status != undefined) {
+                store.dispatch("getDataCoupon", page.value);
+              }
+            });
+        },
+        allowOutsideClick: () => !Swal.isLoading(),
+      });
+    };
     return {
       coupons,
       page,
@@ -371,6 +396,7 @@ export default {
       pagination,
       searchInput,
       actionCoupon,
+      editTotalAmount,
     };
   },
 };

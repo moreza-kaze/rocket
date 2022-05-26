@@ -77,38 +77,72 @@
           <div
             class="h-96 md:h-full my-5 w-full md:w-9/12 bg-white rounded-lg flex flex-col justify-around items-center p-4"
           >
-            <span class="text-gray-500"
-              ><svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-20 w-20"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                stroke-width="1"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"
-                /></svg
-            ></span>
-            <span class="text-maincolor-999 text-xl md:text-4xl">{{
-              products.product_name
-            }}</span>
-            <span class="text-maincolor-999 text-lg md:text-2xl">{{
-              products.amount_final
-            }}</span>
-            <span class="text-maincolor-999 text-base md:text-xl">{{
-              products.product_gift
-            }}</span>
-            <span class="text-maincolor-999 text-sm md:text-lg">{{
-              products.sms_price
-            }}</span>
-            <button
-              class="bg-gradient-to-r from-green-500 to-emerald-400 hover:from-emerald-600 hover:to-green-600 h-10 text-white rounded-xl w-9/12"
+            <div
+              class="h-12 flex justify-center items-center text-lg font-semibold"
             >
-              ثبت محصول
-            </button>
+              <span class="ml-2"
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-12 w-12"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="1"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
+                  /></svg
+              ></span>
+              <span>{{ products.product_name }}</span>
+            </div>
+            <div
+              class="bg-product h-4/6 w-11/12 flex flex-col justify-between px-10 py-4 rounded-lg shadow-md"
+            >
+              <div
+                class="w-full h-1/4 flex flex-row justify-between items-center border-b-2 border-d border-gray-300"
+              >
+                <span>کد محصول</span>
+                <span class="text-maincolor-999 text-xl md:text-4xl">{{
+                  products.product_id
+                }}</span>
+              </div>
+              <div
+                class="w-full h-1/4 flex flex-row justify-between items-center border-b-2 border-d border-gray-300"
+              >
+                <span>قیمت محصول</span>
+                <span class="text-maincolor-999 text-lg md:text-2xl"
+                  >{{ products.amount_final }}
+                  <del class="text-sm text-red-500">{{ products.amount }}</del>
+                </span>
+              </div>
+              <div
+                class="w-full h-1/4 flex flex-row justify-between items-center border-b-2 border-d border-gray-300"
+              >
+                <span>پیامک هدیه</span>
+                <span class="text-maincolor-999 text-base md:text-xl">{{
+                  products.product_gift
+                }}</span>
+              </div>
+              <div
+                class="w-full h-1/4 flex flex-row justify-between items-center"
+              >
+                <span>تعرفه</span>
+                <span class="text-maincolor-999 text-sm md:text-lg">{{
+                  products.sms_price
+                }}</span>
+              </div>
+            </div>
+            <div
+              class="h-1/6 w-11/12 flex flex-row justify-center items-center"
+            >
+              <button
+                class="bg-gradient-to-r from-green-500 to-emerald-400 hover:from-emerald-600 hover:to-green-600 h-10 text-white rounded-xl w-9/12"
+              >
+                ثبت محصول
+              </button>
+            </div>
           </div>
         </form>
       </div>

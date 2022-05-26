@@ -17,7 +17,7 @@
               d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
             /></svg
         ></span>
-        <span class="mr-3 font-medium text-lg md:text-2xl">محصولات</span>
+        <span class="mr-3 font-bold text-lg md:text-2xl">محصولات</span>
       </div>
       <div class="flex flew-row justify-center items-center">
         <span></span>

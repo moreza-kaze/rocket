@@ -186,6 +186,18 @@ export default createStore({
       apicheck(response.data);
       return { commit };
     },
+    // recharge coupon
+    async couponRecharge({ commit }, val) {
+      const response = await axios.post(
+        `${apiurl}/api/admin/coupons/recharge`,
+        {
+          id: val[0],
+          new_amount: val[1],
+        }
+      );
+      apicheck(response.data);
+      return { commit, response };
+    },
     // get sms gateway setting
     async getsmsGatewaySetting({ commit }) {
       const response = await axios.get(`${apiurl}/api/admin/smsgatewaysetting`);
