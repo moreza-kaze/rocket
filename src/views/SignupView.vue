@@ -1,36 +1,78 @@
 <template>
   <div class="flex flex-row h-full w-full min-h-screen flex-wrap">
     <div
-      class="w-full lg:w-7/12 h-full min-h-screen bg-blob bg-center flex justify-center items-center px-16 py-20"
+      class="w-full lg:w-7/12 h-full min-h-screen bg-blob bg-center flex justify-center items-center px-10 py-5 md:px-16 lg:py-20"
     >
       <div
-        class="w-5/6 2xl:w-8/12 h-117 min-h-full flex flex-col backdrop-blur-xl bg-white/40 rounded-lg shadow p-9"
+        :class="{ 'h-117': !panels, 'h-full': panels }"
+        class="w-full md:w-5/6 2xl:w-8/12 min-h-full flex flex-col backdrop-blur-xl bg-white/40 rounded-lg shadow p-9 overflow-hidden"
       >
-        <h2 class="w-full text-2xl font-semibold">ثبت نام</h2>
-        <h5 class="w-full mt-2">در کمتر یک دقیقه عضو شوید</h5>
-        <form class="flex flex-col">
-          <input
-            class="mt-5 h-10 px-4 bg-gray-100 shadow-md rounded-xl"
-            type="text"
-            placeholder="نام و نام‌خانوادگی"
-          />
-          <input
-            class="mt-5 h-10 px-4 bg-gray-100 shadow-md rounded-xl"
-            type="text"
-            placeholder="کد ملی"
-          />
-          <input
-            class="mt-5 h-10 px-4 bg-gray-100 shadow-md rounded-xl"
-            type="text"
-            placeholder="شماره تلفن همراه"
-          />
-          <span class="text-gray-600 mx-3 mt-5"
-            >با این ثبت نام قوانین را میپزیرم</span
-          >
-          <button class="w-full bg-green-600 h-10 mt-6 rounded-2xl">
-            ثبت نام
-          </button>
-        </form>
+        <div
+          :class="{ 'w-0 hidden': panels, 'w-full': !panels }"
+          class="h-full overflow-hidde"
+        >
+          <h2 class="w-full text-2xl font-semibold">ثبت نام</h2>
+          <h5 class="w-full mt-2">در کمتر یک دقیقه عضو شوید</h5>
+          <form @submit.prevent="chosePanel()" class="flex flex-col">
+            <input
+              class="mt-5 h-10 px-4 bg-gray-100 shadow-md rounded-xl"
+              type="text"
+              placeholder="نام و نام‌خانوادگی"
+            />
+            <input
+              class="mt-5 h-10 px-4 bg-gray-100 shadow-md rounded-xl"
+              type="text"
+              placeholder="کد ملی"
+            />
+            <input
+              class="mt-5 h-10 px-4 bg-gray-100 shadow-md rounded-xl"
+              type="text"
+              placeholder="شماره تلفن همراه"
+            />
+            <span class="text-gray-600 mx-3 mt-5"
+              >با این ثبت نام قوانین را میپزیرم</span
+            >
+            <button
+              class="w-full bg-green-600 h-10 mt-6 rounded-2xl hover:text-white hover:font-bold hover:shadow"
+            >
+              ثبت نام
+            </button>
+          </form>
+        </div>
+        <div
+          :class="{ 'w-0 hidden': !panels, 'w-full': panels }"
+          class="h-full overflow-hidden px-6"
+        >
+          <div>
+            <p class="font-bold text-2xl text-gray-800">
+              کدام پنل پیامکی را میخواهید؟
+            </p>
+          </div>
+          <div v-for="(product, index) in products" :key="index">
+            <div
+              class="w-full bg-gray-100 rounded-lg my-5 flex items-center justify-between p-6 shadow-md hover:shadow-xl"
+            >
+              <div class="flex flex-col items-start justify-between">
+                <span class="mb-5 font-bold text-2xl">{{
+                  product.product_name
+                }}</span>
+                <span class="text-xs">پیامکی {{ product.sms_price }} ت</span>
+              </div>
+              <div class="flex flex-col items-end justify-between">
+                <span class="mb-5"
+                  ><span class="font-bold text-2xl">{{
+                    product.amount_final
+                  }}</span
+                  ><del class="text-red-600">{{ product.amount }}</del> هزار
+                  تومان</span
+                >
+                <span class="text-xs"
+                  >{{ product.product_gift }} پیامک هدیه</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div
@@ -42,7 +84,27 @@
 </template>
 
 <script>
-export default {};
+import { ref } from "@vue/reactivity";
+import { useStore } from "vuex";
+import { computed } from "@vue/runtime-core";
+export default {
+  setup() {
+    const panels = ref(false);
+    const store = useStore();
+    store.dispatch("getPanel");
+    const products = computed(() => store.getters["getUserproducts"]);
+    console.log(products.value);
+    const chosePanel = () => {
+      panels.value = true;
+    };
+
+    return {
+      products,
+      panels,
+      chosePanel,
+    };
+  },
+};
 </script>
 
 <style>

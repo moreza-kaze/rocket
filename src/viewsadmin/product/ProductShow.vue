@@ -21,7 +21,7 @@
       </div>
       <div class="flex flew-row justify-center items-center">
         <span></span>
-        <router-link to="/product/create" class="hidden md:inline"
+        <router-link to="/admin/product/create" class="hidden md:inline"
           ><svg
             xmlns="http://www.w3.org/2000/svg"
             class="h-8 w-8"

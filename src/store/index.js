@@ -16,6 +16,7 @@ export default createStore({
     showUserInfo: {},
     products: [],
     OneProduct: {},
+    userproducts: [],
   },
   getters: {
     getMenu(state) {
@@ -32,6 +33,9 @@ export default createStore({
     },
     getDataCoupon(state) {
       return state.coupons;
+    },
+    getUserproducts(state) {
+      return state.userproducts;
     },
   },
   mutations: {
@@ -75,6 +79,10 @@ export default createStore({
     getOneProduct(state, val) {
       state.OneProduct = {};
       state.OneProduct = val;
+    },
+    getPanel(state, val) {
+      state.userproducts = [];
+      state.userproducts = val;
     },
   },
   actions: {
@@ -269,6 +277,18 @@ export default createStore({
       apicheck(response.data);
       this.dispatch("getOneProduct", val[0]);
       return { commit };
+    },
+    async getPanel({ commit }) {
+      axios
+        .get(`${apiurl}/api/users/showproducts`)
+        .then(function (response) {
+          console.log(response.data);
+          commit("getPanel", response.data);
+        })
+        .catch(function (error) {
+          // handle error
+          console.log(error);
+        });
     },
   },
   modules: {},
