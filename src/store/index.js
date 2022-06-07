@@ -273,22 +273,36 @@ export default createStore({
           sms_price: val[1].sms_price,
         }
       );
-      console.log(response.data);
       apicheck(response.data);
       this.dispatch("getOneProduct", val[0]);
       return { commit };
+    },
+    async register({ commit }, val) {
+      const response = await axios.post(`${apiurl}/api/users/register`, val);
+
+      return { commit, response };
     },
     async getPanel({ commit }) {
       axios
         .get(`${apiurl}/api/users/showproducts`)
         .then(function (response) {
-          console.log(response.data);
           commit("getPanel", response.data);
         })
         .catch(function (error) {
           // handle error
           console.log(error);
         });
+    },
+    async createinvoice({ commit }, val) {
+      console.log(val);
+      const response = await axios.post(`${apiurl}/api/users/createinvoice`, {
+        customer_id: Number(val[1]),
+        product_id: Number(val[0]),
+      });
+      return {
+        response,
+        commit,
+      };
     },
   },
   modules: {},

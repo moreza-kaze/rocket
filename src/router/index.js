@@ -12,6 +12,11 @@ const routes = [
         name: "signup",
         component: () => import("../views/SignupView.vue"),
       },
+      {
+        path: "invoice/:id",
+        name: "invoice",
+        component: () => import("../views/InvoiceView.vue"),
+      },
     ],
   },
   {
