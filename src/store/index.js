@@ -304,6 +304,45 @@ export default createStore({
         commit,
       };
     },
+    async invoiceShow({ commit }, val) {
+      const response = await axios.get(
+        `${apiurl}/api/users/invoiceshow/${val}`
+      );
+      if (commit) {
+        return {
+          response,
+        };
+      }
+    },
+    async invoiceUpdate({ commit }, val) {
+      const response = await axios.post(
+        `${apiurl}/api/users/updateinvoice/${val[0]}`,
+        {
+          coupon_name: val[1],
+        }
+      );
+      apicheck(response.data);
+      if (commit) {
+        return response;
+      }
+    },
+    async getPayment({ commit }) {
+      const response = await axios.get(`${apiurl}/api/admin/bankgateway`);
+      if (commit) {
+        return response;
+      }
+    },
+    async setPayment({ commit }, val) {
+      const response = await axios.post(
+        `${apiurl}/api/admin/bankgateway/insertorupdate`,
+        val
+      );
+      apicheck(response.data);
+      console.log(response.data);
+      if (commit) {
+        response;
+      }
+    },
   },
   modules: {},
 });

@@ -44,7 +44,7 @@
               prod_li = false;
               dash_li = !dash_li;
               users_li = false;
-              setting_li = false;
+              payment_li = false;
               coupon_li = false;
               sms_li = false;
             }
@@ -137,7 +137,7 @@
               prod_li = false;
               users_li = !users_li;
               sms_li = false;
-              setting_li = false;
+              payment_li = false;
               coupon_li = false;
               dash_li = false;
             }
@@ -237,7 +237,7 @@
               prod_li = false;
               coupon_li = !coupon_li;
               users_li = false;
-              setting_li = false;
+              payment_li = false;
               sms_li = false;
               dash_li = false;
             }
@@ -337,7 +337,7 @@
           @click="
             {
               prod_li = !prod_li;
-              setting_li = false;
+              payment_li = false;
               users_li = false;
               sms_li = false;
               coupon_li = false;
@@ -440,7 +440,7 @@
               prod_li = false;
               sms_li = !sms_li;
               users_li = false;
-              setting_li = false;
+              payment_li = false;
               coupon_li = false;
               dash_li = false;
             }
@@ -485,9 +485,7 @@
                     hidden: !sms_li,
                   },
                 ]"
-                ><router-link to="/admin/sms/sendbulk"
-                  >ارسال‌انبوه</router-link
-                ></span
+                ><router-link to="/admin/sms/settexts">متون</router-link></span
               >
               <span
                 @click="menuChange()"
@@ -499,7 +497,9 @@
                     hidden: !sms_li,
                   },
                 ]"
-                ><router-link to="/admin/sms/settexts">متون</router-link></span
+                ><router-link to="/admin/sms/setting"
+                  >تنظیمات</router-link
+                ></span
               >
             </div>
           </div>
@@ -527,19 +527,19 @@
         </li>
         <!----- end sms ------>
         <!--                -->
-        <!----- setting ------>
+        <!----- payment ------>
         <li
           :class="[
-            { 'bg-maincolor-100': !setting_li },
-            { '!bg-maincolor-999': setting_li },
-            { 'h-14': !setting_li },
-            { 'h-32': setting_li },
-            { 'shadow-slate-500': setting_li },
+            { 'bg-maincolor-100': !payment_li },
+            { '!bg-maincolor-999': payment_li },
+            { 'h-14': !payment_li },
+            { 'h-32': payment_li },
+            { 'shadow-slate-500': payment_li },
           ]"
           @click="
             {
               prod_li = false;
-              setting_li = !setting_li;
+              payment_li = !payment_li;
               users_li = false;
               sms_li = false;
               coupon_li = false;
@@ -551,8 +551,8 @@
           <div class="flex">
             <svg
               :class="[
-                { 'text-maincolor-999': !setting_li },
-                { 'text-white': setting_li },
+                { 'text-maincolor-999': !payment_li },
+                { 'text-white': payment_li },
               ]"
               xmlns="http://www.w3.org/2000/svg"
               class="inline h-6 w-6 mx-5 md:mx-6"
@@ -576,35 +576,37 @@
               <span
                 class="font-bold text-base cursor-pointer"
                 :class="[
-                  { 'text-maincolor-999': !setting_li },
-                  { 'text-white': setting_li },
+                  { 'text-maincolor-999': !payment_li },
+                  { 'text-white': payment_li },
                 ]"
-                >تنظیمات</span
+                >درگاه‌ پرداخت</span
               >
               <span
                 @click="menuChange()"
                 class="font-medium text-sm lg:mt-3 mt-2.5"
                 :class="[
-                  { 'text-maincolor-100': !setting_li },
-                  { 'text-white': setting_li },
+                  { 'text-maincolor-100': !payment_li },
+                  { 'text-white': payment_li },
                   {
-                    hidden: !setting_li,
+                    hidden: !payment_li,
                   },
                 ]"
-                ><router-link to="/admin/setting/sms">پیامک</router-link></span
+                ><router-link to="/admin/payment/report"
+                  >گزارش</router-link
+                ></span
               >
               <span
                 @click="menuChange()"
                 class="font-medium text-sm lg:mt-3 my-2.5"
                 :class="[
-                  { 'text-maincolor-100': !setting_li },
-                  { 'text-white': setting_li },
+                  { 'text-maincolor-100': !payment_li },
+                  { 'text-white': payment_li },
                   {
-                    hidden: !setting_li,
+                    hidden: !payment_li,
                   },
                 ]"
-                ><router-link to="/admin/setting/payment"
-                  >درگاه</router-link
+                ><router-link to="/admin/payment/setting"
+                  >تنظیمات</router-link
                 ></span
               >
             </div>
@@ -612,9 +614,9 @@
           <span
             class="ml-3 mt-1.5 transition-all"
             :class="[
-              { 'text-maincolor-999': !setting_li },
-              { 'text-white': setting_li },
-              { 'rotate-180': setting_li },
+              { 'text-maincolor-999': !payment_li },
+              { 'text-white': payment_li },
+              { 'rotate-180': payment_li },
             ]"
             ><svg
               xmlns="http://www.w3.org/2000/svg"
@@ -631,7 +633,7 @@
               /></svg
           ></span>
         </li>
-        <!----- end setting ------>
+        <!----- end payment ------>
       </ul>
     </div>
   </div>
@@ -647,7 +649,7 @@ export default {
   },
   setup() {
     const store = useStore();
-    const setting_li = ref(false);
+    const payment_li = ref(false);
     const sms_li = ref(false);
     const coupon_li = ref(false);
     const users_li = ref(false);
@@ -658,7 +660,7 @@ export default {
     }
 
     return {
-      setting_li,
+      payment_li,
       sms_li,
       coupon_li,
       users_li,

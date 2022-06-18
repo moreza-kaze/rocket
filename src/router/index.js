@@ -65,19 +65,19 @@ const routes = [
         ],
       },
       {
-        path: "setting",
-        name: "setting",
+        path: "payment",
+        name: "payment",
         component: () => import("../viewsadmin/SettingView.vue"),
         children: [
           {
-            path: "payment",
-            name: "paymentsetting",
-            component: () => import("../viewsadmin/setting/PaymentSetting.vue"),
+            path: "setting",
+            name: "setting",
+            component: () => import("../viewsadmin/payment/PaymentSetting.vue"),
           },
           {
-            path: "sms",
-            name: "appsetting",
-            component: () => import("../viewsadmin/setting/SMSSetting.vue"),
+            path: "report",
+            name: "report",
+            component: () => import("../viewsadmin/payment/PaymentReport.vue"),
           },
         ],
       },
@@ -87,9 +87,9 @@ const routes = [
         component: () => import("../viewsadmin/SmsView.vue"),
         children: [
           {
-            path: "sendbulk",
-            name: "sendbulk",
-            component: () => import("../viewsadmin/sms/SendBulk.vue"),
+            path: "Setting",
+            name: "Setting",
+            component: () => import("../viewsadmin/sms/SMSSetting.vue"),
           },
           {
             path: "settexts",

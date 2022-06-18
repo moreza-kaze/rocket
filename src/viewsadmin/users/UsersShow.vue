@@ -224,7 +224,7 @@
                 name="th"
                 class="py-1 mx-1 mb-2 mr-1 sm:mb-0 w-11/12 sm:w-1/12 text-center overflow-x-hidden sm:bg-transparent text-gray-600"
               >
-                {{ user.id }}
+                {{ user.invoice_id }}
               </div>
               <div
                 name="th"
@@ -461,7 +461,7 @@ export default {
         Swal.fire({
           title: `${showUserInfo.value.fullName}(${users.value[
             index
-          ].id?.toLocaleString("fa")})`,
+          ].invoice_id?.toLocaleString("fa")})`,
           html: `<div dir="rtl" class="flex flex-col">
                 <div class="flex flex-row justify-center">
                   <span>مبلغ پرداختی : </span><span>${showUserInfo.value.amount_final?.toLocaleString(
