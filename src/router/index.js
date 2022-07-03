@@ -20,14 +20,20 @@ const routes = [
     ],
   },
   {
+    path: "/auth",
+    name: "auth",
+    component: () => import("../views/AuthView.vue"),
+  },
+  {
     path: "/admin",
     name: "admin",
+    meta: { requiresAuth: true },
     component: () => import("../viewsadmin/AdminView.vue"),
     redirect: "/admin/dashboard",
     children: [
       {
         path: "dashboard",
-        name: "home",
+        name: "dashboard",
         component: HomeView,
       },
       {
@@ -128,5 +134,14 @@ const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
 });
+
+// router.beforeEach((to, from, next) => {
+//   const login = localStorage.getItem("");
+//   if (to.matched.some((record) => record.meta.requiresAuth) && !login) {
+//     next("/auth");
+//   } else {
+//     next();
+//   }
+// });
 
 export default router;

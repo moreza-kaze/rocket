@@ -2,7 +2,7 @@ import { createStore } from "vuex";
 import axios from "axios";
 import apicheck from "../store/apicheck.js";
 
-const apiurl = "http://192.168.86.35:8000";
+const apiurl = "http://regtest.melipayamak.org";
 export default createStore({
   state: {
     menu: false,
@@ -338,9 +338,16 @@ export default createStore({
         val
       );
       apicheck(response.data);
-      console.log(response.data);
       if (commit) {
-        response;
+        return response;
+      }
+    },
+    async paymentReport({ commit }, val) {
+      const response = await axios.get(
+        `${apiurl}/api/admin/transactions?page=${val}`
+      );
+      if (commit) {
+        return response;
       }
     },
   },
