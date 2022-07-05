@@ -135,13 +135,11 @@ const router = createRouter({
   routes,
 });
 
-// router.beforeEach((to, from, next) => {
-//   const login = localStorage.getItem("");
-//   if (to.matched.some((record) => record.meta.requiresAuth) && !login) {
-//     next("/auth");
-//   } else {
-//     next();
-//   }
-// });
+router.beforeEach((to, from, next) => {
+  const login = localStorage.getItem("user");
+  if (to.matched.some((record) => record.meta.requiresAuth) && !login) {
+    next("/auth");
+  } else next();
+});
 
 export default router;

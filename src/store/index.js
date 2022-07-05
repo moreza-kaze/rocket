@@ -2,9 +2,11 @@ import { createStore } from "vuex";
 import axios from "axios";
 import apicheck from "../store/apicheck.js";
 
-const apiurl = "http://regtest.melipayamak.org";
+axios.defaults.baseURL = "http://regtest.melipayamak.org";
+axios.defaults.headers.post["Accept"] = "application/json";
 export default createStore({
   state: {
+    AUTH_TOKEN: "",
     menu: false,
     dashboard: {},
     usersLastPage: 1,
@@ -84,39 +86,54 @@ export default createStore({
       state.userproducts = [];
       state.userproducts = val;
     },
+    Authorization(state, val) {
+      state.AUTH_TOKEN = val;
+      localStorage.setItem("user", JSON.stringify(val));
+      axios.defaults.headers.common["Authorization"] = `Bearer ${val}`;
+      console.log(axios.defaults);
+    },
   },
   actions: {
     actionMenu({ commit }, val) {
       commit("mutationMenu", val);
     },
-
+    // Authorization //
+    async login({ commit }, val) {
+      await axios
+        .post(`/api/admin/login`, {
+          email: val[0],
+          password: val[1],
+        })
+        .then((res) => {
+          commit("Authorization", res.data.token);
+        });
+      return "ok";
+    },
     // get users //
     async getDataUser({ commit }, val) {
-      const response = await axios.get(
-        `${apiurl}/api/admin/customers?page=${val}`
-      );
+      const response = await axios.get(`/api/admin/customers?page=${val}`);
       // console.log(response.data.data.output.data);
       commit("getDataUser", response.data.data.output.data);
       commit("getUserLastPage", response.data.data.output.last_page);
+      console.log(axios.defaults);
     },
 
     // get dashboard data //
     async getDataDashboard({ commit }) {
-      const response = await axios.get(`${apiurl}/api/admin/home`);
+      const response = await axios.get(`/api/admin/home`);
       commit("getDashboard", response.data);
+      console.log(axios.defaults);
     },
 
     // get coupon data
     async getDataCoupon({ commit }, val) {
-      const response = await axios.get(
-        `${apiurl}/api/admin/coupons?page=${val}`
-      );
+      const response = await axios.get(`/api/admin/coupons?page=${val}`);
       commit("getDataCoupon", response.data.data.output.data);
       commit("getCouponLastPage", response.data.data.output.last_page);
     },
     // create coupon
     async createcoupon({ commit }, val) {
-      const response = await axios.post(`${apiurl}/api/admin/coupons`, {
+      const response = await axios.post(`/api/admin/coupons`, {
         coupon_name: val.coupon_name,
         active: Number(val.active),
         total_amount: Number(val.total_amount),
@@ -128,25 +145,22 @@ export default createStore({
     },
     // search users
     async searchUser({ commit }, val) {
-      const response = await axios.post(
-        `${apiurl}/api/admin/customers/search`,
-        {
-          mobile_number: val,
-        }
-      );
+      const response = await axios.post(`/api/admin/customers/search`, {
+        mobile_number: val,
+      });
       console.log(response.data.data);
       commit("getDataUser", response.data.data.output);
     },
     // search coupon
     async searchCoupon({ commit }, val) {
-      const response = await axios.post(`${apiurl}/api/admin/coupons/search`, {
+      const response = await axios.post(`/api/admin/coupons/search`, {
         coupon_name: val,
       });
       commit("getDataCoupon", response.data.data.output);
     },
     // userCreate
     async userCreate({ commit }, val) {
-      const response = await axios.post(`${apiurl}/api/admin/customers`, {
+      const response = await axios.post(`/api/admin/customers`, {
         fullName: val.fullName,
         nationalCode: val.nationalCode,
         mobile_number: val.mobile_number,
@@ -158,94 +172,79 @@ export default createStore({
     },
     // setCoupon
     async setCoupon({ commit }, val) {
-      const response = await axios.put(
-        `${apiurl}/api/admin/invoices/${val[1]}`,
-        {
-          coupon_name: val[0],
-        }
-      );
+      const response = await axios.put(`/api/admin/invoices/${val[1]}`, {
+        coupon_name: val[0],
+      });
       console.log(response.data);
       apicheck(response.data);
       return { commit };
     },
     // deleteCoupon
     async deleteUser({ commit }, userid) {
-      const response = await axios.delete(
-        `${apiurl}/api/admin/customers/${userid}`
-      );
+      const response = await axios.delete(`/api/admin/customers/${userid}`);
       apicheck(response.data);
       return { commit };
     },
     //showUserInfo
     async showUserInfo({ commit }, userInvoice_id) {
-      const response = await axios.get(
-        `${apiurl}/api/admin/invoices/${userInvoice_id}`
-      );
+      const response = await axios.get(`/api/admin/invoices/${userInvoice_id}`);
       commit("showUserInfo", response.data.data.output);
     },
     // actionCoupon
     async actionCoupon({ commit }, val) {
-      const response = await axios.put(
-        `${apiurl}/api/admin/coupons/${Number(val[0])}`,
-        {
-          active: Number(val[1]),
-        }
-      );
+      const response = await axios.put(`/api/admin/coupons/${Number(val[0])}`, {
+        active: Number(val[1]),
+      });
       apicheck(response.data);
       return { commit };
     },
     // recharge coupon
     async couponRecharge({ commit }, val) {
-      const response = await axios.post(
-        `${apiurl}/api/admin/coupons/recharge`,
-        {
-          id: val[0],
-          new_amount: val[1],
-        }
-      );
+      const response = await axios.post(`/api/admin/coupons/recharge`, {
+        id: val[0],
+        new_amount: val[1],
+      });
       apicheck(response.data);
       return { commit, response };
     },
     // get sms gateway setting
     async getsmsGatewaySetting({ commit }) {
-      const response = await axios.get(`${apiurl}/api/admin/smsgatewaysetting`);
+      const response = await axios.get(`/api/admin/smsgatewaysetting`);
       commit("getsmsGatewaySetting", response.data.data.output[0]);
     },
     // saveSmsDataChange
     async saveSmsDataChange({ commit }, val) {
       const response = await axios.post(
-        `${apiurl}/api/admin/smsgatewaysetting/insertorupdate`,
+        `/api/admin/smsgatewaysetting/insertorupdate`,
         val
       );
       apicheck(response.data);
       return { commit };
     },
     async getSmsText({ commit }) {
-      const response = await axios.get(`${apiurl}/api/admin/sms/texts`);
+      const response = await axios.get(`/api/admin/sms/texts`);
       commit("getSmsText", response.data.data.output[0]);
     },
     async changeSmsTexts({ commit }, val) {
       const response = await axios.post(
-        `${apiurl}/api/admin/sms/texts/insertorupdate`,
+        `/api/admin/sms/texts/insertorupdate`,
         val
       );
       apicheck(response.data);
       return { commit };
     },
     async getproduct({ commit }) {
-      const response = await axios.get(`${apiurl}/api/admin/products`);
+      const response = await axios.get(`/api/admin/products`);
       commit("getproduct", response.data.data.output);
     },
     async deleteProduct({ commit }, val) {
-      const response = await axios.delete(
-        `${apiurl}/api/admin/products/${val}`
-      );
+      const response = await axios.delete(`/api/admin/products/${val}`);
       apicheck(response.data);
       this.dispatch("getproduct");
       return { commit };
     },
     async createProduct({ commit }, val) {
-      const response = await axios.post(`${apiurl}/api/admin/products`, {
+      const response = await axios.post(`/api/admin/products`, {
         product_id: Number(val.product_id),
         product_name: val.product_name,
         amount: Number(val.amount),
@@ -258,33 +257,30 @@ export default createStore({
       return { commit, response };
     },
     async getOneProduct({ commit }, val) {
-      const response = await axios.get(`${apiurl}/api/admin/products/${val}`);
+      const response = await axios.get(`/api/admin/products/${val}`);
       commit("getOneProduct", response.data.data.output);
     },
     async updateProduct({ commit }, val) {
-      const response = await axios.put(
-        `${apiurl}/api/admin/products/${val[0]}`,
-        {
-          product_name: val[1].product_name,
-          amount: Number(val[1].amount),
-          amount_final: Number(val[1].amount_final),
-          product_sms: Number(val[1].product_sms),
-          product_gift: Number(val[1].product_gift),
-          sms_price: val[1].sms_price,
-        }
-      );
+      const response = await axios.put(`/api/admin/products/${val[0]}`, {
+        product_name: val[1].product_name,
+        amount: Number(val[1].amount),
+        amount_final: Number(val[1].amount_final),
+        product_sms: Number(val[1].product_sms),
+        product_gift: Number(val[1].product_gift),
+        sms_price: val[1].sms_price,
+      });
       apicheck(response.data);
       this.dispatch("getOneProduct", val[0]);
       return { commit };
     },
     async register({ commit }, val) {
-      const response = await axios.post(`${apiurl}/api/users/register`, val);
+      const response = await axios.post(`/api/users/register`, val);
 
       return { commit, response };
     },
     async getPanel({ commit }) {
       axios
-        .get(`${apiurl}/api/users/showproducts`)
+        .get(`/api/users/showproducts`)
         .then(function (response) {
           commit("getPanel", response.data);
         })
@@ -295,7 +291,7 @@ export default createStore({
     },
     async createinvoice({ commit }, val) {
       console.log(val);
-      const response = await axios.post(`${apiurl}/api/users/createinvoice`, {
+      const response = await axios.post(`/api/users/createinvoice`, {
         customer_id: Number(val[1]),
         product_id: Number(val[0]),
       });
@@ -305,9 +301,7 @@ export default createStore({
       };
     },
     async invoiceShow({ commit }, val) {
-      const response = await axios.get(
-        `${apiurl}/api/users/invoiceshow/${val}`
-      );
+      const response = await axios.get(`/api/users/invoiceshow/${val}`);
       if (commit) {
         return {
           response,
@@ -315,26 +309,23 @@ export default createStore({
       }
     },
     async invoiceUpdate({ commit }, val) {
-      const response = await axios.post(
-        `${apiurl}/api/users/updateinvoice/${val[0]}`,
-        {
-          coupon_name: val[1],
-        }
-      );
+      const response = await axios.post(`/api/users/updateinvoice/${val[0]}`, {
+        coupon_name: val[1],
+      });
       apicheck(response.data);
       if (commit) {
         return response;
       }
     },
     async getPayment({ commit }) {
-      const response = await axios.get(`${apiurl}/api/admin/bankgateway`);
+      const response = await axios.get(`/api/admin/bankgateway`);
       if (commit) {
         return response;
       }
     },
     async setPayment({ commit }, val) {
       const response = await axios.post(
-        `${apiurl}/api/admin/bankgateway/insertorupdate`,
+        `/api/admin/bankgateway/insertorupdate`,
         val
       );
       apicheck(response.data);
@@ -343,9 +334,7 @@ export default createStore({
       }
     },
     async paymentReport({ commit }, val) {
-      const response = await axios.get(
-        `${apiurl}/api/admin/transactions?page=${val}`
-      );
+      const response = await axios.get(`/api/admin/transactions?page=${val}`);
       if (commit) {
         return response;
       }

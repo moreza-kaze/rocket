@@ -8,13 +8,15 @@
     >
       <div class="w-full md:w-1/2 h-full p-10">
         <p class="font-semibold text-3xl">ورود</p>
-        <form class="flex flex-col">
+        <form @submit.prevent="login()" class="flex flex-col">
           <input
+            v-model="logindata.email"
             class="w-full lg:w-11/12 h-10 rounded-lg border-solid border-2 border-gray-200 focus:outline-none focus:border-sky-200 focus:ring-sky-200 focus:ring-1 mt-7 px-5 py-5"
             type="text"
-            placeholder="نام کاربری"
+            placeholder="ایمیل"
           />
           <input
+            v-model="logindata.password"
             class="w-full lg:w-11/12 h-10 rounded-lg border-solid border-2 border-gray-200 focus:outline-none focus:border-sky-200 focus:ring-sky-200 focus:ring-1 mt-7 px-5 py-5"
             type="password"
             placeholder="رمز عبور"
@@ -42,7 +44,34 @@
 </template>
 
 <script>
-export default {};
+import { reactive } from "@vue/reactivity";
+import { useStore } from "vuex";
+import { useRouter } from "vue-router";
+export default {
+  setup() {
+    const router = useRouter();
+    const store = useStore();
+    const logindata = reactive({
+      email: "",
+      password: "",
+    });
+    const login = () => {
+      store
+        .dispatch("login", [logindata.email, logindata.password])
+        .then((res) => {
+          if (res == "ok") {
+            logindata.email = "";
+            logindata.password = "";
+            router.push("/admin/dashboard");
+          }
+        });
+    };
+    return {
+      logindata,
+      login,
+    };
+  },
+};
 </script>
 
 <style></style>
