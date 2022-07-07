@@ -109,16 +109,24 @@ export default {
     const products = computed(() => store.getters["getUserproducts"]);
 
     const register = () => {
+      store.dispatch("getPanel");
       if (
         info.fullName.length > 2 &&
         info.nationalCode.length > 2 &&
         info.mobile_number.length > 2
       ) {
         store.dispatch("register", info).then(function (response) {
-          if (response.response.data.status == 2) {
+          console.log(response);
+          if (response.response.data.status === 2) {
             panels.value = true;
             custom_id.value = response.response.data.data.output;
-          } else {
+          } else if (response.response.data.status === 0) {
+            Swal.fire({
+              icon: "error",
+              title: "...خطا",
+              text: response.response.data.error.message,
+            });
+          } else if (response.response.data.status === 5) {
             Swal.fire({
               icon: "error",
               title: "...خطا",
@@ -141,17 +149,18 @@ export default {
         .dispatch("createinvoice", [id, custom_id.value])
         .then(function (res) {
           console.log(res.response.data);
-          if (res.response.data.status == 2) {
+          if (res.response.data.status === 2) {
             router.push({ path: `/invoice/${res.response.data.data.output}` });
-          } else {
+          } else if (res.response.data.status === 0) {
             Swal.fire({
               icon: "error",
               title: "...خطا",
-              text: res.response.data.error,
+              text: res.response.data.error.message,
             });
           }
         });
     };
+
     return {
       products,
       panels,

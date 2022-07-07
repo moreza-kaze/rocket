@@ -5,7 +5,11 @@
 </template>
 
 <script>
-export default {};
+export default {
+  setup() {
+    window.localStorage.clear();
+  },
+};
 </script>
 
 <style></style>
