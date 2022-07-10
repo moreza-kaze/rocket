@@ -173,7 +173,7 @@
           <!-- table body -->
           <div
             name="tbody"
-            class="flex flex-col w-6/12 sm:w-full bg-white py-1.5 rounded-xl sm:rounded-none border-0 sm:border-t-2 border-solid border-gray-300"
+            class="flex flex-col w-6/12 sm:w-full bg-white py-1.5 rounded-xl sm:rounded-none border-0 sm:border-t-2 border-solid border-gray-300 sm:hover:bg-gray-50"
           >
             <!-- table row -->
             <div

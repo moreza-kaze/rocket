@@ -579,7 +579,7 @@
                   { 'text-maincolor-999': !payment_li },
                   { 'text-white': payment_li },
                 ]"
-                >درگاه‌ پرداخت</span
+                >پرداخت</span
               >
               <span
                 @click="menuChange()"

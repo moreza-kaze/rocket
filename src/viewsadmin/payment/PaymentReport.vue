@@ -172,7 +172,7 @@
           <!-- table body -->
           <div
             name="tbody"
-            class="flex flex-col w-6/12 sm:w-full bg-white py-1.5 rounded-xl sm:rounded-none border-0 sm:border-t-2 border-solid border-gray-300"
+            class="flex flex-col w-6/12 sm:w-full bg-white py-1.5 rounded-xl sm:rounded-none border-0 sm:border-t-2 border-solid border-gray-300 sm:hover:bg-gray-100"
           >
             <!-- table row -->
             <div
@@ -238,7 +238,9 @@
         <div
           class="w-full h-12 bg-transparent sm:bg-white rounded-b-md flex flex-row justify-center items-center border-0 sm:border-y-2 border-solid border-gray-300"
         >
-          <span class="cursor-pointer" @click="previous()"
+          <span
+            class="cursor-pointer p-1 rounded-50 hover:bg-slate-300"
+            @click="previous()"
             ><svg
               xmlns="http://www.w3.org/2000/svg"
               class="h-6 w-6"
@@ -254,7 +256,9 @@
               /></svg
           ></span>
           <span class="w-6 h-6 text-center">{{ page }}</span>
-          <span class="cursor-pointer" @click="plus()"
+          <span
+            class="cursor-pointer p-1 rounded-50 hover:bg-slate-300"
+            @click="plus()"
             ><svg
               xmlns="http://www.w3.org/2000/svg"
               class="h-6 w-6"

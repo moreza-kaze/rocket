@@ -89,9 +89,9 @@
         </div>
         <div class="flex flex-col items-center h-1/3 p-3 md:p-5">
           <span class="font-bold lg:text-lg xl:font-semibold xl:text-2xl"
-            >{{ dashboard.customerCount }} نفر</span
+            >{{ dashboard.customerCount }} فیش</span
           >
-          <span class="md:mt-3 md:text-sm lg:text-lg">کاربر ثبت شده</span>
+          <span class="md:mt-3 md:text-sm lg:text-lg">فیش ثبت شده</span>
         </div>
       </div>
       <div
@@ -176,7 +176,7 @@
           <div
             class="flex flex-row justify-evenly h-1/4 text-sm md:text-lg font-semibold text-white"
           >
-            <span> پرداخت ماه</span>
+            <span> پرداخت ماه {{ month }}</span>
             <span
               >{{
                 dashboard.fullPaymentCurrentMonth?.toLocaleString("en")
@@ -191,19 +191,68 @@
 </template>
 
 <script>
-import { computed } from "@vue/runtime-core";
+import { computed, ref } from "@vue/runtime-core";
 import { useStore } from "vuex";
-// @ is an alias to /srcd
 import chartpanel from "../components/ChartPanel.vue";
+
 export default {
   name: "HomeView",
   components: { chartpanel },
   setup() {
+    let month = ref("");
+    let today = new Date()
+      .toLocaleDateString("fa-IR")
+      .replace(/([۰-۹])/g, (token) =>
+        String.fromCharCode(token.charCodeAt(0) - 1728)
+      );
+    today = today.split("/");
+    today = today[1];
+
+    switch (today) {
+      case "1":
+        month.value = "فروردین";
+        break;
+      case "2":
+        month.value = "اردیبهشت";
+        break;
+      case "3":
+        month.value = "خرداد";
+        break;
+      case "4":
+        month.value = "تیر";
+        break;
+      case "5":
+        month.value = "مرداد";
+        break;
+      case "6":
+        month.value = "شهریور";
+        break;
+      case "7":
+        month.value = "مهر";
+        break;
+      case "8":
+        month.value = "آبان";
+        break;
+      case "9":
+        month.value = "آذر";
+        break;
+      case "10":
+        month.value = "دی";
+        break;
+      case "11":
+        month.value = "یهمن";
+        break;
+      case "12":
+        month.value = "اسفند";
+        break;
+    }
+
     const store = useStore();
     store.dispatch("getDataDashboard");
     const dashboard = computed(() => store.getters["getDashboard"]);
     return {
       dashboard,
+      month,
     };
   },
 };
