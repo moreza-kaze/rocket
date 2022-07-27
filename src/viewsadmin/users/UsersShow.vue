@@ -489,7 +489,9 @@ export default {
                 </div>
                 <div class="flex flex-row justify-center">
                   <span>درگاه:</span><span>${
-                    showUserInfo.value.payment_gateway
+                    showUserInfo.value.payment_gateway == null
+                      ? "تعیین نشده"
+                      : showUserInfo.value.payment_gateway
                   }</span>
                 </div>
               </div>`,

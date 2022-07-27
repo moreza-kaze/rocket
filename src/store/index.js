@@ -2,8 +2,16 @@ import { createStore } from "vuex";
 import axios from "axios";
 import apicheck from "../store/apicheck.js";
 
-axios.defaults.baseURL = "http://regtest.melipayamak.org";
+// window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+// window.axios.defaults.headers.common['X-CSRF-TOKEN'] = window.Laravel.csrfToken;
+axios.defaults.baseURL = "https://regtest.melipayamak.org";
+//localhost:8000
 axios.defaults.headers.post["Accept"] = "application/json";
+// if (axios.defaults.headers.common["Authorization"] == null){
+//     const login = `Bearer ${JSON.parse(localStorage.getItem("user"))}`;
+//     console.log(login)
+//     axios.defaults.headers.common["Authorization"] = login ;
+// }
 export default createStore({
   state: {
     AUTH_TOKEN: "",
@@ -108,6 +116,12 @@ export default createStore({
           commit("Authorization", res.data.token);
         });
       return "ok";
+    },
+    // logout //
+    async logoutAdmin() {
+      const response = await axios.post("/api/admin/logout");
+      apicheck(response.data);
+      axios.defaults.headers.common["Authorization"] = "";
     },
     // get users //
     async getDataUser({ commit }, val) {

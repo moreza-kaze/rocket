@@ -4,10 +4,11 @@
       class="w-full lg:w-7/12 h-full min-h-screen bg-blob bg-center flex justify-center items-center px-10 py-5 md:px-16 lg:py-20"
     >
       <div
-        :class="{ 'h-117': !panels, 'h-full': panels }"
+        :class="{ 'h-117': !panels || loading, 'h-full': panels }"
         class="w-full md:w-5/6 2xl:w-8/12 min-h-full flex flex-col backdrop-blur-xl bg-white/40 rounded-lg shadow p-9 overflow-hidden"
       >
         <div
+          v-if="!loading"
           :class="{ 'w-0 hidden': panels, 'w-full': !panels }"
           class="h-full overflow-hidde"
         >
@@ -43,6 +44,7 @@
           </form>
         </div>
         <div
+          v-if="!loading"
           :class="{ 'w-0 hidden': !panels, 'w-full': panels }"
           class="h-full overflow-hidden px-6"
         >
@@ -77,6 +79,12 @@
             </div>
           </div>
         </div>
+        <div
+          class="h-117 flex flex-row justify-center items-center"
+          v-else-if="loading"
+        >
+          <LoadingComponent />
+        </div>
       </div>
     </div>
     <div
@@ -93,8 +101,10 @@ import { useStore } from "vuex";
 import { computed } from "@vue/runtime-core";
 import Swal from "sweetalert2";
 import { useRouter } from "vue-router";
+import LoadingComponent from "../components/LoadingComponent.vue";
 export default {
   setup() {
+    const loading = ref(false);
     const info = reactive({
       fullName: "",
       nationalCode: "",
@@ -104,11 +114,10 @@ export default {
     const panels = ref(false);
     const store = useStore();
     const router = useRouter();
-
     store.dispatch("getPanel");
     const products = computed(() => store.getters["getUserproducts"]);
-
     const register = () => {
+      loading.value = true;
       store.dispatch("getPanel");
       if (
         info.fullName.length > 2 &&
@@ -141,14 +150,13 @@ export default {
           text: "تمام گزینه ها را تکمیل بفرمایید",
         });
       }
+      loading.value = false;
     };
-
     const createinvoice = (id) => {
-      console.log(id);
+      loading.value = true;
       store
         .dispatch("createinvoice", [id, custom_id.value])
         .then(function (res) {
-          console.log(res.response.data);
           if (res.response.data.status === 2) {
             router.push({ path: `/invoice/${res.response.data.data.output}` });
           } else if (res.response.data.status === 0) {
@@ -156,19 +164,24 @@ export default {
               icon: "error",
               title: "...خطا",
               text: res.response.data.error.message,
+              confirmButtonText: "حله",
+              preConfirm: () => {
+                window.location.reload();
+              },
             });
           }
         });
     };
-
     return {
       products,
       panels,
       register,
       createinvoice,
       info,
+      loading,
     };
   },
+  components: { LoadingComponent },
 };
 </script>
 

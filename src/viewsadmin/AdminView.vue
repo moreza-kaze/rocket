@@ -54,7 +54,10 @@
               d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"
             /></svg
         ></span>
-        <span class="pl-3 md:pl-7 text-gray-700 cursor-pointer">
+        <span
+          @click="logout()"
+          class="pl-3 md:pl-7 text-gray-700 cursor-pointer"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="h-7 w-7"
@@ -66,7 +69,7 @@
             <path
               stroke-linecap="round"
               stroke-linejoin="round"
-              d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"
+              d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
             />
           </svg>
         </span>
@@ -96,9 +99,14 @@ export default {
       store.dispatch("actionMenu", !x);
     }
 
+    const logout = () => {
+      store.dispatch("logoutAdmin");
+      localStorage.removeItem("user");
+    };
     return {
       menu,
       menuChange,
+      logout,
     };
   },
 };
