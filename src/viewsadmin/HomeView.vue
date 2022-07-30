@@ -240,7 +240,7 @@ export default {
         month.value = "دی";
         break;
       case "11":
-        month.value = "یهمن";
+        month.value = "بهمن";
         break;
       case "12":
         month.value = "اسفند";
