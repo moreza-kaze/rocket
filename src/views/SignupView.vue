@@ -80,10 +80,11 @@
           </div>
         </div>
         <div
-          class="h-117 flex flex-row justify-center items-center"
+          class="h-117 flex flex-col justify-center items-center"
           v-else-if="loading"
         >
           <LoadingComponent />
+          <span class="mt-4">لطفا چند لحظه صبر کنید</span>
         </div>
       </div>
     </div>
